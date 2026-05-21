@@ -117,9 +117,9 @@ export const TopBar = ({ isOpen, setIsOpen }: TopBarProps) => {
           {/* Hamburger Menu */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#15803d] text-white hover:bg-[#166534] transition-all shadow-md active:scale-95"
+            className="lg:hidden flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-[4px] bg-[#15803d] text-white hover:bg-[#166534] transition-all shadow-md active:scale-95"
           >
-            {isOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Menu className="w-5 h-5 md:w-6 md:h-6" />}
+            {isOpen ? <X className="w-4 h-4 md:w-6 md:h-6" /> : <Menu className="w-4 h-4 md:w-6 md:h-6" />}
           </button>
         </div>
       </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/sections/Hero';
 import { db } from '@/lib/db';
+import { FAQSection } from '@/components/sections/FAQSection';
+import { getHomepageFaqs } from '@/app/admin/(dashboard)/homepage/actions';
 
 const ServicesGrid = dynamic(() => import('@/components/sections/ServicesGrid'), {
   ssr: true,
@@ -64,6 +66,13 @@ export default async function HomeView({ city, cityKey }: { city?: string; cityK
     console.error("Could not fetch blogs:", e);
   }
 
+  let homepageFaqs = [];
+  try {
+    homepageFaqs = await getHomepageFaqs();
+  } catch (e) {
+    console.error("Could not fetch FAQs:", e);
+  }
+
   const locationName = city || "";
 
   const processedPosts = dbPosts.map(p => ({
@@ -102,6 +111,8 @@ export default async function HomeView({ city, cityKey }: { city?: string; cityK
 
         <AboutSEO />
         <TrustSection />
+        
+        {homepageFaqs.length > 0 && <FAQSection faqs={homepageFaqs} />}
       </div>
 
     </div>

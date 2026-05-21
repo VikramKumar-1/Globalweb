@@ -310,7 +310,7 @@ export default function BlogPostForm({ post }: { post?: BlogPost }) {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Title Override</label>
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Title (Overrides heading) <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
               <input
                 type="text"
                 value={seoTitle}
@@ -332,7 +332,7 @@ export default function BlogPostForm({ post }: { post?: BlogPost }) {
             </div>
 
             <div className="flex flex-col gap-1.5 md:col-span-2">
-              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Meta Description</label>
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Meta Description <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
               <textarea
                 rows={2}
                 value={seoDescription}

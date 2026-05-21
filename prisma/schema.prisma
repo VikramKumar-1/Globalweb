@@ -32,6 +32,7 @@ model ServicePage {
   contentTitle   String?  @db.VarChar(255)
   seoTitle       String?  @db.VarChar(255)
   seoDescription String?  @db.VarChar(500)
+  heroDescription String? @db.VarChar(500)
   seoKeywords    String?  @db.VarChar(255)
   content        String   @db.Text
   image          String?
@@ -43,10 +44,10 @@ model ServicePage {
 
 model ContactSubmission {
   id        Int      @id @default(autoincrement())
-  name      String
-  email     String
-  phone     String?
-  service   String?
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  phone     String?  @db.VarChar(255)
+  service   String?  @db.VarChar(255)
   message   String   @db.Text
   createdAt DateTime @default(now())
 }

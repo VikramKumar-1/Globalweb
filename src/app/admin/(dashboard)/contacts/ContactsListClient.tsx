@@ -358,7 +358,7 @@ export default function ContactsListClient({ initialSubmissions }: ContactsListC
               </button>
               <div className="flex gap-2">
                 <a
-                  href={`mailto:${selectedSub.email}?subject=Regarding your request for ${selectedSub.service || 'GlobalWeblify services'}`}
+                  href={`mailto:${selectedSub.email}?subject=Regarding your request for ${selectedSub.service || 'GlobalWebify services'}`}
                   className="px-4 py-2 bg-[#1a8b4c] hover:bg-[#157a41] text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md shadow-green-900/10"
                 >
                   Reply via Email

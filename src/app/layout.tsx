@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Lexend } from "next/font/google";
+import { Poppins, Lexend, Jost } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -16,6 +16,12 @@ const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-lexend"
+});
+
+const jost = Jost({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-jost"
 });
 
 export const metadata: Metadata = {
@@ -36,7 +42,7 @@ export default function RootLayout({
   const isAdmin = pathname.startsWith('/admin');
 
   return (
-    <html lang="en" className={`${poppins.variable} ${lexend.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${lexend.variable} ${jost.variable}`}>
       <body className="font-sans bg-white text-gray-900 antialiased overflow-x-hidden">
         {!isAdmin && <Header />}
         {!isAdmin && <BreadcrumbWrapper />}

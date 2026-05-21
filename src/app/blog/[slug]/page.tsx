@@ -23,21 +23,7 @@ export async function generateStaticParams() {
   }
 }
 
-// Dynamic SEO Metadata Generator
-function replaceLocation(text: string, loc: string): string {
-  if (!text) return '';
-  const spanRegex = /<span class="location-tag"[^>]*>\{\s*location\s*\}<\/span>/gi;
-  const rawRegex = /\{\s*location\s*\}/gi;
-  
-  if (!loc) {
-    let cleaned = text.replace(spanRegex, '').replace(rawRegex, '');
-    cleaned = cleaned.replace(/(?:in|at|for|from|within|near| -|-| ,|,| \/|\/)?\s*(?:<span class="location-tag"[^>]*>)?\{\s*location\s*\}(?:<\/span>)?\s*/gi, '');
-    cleaned = cleaned.replace(/\s+/g, ' ').replace(/\s+([.,!?;:])/g, '$1');
-    return cleaned.trim();
-  }
-  
-  return text.replace(spanRegex, loc).replace(rawRegex, loc);
-}
+import { replaceLocation, stripHtml } from '@/lib/replaceLocation';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slugWithPrefix = `/blog/${params.slug}`;
@@ -53,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const title = replaceLocation(dbPost.seoTitle || dbPost.title || '', locationName);
       const description = replaceLocation(dbPost.seoDescription || dbPost.summary || '', locationName);
       return {
-        title: `${title} | GlobalWeblify`,
+        title: title,
         description: description,
         keywords: dbPost.seoKeywords ? dbPost.seoKeywords.split(',').map(k => k.trim()) : undefined
       };
@@ -64,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const staticPost = staticBlogPosts.find((p) => p.slug === slugWithPrefix);
   if (staticPost) {
     return {
-      title: `${staticPost.title} | GlobalWeblify`,
+      title: `${staticPost.title} | GlobalWebify`,
       description: staticPost.excerpt,
     };
   }

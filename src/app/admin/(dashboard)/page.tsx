@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { db } from '@/lib/db';
 import { Layers, Newspaper, Plus, Eye, ArrowRight, MessageSquare, ChevronRight } from 'lucide-react';
+import { getSlugTitle } from '@/lib/replaceLocation';
 
 export const revalidate = 0; // Disable cache so the dashboard stats are always real-time
 
@@ -47,7 +48,7 @@ export default async function AdminDashboardOverview() {
             Welcome Back, Administrator
           </h2>
           <p className="text-sm md:text-base text-gray-400 font-medium max-w-2xl">
-            Welcome to the GlobalWeblify central workstation. Manage services, create blog posts, and interact with submitted business inquiries.
+            Welcome to the GlobalWebify central workstation. Manage services, create blog posts, and interact with submitted business inquiries.
           </p>
         </div>
         
@@ -160,7 +161,7 @@ export default async function AdminDashboardOverview() {
                       {service.category}
                     </span>
                     <h5 className="text-sm font-black text-gray-900 truncate">
-                      {service.title}
+                      {getSlugTitle(service.slug)}
                     </h5>
                     <p className="text-[10px] text-gray-400 font-mono truncate">
                       {service.slug}

@@ -111,7 +111,7 @@ const DEEP_PARENT_MAP: Record<string, ParentRoute> = {
 };
 
 const CITY_NAMES: Record<string, string> = {
-  'uk': 'UK', 'ranchi': 'Ranchi', 'dubai': 'Dubai', 'argora': 'Argora',
+  'india': 'India', 'uk': 'UK', 'ranchi': 'Ranchi', 'dubai': 'Dubai',
   'delhi': 'Delhi', 'noida': 'Noida', 'gurugram': 'Gurugram',
   'bangalore': 'Bangalore', 'mumbai': 'Mumbai', 'pune': 'Pune',
   'hyderabad': 'Hyderabad', 'kolkata': 'Kolkata'
@@ -120,7 +120,7 @@ const CITY_NAMES: Record<string, string> = {
 export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string, dynamicPages?: any[] }) => {
   if (pathname === '/' || pathname === '') return null;
 
-  const citySlugs = ['uk', 'ranchi', 'dubai', 'argora', 'delhi', 'noida', 'gurugram', 'bangalore', 'mumbai', 'pune', 'hyderabad', 'kolkata'];
+  const citySlugs = ['india', 'uk', 'ranchi', 'dubai', 'delhi', 'noida', 'gurugram', 'bangalore', 'mumbai', 'pune', 'hyderabad', 'kolkata'];
   const segments = pathname.split('/').filter(Boolean);
   const hasCity = segments.length > 0 && citySlugs.includes(segments[0].toLowerCase());
   const cityPrefix = hasCity ? segments[0].toLowerCase() : null;
@@ -248,7 +248,7 @@ export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string,
         "position": index + 1,
         "name": crumb.name,
         // SEO Best Practice: Do not include 'item' url for the last active breadcrumb
-        ...(isLast ? {} : { "item": `https://globalweblify.com${crumb.href}` })
+        ...(isLast ? {} : { "item": `https://globalwebify.com${crumb.href}` })
       };
     })
   };
@@ -263,7 +263,7 @@ export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string,
 
       <nav 
         aria-label="Breadcrumb" 
-        className="flex items-center gap-0.5 md:gap-1 text-[12px] md:text-[14px] font-sans select-none max-w-full overflow-x-auto whitespace-nowrap scrollbar-none md:flex-wrap md:overflow-x-visible md:whitespace-normal py-1 md:py-2"
+        className="flex items-center gap-0.5 md:gap-1 text-[12px] md:text-[14px] font-sans select-none max-w-full flex-wrap py-1 md:py-2"
       >
         {breadcrumbsList.map((crumb, index) => {
           const isFirst = index === 0;

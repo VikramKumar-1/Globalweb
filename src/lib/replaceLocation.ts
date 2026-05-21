@@ -4,14 +4,20 @@
  */
 export function replaceLocation(text: string, loc: string): string {
   if (!text) return '';
+  const spanRegex = /<span class="location-tag"[^>]*>\{\s*location\s*\}<\/span>/gi;
   const rawRegex = /\{\s*location\s*\}/gi;
+  
   if (!loc) {
-    let cleaned = text.replace(/\b(?:in|at|for|from|within|near)\s+\{\s*location\s*\}/gi, '');
-    cleaned = cleaned.replace(rawRegex, '');
-    cleaned = cleaned.replace(/\s{2,}/g, ' ').replace(/\s+([.,!?;:])/g, '$1');
+    let cleaned = text;
+    // Strip location with prepositions/symbols first
+    cleaned = cleaned.replace(/(?:in|at|for|from|within|near| -|-| ,|,| \/|\/|\|)?\s*(?:<span class="location-tag"[^>]*>)?\{\s*location\s*\}(?:<\/span>)?\s*/gi, '');
+    // Catch any remaining location tags without prepositions
+    cleaned = cleaned.replace(spanRegex, '').replace(rawRegex, '');
+    cleaned = cleaned.replace(/\s+/g, ' ').replace(/\s+([.,!?;:])/g, '$1');
     return cleaned.trim();
   }
-  return text.replace(rawRegex, loc);
+  
+  return text.replace(spanRegex, loc).replace(rawRegex, loc);
 }
 
 /**
@@ -20,3 +26,22 @@ export function replaceLocation(text: string, loc: string): string {
 export function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '');
 }
+
+/**
+ * Converts a URL slug into a formatted title (e.g. /web-development -> Web Development).
+ */
+export function getSlugTitle(slug: string): string {
+  if (!slug) return '';
+  const clean = slug.replace(/^\//, '').replace(/-/g, ' ');
+  return clean
+    .split(' ')
+    .map(word => {
+      const upper = word.toUpperCase();
+      if (['SEO', 'AI', 'PPC', 'SMO', 'GEO', 'AEO', 'VPS', 'SSL', 'PR', 'SMS', 'IT', 'B2B'].includes(upper)) {
+        return upper;
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+}
+

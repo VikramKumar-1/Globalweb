@@ -24,6 +24,7 @@ const config: Config = {
         sans: ["var(--font-poppins)", "sans-serif"],
         heading: ["var(--font-poppins)", "sans-serif"],
         lexend: ["var(--font-lexend)", "sans-serif"],
+        jost: ["var(--font-jost)", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -13,6 +13,7 @@ export async function POST(request: Request) {
       category: formData.category,
       seoTitle: formData.seoTitle || null,
       seoDescription: formData.seoDescription || null,
+      heroDescription: formData.heroDescription || null,
       seoKeywords: formData.seoKeywords || null,
       content: formData.content,
       image: formData.image || null,

@@ -145,8 +145,9 @@ export async function GET() {
             </ul>
           `,
           image: defaultImage,
-          seoTitle: `${title} | GlobalWeblify`,
-          seoDescription: `Get dynamic, high-performance ${title} services tailored for growth.`,
+          seoTitle: `${title} | GlobalWebify`,
+          heroDescription: `Get dynamic, high-performance ${title} services tailored for growth.`,
+          seoDescription: `Professional ${title} services to grow your business.`,
           isActive: true
         }
       });

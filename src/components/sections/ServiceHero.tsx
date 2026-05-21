@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Phone, MessageSquare, TrendingUp } from "lucide-react";
+import AuditModal from "../ui/AuditModal";
 
 interface ServiceHeroProps {
   title: string;
@@ -10,11 +13,34 @@ interface ServiceHeroProps {
 }
 
 export default function ServiceHero({ title, description, city }: ServiceHeroProps) {
+  const [isAuditOpen, setIsAuditOpen] = useState(false);
   // Format the title to highlight the main part in purple
-  const formattedTitle = title || "";
+  let rawTitle = title || "";
+  
+  // Clean up any {location} tags just in case they were passed raw
+  if (city) {
+    rawTitle = rawTitle.replace(/\{\s*location\s*\}/gi, city);
+    // Remove any accidental 'in ' before the city name
+    rawTitle = rawTitle.replace(new RegExp(`\\s+in\\s+${city}$`, 'i'), ` ${city}`);
+    
+    // Automatically append the city if it's not already in the title
+    if (!rawTitle.toLowerCase().includes(city.toLowerCase())) {
+      rawTitle += ` ${city}`;
+    }
+  } else {
+    rawTitle = rawTitle.replace(/\{\s*location\s*\}/gi, '').replace(/\s+in\s*$/i, '').trim();
+  }
+
+  let mainTitle = rawTitle;
+  let locationPart = '';
+
+  if (city && rawTitle.toLowerCase().endsWith(city.toLowerCase())) {
+    mainTitle = rawTitle.substring(0, rawTitle.length - city.length).trim();
+    locationPart = rawTitle.substring(rawTitle.length - city.length);
+  }
 
   return (
-    <section className="relative w-full min-h-[360px] md:min-h-[400px] py-10 md:py-14 flex items-center justify-center bg-gray-950 overflow-hidden border-b border-gray-900">
+    <section className="relative w-full min-h-[280px] md:min-h-[400px] py-6 md:py-14 flex items-center justify-center bg-gray-950 overflow-hidden border-b border-gray-900">
       {/* Background Image Banner */}
       <div className="absolute inset-0 w-full h-full z-0">
         <Image
@@ -34,7 +60,7 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
       {/* Hero Container */}
       <div className="max-w-[1800px] mx-auto px-4 sm:px-8 lg:px-12 w-full relative z-20 flex justify-center">
         <div 
-          className="w-full max-w-[1140px] rounded-[32px] p-8 md:p-10 lg:p-12 shadow-2xl flex flex-col items-start text-left border border-white/50"
+          className="w-full max-w-[1140px] rounded-[32px] p-5 sm:p-8 md:p-10 lg:p-12 shadow-2xl flex flex-col items-start text-left border border-white/50"
           style={{ 
             backgroundColor: "rgba(255, 255, 255, 0.65)", 
             backdropFilter: "blur(14px)", 
@@ -44,31 +70,33 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
         >
           {/* Location Badge (only if city is present) */}
           {city && (
-            <div className="inline-flex items-center gap-1.5 bg-purple-100/90 border border-purple-200 text-purple-800 text-[10px] md:text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-1.5 text-gray-800 text-[11px] md:text-[13px] font-black uppercase tracking-wider mb-3">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-600" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1a8b4c] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1a8b4c]" />
               </span>
-              <span>{city} Market Area</span>
+              <span>{city}</span>
             </div>
           )}
 
           {/* Heading */}
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-black font-heading text-gray-950 uppercase leading-tight tracking-wide mb-4 w-full">
-            <span className="text-purple-700">{formattedTitle}</span>{" "}
-            <span className="text-gray-950">Services{city && ` in ${city}`}</span>
+            <span className="text-purple-700">{mainTitle}</span>
+            {locationPart && <span className="text-gray-950"> {locationPart}</span>}
           </h1>
 
           {/* Description */}
-          <p className="text-sm md:text-[15.5px] text-gray-800 leading-relaxed font-semibold max-w-2xl mb-8">
-            {description || "Custom web solutions that drive business growth. Scalable, secure, and user-friendly websites built for success."}
-          </p>
+          {description && (
+            <p className="text-sm md:text-[15.5px] text-gray-800 leading-relaxed font-semibold w-full mb-8">
+              {description}
+            </p>
+          )}
 
           {/* Buttons */}
-          <div className="flex flex-wrap items-center justify-start gap-3 w-full">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-start gap-2.5 md:gap-3 w-full">
             <Link
               href="/contact"
-              className="text-white font-bold py-3.5 px-6 rounded-2xl shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 text-[13px] md:text-[13.5px] tracking-wide"
+              className="text-white font-bold py-3.5 px-2 md:px-6 rounded-2xl shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-1.5 md:gap-2 text-[12px] md:text-[13.5px] tracking-wide"
               style={{
                 background: 'linear-gradient(to right, #7c3aed, #4f46e5)',
                 border: '1px solid #7c3aed'
@@ -78,7 +106,7 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
             </Link>
             <a
               href="tel:+917563901100"
-              className="text-white font-bold py-3.5 px-6 rounded-2xl shadow-sm hover:shadow-md hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 text-[13px] md:text-[13.5px] tracking-wide"
+              className="text-white font-bold py-3.5 px-2 md:px-6 rounded-2xl shadow-sm hover:shadow-md hover:translate-y-[-1px] transition-all flex items-center justify-center gap-1.5 md:gap-2 text-[12px] md:text-[13.5px] tracking-wide"
               style={{
                 background: 'linear-gradient(to right, #1f2937, #111827)',
                 border: '1px solid #1f2937'
@@ -90,7 +118,7 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
               href="https://wa.me/917563901100"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white font-bold py-3.5 px-6 rounded-2xl shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 text-[13px] md:text-[13.5px] tracking-wide"
+              className="text-white font-bold py-3.5 px-2 md:px-6 rounded-2xl shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-1.5 md:gap-2 text-[12px] md:text-[13.5px] tracking-wide"
               style={{
                 background: 'linear-gradient(to right, #25D366, #1b8a4a)',
                 border: '1px solid #25D366'
@@ -98,19 +126,20 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
             >
               <MessageSquare size={14} className="fill-white stroke-none" /> WhatsApp
             </a>
-            <Link
-              href="/contact?subject=Free Audit"
-              className="text-white font-bold py-3.5 px-6 rounded-2xl shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 text-[13px] md:text-[13.5px] tracking-wide"
+            <button
+              onClick={() => setIsAuditOpen(true)}
+              className="text-white font-bold py-3.5 px-2 md:px-6 rounded-2xl shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-1.5 md:gap-2 text-[12px] md:text-[13.5px] tracking-wide"
               style={{
                 background: 'linear-gradient(to right, #2563eb, #0891b2)',
                 border: '1px solid #2563eb'
               }}
             >
               <TrendingUp size={14} className="stroke-[2.5] text-white" /> Free Audit
-            </Link>
+            </button>
           </div>
         </div>
       </div>
+      <AuditModal isOpen={isAuditOpen} onClose={() => setIsAuditOpen(false)} />
     </section>
   );
 }

@@ -3,22 +3,22 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle2, Phone, MessageSquare } from 'lucide-react';
 
 export const metadata = {
-  title: 'Choose Your Location | GlobalWeblify',
+  title: 'Choose Your Location | GlobalWebify',
   description: 'We serve major cities globally with expert custom web development, SEO, and digital marketing services. Select your location to explore local solutions.',
 };
 
 const CITIES = [
-  { slug: 'uk', title: 'UK', subtitle: 'UK , UK' },
+  { slug: 'india', title: 'India', subtitle: 'Country' },
+  { slug: 'uk', title: 'UK', subtitle: 'United Kingdom' },
   { slug: 'ranchi', title: 'Ranchi', subtitle: 'Jharkhand , India' },
-  { slug: 'dubai', title: 'Dubai', subtitle: 'Dubai , UAE' },
-  { slug: 'argora', title: 'Argora', subtitle: 'Jharkhand , India' },
-  { slug: 'delhi', title: 'Delhi', subtitle: 'Delhi , India' },
+  { slug: 'dubai', title: 'Dubai', subtitle: 'United Arab Emirates' },
+  { slug: 'delhi', title: 'Delhi', subtitle: 'India' },
   { slug: 'noida', title: 'Noida', subtitle: 'Uttar Pradesh , India' },
   { slug: 'gurugram', title: 'Gurugram', subtitle: 'Haryana , India' },
   { slug: 'bangalore', title: 'Bangalore', subtitle: 'Karnataka , India' },
   { slug: 'mumbai', title: 'Mumbai', subtitle: 'Maharashtra , India' },
   { slug: 'pune', title: 'Pune', subtitle: 'Maharashtra , India' },
-  { slug: 'hyderabad', title: 'Hyderabad', subtitle: 'Hyderabad , India' },
+  { slug: 'hyderabad', title: 'Hyderabad', subtitle: 'Telangana , India' },
   { slug: 'kolkata', title: 'Kolkata', subtitle: 'West Bengal , India' },
 ];
 

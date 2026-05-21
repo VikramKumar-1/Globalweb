@@ -9,7 +9,7 @@ export default function NewBlogPostPage() {
           Write Blog Post
         </h2>
         <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">
-          Publish a new article to the GlobalWeblify blog index
+          Publish a new article to the GlobalWebify blog index
         </p>
       </div>
 

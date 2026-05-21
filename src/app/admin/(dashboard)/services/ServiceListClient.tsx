@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { deleteService, toggleServiceStatus } from './actions';
 import { useSearchParams } from 'next/navigation';
+import { getSlugTitle } from '@/lib/replaceLocation';
 
 interface Service {
   id: number;
@@ -198,7 +199,7 @@ export default function ServiceListClient({ services }: { services: Service[] })
                   </div>
                   
                   <h4 className="text-base font-black text-gray-900 mt-3 line-clamp-1 group-hover:text-[#1a8b4c] transition-colors leading-tight">
-                    {service.title}
+                    {getSlugTitle(service.slug)}
                   </h4>
                   <span className="text-[10px] font-mono text-gray-400 block mt-1.5">
                     {service.slug}

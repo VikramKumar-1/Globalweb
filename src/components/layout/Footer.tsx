@@ -7,8 +7,8 @@ import {
   Facebook, Twitter, Instagram, Linkedin, Youtube, 
   Mail, Phone, MapPin, Code, ShoppingCart, Globe, 
   Smartphone, Settings, Search, Share2, FileText, 
-  Megaphone, BarChart3, Headphones, Award, ShieldCheck,
-  CreditCard, ExternalLink
+  Megaphone, BarChart3, Headphones, Award,
+  ExternalLink
 } from 'lucide-react';
 import { Section } from './Responsive/Section';
 import { SOCIAL_LINKS } from '@/constants/navigation';
@@ -118,29 +118,44 @@ export default function Footer() {
                   36/1E/1L, Topsia Road, Panchannagram, Kolkata, Pin - 700039, West Bengal, India.
                 </p>
               </div>
+
+              <Link 
+                href="/market-area" 
+                className="group flex items-center justify-between p-4 bg-white border border-gray-50 rounded-2xl shadow-sm hover:shadow-md hover:border-[#1a8b4c]/20 transition-all duration-300 w-full"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center bg-green-50 text-[#1a8b4c] transition-transform group-hover:scale-110">
+                    <MapPin size={18} />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Locations</p>
+                    <p className="text-[14px] font-bold text-gray-800 group-hover:text-[#1a8b4c] transition-colors">Our Market Areas</p>
+                  </div>
+                </div>
+                <ExternalLink size={16} className="text-gray-400 group-hover:text-[#1a8b4c] transition-colors mr-1" />
+              </Link>
             </div>
           </div>
         </div>
 
         {/* Bottom Stats Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 mb-12">
           {/* Projects Card */}
-          <div className="bg-[#f0fdf4] border-2 border-[#1a8b4c]/10 rounded-[32px] p-8 text-center flex flex-col items-center justify-center group hover:border-[#1a8b4c]/30 transition-all shadow-sm">
-            <h3 className="text-[44px] font-black text-[#1a8b4c] leading-none mb-2">500+</h3>
-            <p className="text-[#166534] text-[11px] font-black uppercase tracking-[0.2em]">Projects Delivered</p>
+          <div className="lg:col-span-2 bg-gray-50 border border-gray-100/80 rounded-2xl p-4 text-center flex flex-col items-center justify-center group hover:border-[#1a8b4c]/20 transition-all shadow-sm">
+            <h3 className="text-[30px] font-extrabold text-[#1a8b4c] leading-none mb-1.5">500+</h3>
+            <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.15em]">Projects Delivered</p>
           </div>
 
           {/* Satisfaction Card */}
-          <div className="bg-[#f0fdf4] border-2 border-[#1a8b4c]/10 rounded-[32px] p-8 text-center flex flex-col items-center justify-center group hover:border-[#1a8b4c]/30 transition-all shadow-sm">
-            <h3 className="text-[44px] font-black text-[#1a8b4c] leading-none mb-2">98%</h3>
-            <p className="text-[#166534] text-[11px] font-black uppercase tracking-[0.2em]">Client Satisfaction</p>
+          <div className="lg:col-span-2 bg-gray-50 border border-gray-100/80 rounded-2xl p-4 text-center flex flex-col items-center justify-center group hover:border-[#1a8b4c]/20 transition-all shadow-sm">
+            <h3 className="text-[30px] font-extrabold text-[#1a8b4c] leading-none mb-1.5">98%</h3>
+            <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.15em]">Client Satisfaction</p>
           </div>
 
           {/* Social Card */}
-          <div className="bg-[#f0fdf4] border-2 border-[#1a8b4c]/10 rounded-[32px] p-8 text-center flex flex-col items-center justify-center shadow-sm">
-            <h4 className="text-[18px] font-black text-gray-950 mb-4 uppercase tracking-wider">Follow Us</h4>
-            <div className="w-12 h-1 bg-[#1a8b4c] rounded-full mb-6 mx-auto" />
-            <div className="flex gap-3">
+          <div className="lg:col-span-3 bg-gray-50 border border-gray-100/80 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
+            <h4 className="text-[12px] font-semibold text-gray-500 uppercase tracking-wider mb-3">Follow Us</h4>
+            <div className="flex gap-2">
                {SOCIAL_LINKS.map((social, i) => {
                  const IconMap: Record<string, any> = {
                    Facebook: Facebook,
@@ -156,9 +171,9 @@ export default function Footer() {
                      href={social.href}
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-700 shadow-md hover:bg-[#1a8b4c] hover:text-white transition-all transform hover:-translate-y-1"
+                     className="w-8 h-8 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-600 shadow-sm hover:bg-[#1a8b4c] hover:text-white transition-all transform hover:-translate-y-0.5"
                    >
-                     <Icon size={18} />
+                     <Icon size={14} />
                    </a>
                  );
                })}
@@ -166,34 +181,44 @@ export default function Footer() {
           </div>
 
           {/* Payment Card */}
-          <div className="bg-[#f0fdf4] border-2 border-[#1a8b4c]/10 rounded-[32px] p-8 text-center flex flex-col items-center justify-center shadow-sm">
-            <h4 className="text-[16px] font-black text-gray-950 mb-4 uppercase tracking-wider">Secure Payments</h4>
-            <div className="w-12 h-1 bg-[#1a8b4c] rounded-full mb-6 mx-auto" />
-            <div className="flex flex-wrap justify-center gap-3">
-               <ShieldCheck size={24} className="text-gray-400" />
-               <CreditCard size={24} className="text-gray-400" />
-               <ExternalLink size={24} className="text-gray-400" />
-               {/* Placeholders for specific payment logos */}
-               <div className="w-8 h-5 bg-gray-100 rounded" />
-               <div className="w-8 h-5 bg-gray-100 rounded" />
-            </div>
+          <div className="lg:col-span-5 bg-gray-50 border border-gray-100/80 rounded-2xl p-4 text-center flex flex-col items-center justify-center shadow-sm">
+            <h4 className="text-[12px] font-semibold text-gray-500 uppercase tracking-wider mb-3">Secure Payment Methods</h4>
+            <div className="flex flex-row flex-nowrap justify-center items-center gap-1.5 sm:gap-2 w-full">
+               {/* Bank of Baroda */}
+               <div className="w-[54px] h-[38px] sm:w-[76px] sm:h-[50px] relative bg-white border border-gray-100 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                 <Image src="/BankOfBaroda.avif" alt="Bank of Baroda" fill className="object-contain p-0.5" sizes="(max-width: 640px) 54px, 76px" />
+               </div>
+               {/* Indian Overseas Bank */}
+               <div className="w-[54px] h-[38px] sm:w-[76px] sm:h-[50px] relative bg-white border border-gray-100 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                 <Image src="/IndianOverseasBank.avif" alt="Indian Overseas Bank" fill className="object-contain p-0.5" sizes="(max-width: 640px) 54px, 76px" />
+               </div>
+               {/* PayPal */}
+               <div className="w-[54px] h-[38px] sm:w-[76px] sm:h-[50px] relative bg-white border border-gray-100 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                 <Image src="/PayPal.avif" alt="PayPal" fill className="object-contain p-0.5" sizes="(max-width: 640px) 54px, 76px" />
+               </div>
+               {/* Razorpay */}
+               <div className="w-[54px] h-[38px] sm:w-[76px] sm:h-[50px] relative bg-white border border-gray-100 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                 <Image src="/Razorpay.avif" alt="Razorpay" fill className="object-contain p-0.5" sizes="(max-width: 640px) 54px, 76px" />
+               </div>
+               {/* PhonePe */}
+               <div className="w-[54px] h-[38px] sm:w-[76px] sm:h-[50px] relative bg-white border border-gray-100 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                 <Image src="/PhonePe.avif" alt="PhonePe" fill className="object-contain p-0.5" sizes="(max-width: 640px) 54px, 76px" />
+               </div>
+             </div>
           </div>
         </div>
 
         {/* Final Bottom Bar */}
-        <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-12 border-t border-gray-100 flex flex-col items-center justify-center gap-4 text-center">
            <p className="text-[14px] font-bold text-gray-500">
              © {new Date().getFullYear()} Global Webify. All rights reserved.
            </p>
-           <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-             {["Privacy Policy", "Terms of Service", "Cookie Policy", "Sitemap", "Market Areas"].map((link) => {
-               const href = link === "Market Areas" ? "/market-area" : "#";
-               return (
-                 <Link key={link} href={href} className="text-[13px] font-bold text-gray-400 hover:text-[#1a8b4c] transition-colors">
-                   {link}
-                 </Link>
-               );
-             })}
+           <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 sm:gap-x-8 text-center">
+             {["Privacy Policy", "Terms of Service", "Cookie Policy", "Sitemap"].map((link) => (
+               <Link key={link} href="#" className="text-[13px] font-bold text-gray-400 hover:text-[#1a8b4c] transition-colors">
+                 {link}
+               </Link>
+             ))}
            </div>
         </div>
       </div>

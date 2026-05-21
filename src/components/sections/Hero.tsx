@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Phone, MessageCircle } from "lucide-react";
 import { Section } from "../layout/Responsive/Section";
+import AuditModal from "../ui/AuditModal";
 
 // --- Colorful Google SVG Logo ---
 const GoogleLogo = () => (
@@ -250,6 +251,7 @@ const badges = [
 export default function Hero({ city }: { city?: string }) {
   const [mounted, setMounted] = useState(false);
   const [paddingTop, setPaddingTop] = useState(80);
+  const [isAuditOpen, setIsAuditOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -320,10 +322,10 @@ export default function Hero({ city }: { city?: string }) {
 
             {/* CTAs */}
             <div className="flex flex-row gap-4 w-full mt-1">
-              <button className="flex-1 bg-[#1a8b4c] hover:bg-[#14733e] text-white text-[14px] font-bold px-5 py-3.5 md:py-4 rounded-xl transition-all shadow-xl shadow-green-700/20 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap">
+              <a href="tel:+917563901100" className="flex-1 bg-[#1a8b4c] hover:bg-[#14733e] text-white text-[14px] font-bold px-5 py-3.5 md:py-4 rounded-xl transition-all shadow-xl shadow-green-700/20 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap text-center inline-block">
                 Free Consultation →
-              </button>
-              <button className="flex-1 bg-white border-2 border-[#1a8b4c] text-[#1a8b4c] hover:bg-green-50 text-[14px] font-bold px-5 py-3.5 md:py-4 rounded-xl transition-all shadow-md hover:-translate-y-0.5 cursor-pointer whitespace-nowrap">
+              </a>
+              <button onClick={() => setIsAuditOpen(true)} className="flex-1 bg-white border-2 border-[#1a8b4c] text-[#1a8b4c] hover:bg-green-50 text-[14px] font-bold px-5 py-3.5 md:py-4 rounded-xl transition-all shadow-md hover:-translate-y-0.5 cursor-pointer whitespace-nowrap">
                 Get Free Audit
               </button>
             </div>
@@ -378,6 +380,8 @@ export default function Hero({ city }: { city?: string }) {
         <MessageCircle className="w-5 h-5 fill-current" />
         <span className="hidden sm:inline text-sm">WhatsApp</span>
       </a>
+      
+      <AuditModal isOpen={isAuditOpen} onClose={() => setIsAuditOpen(false)} />
     </main>
   );
 }

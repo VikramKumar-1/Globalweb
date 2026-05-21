@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { 
-  LayoutDashboard, Layers, Newspaper, MessageSquare 
+  LayoutDashboard, Layers, Newspaper, MessageSquare, Home
 } from 'lucide-react';
 import SidebarCategories from './SidebarCategories';
 
@@ -20,6 +20,7 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
   const isServices = pathname.startsWith('/admin/services');
   const isBlogs = pathname.startsWith('/admin/blogs');
   const isContacts = pathname.startsWith('/admin/contacts');
+  const isHomepage = pathname.startsWith('/admin/homepage');
 
   const linkClass = (isActive: boolean) => 
     `flex items-center gap-2.5 px-4 py-2.5 rounded-xl transition-all duration-200 text-[11px] md:text-xs font-semibold tracking-wide border group/navlink ${
@@ -38,6 +39,12 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
       <Link href="/admin" className={linkClass(isOverview)}>
         <LayoutDashboard className={iconClass(isOverview)} />
         <span>Overview</span>
+      </Link>
+
+      {/* Homepage Settings Button */}
+      <Link href="/admin/homepage" className={linkClass(isHomepage)}>
+        <Home className={iconClass(isHomepage)} />
+        <span>Homepage Settings</span>
       </Link>
 
       {/* Collapsible Manage Services Dropdown */}

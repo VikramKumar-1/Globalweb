@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "At Global Weblify, we help brands improve visibility across AI-driven search platforms through advanced SEO strategies, content optimization, and intelligent search solutions. Understanding how featured snippets work can help your business gain more traffic, authority, and conversions."
+        text: "At Global Webify, we help brands improve visibility across AI-driven search platforms through advanced SEO strategies, content optimization, and intelligent search solutions. Understanding how featured snippets work can help your business gain more traffic, authority, and conversions."
       },
       {
         type: "h2",
@@ -196,7 +196,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "h2",
-        text: "Why Choose Global Weblify?"
+        text: "Why Choose Global Webify?"
       },
       {
         type: "p",

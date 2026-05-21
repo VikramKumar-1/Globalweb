@@ -25,7 +25,7 @@ const socialIcons: any = {
   Youtube: Youtube
 };
 
-const citySlugs = ['uk', 'ranchi', 'dubai', 'argora', 'delhi', 'noida', 'gurugram', 'bangalore', 'mumbai', 'pune', 'hyderabad', 'kolkata'];
+const citySlugs = ['india', 'uk', 'ranchi', 'dubai', 'delhi', 'noida', 'gurugram', 'bangalore', 'mumbai', 'pune', 'hyderabad', 'kolkata'];
 
 const getPrefixedHref = (href: string, menuId: string, currentCity: string | null) => {
   if (!currentCity) return href;
@@ -202,8 +202,8 @@ export default function Header() {
                       <div className="flex items-center gap-3">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#1a8b4c]" />
                         <span className={cn(
-                          "text-[15px] font-black uppercase tracking-tight transition-colors",
-                          mobileMenuOpen === link.id ? "text-[#1a8b4c]" : "text-[#0a0a0a]"
+                          "text-[14px] font-semibold tracking-normal transition-colors",
+                          mobileMenuOpen === link.id ? "text-[#1a8b4c]" : "text-[#1a1a1a]"
                         )}>
                           {link.name}
                         </span>
@@ -234,7 +234,7 @@ export default function Header() {
                               <Link 
                                 href={getPrefixedHref(item.href, link.id, currentCity)}
                                 onClick={item.subLinks ? (e) => e.preventDefault() : closeMenu}
-                                className="block text-[13px] font-black text-gray-900 mb-2 px-2 hover:text-[#1a8b4c]"
+                                className="block text-[13px] font-medium text-gray-700 mb-1.5 px-2 hover:text-[#1a8b4c] transition-colors"
                               >
                                 {item.name}
                               </Link>
@@ -246,7 +246,7 @@ export default function Header() {
                                       key={sIdx}
                                       href={getPrefixedHref(sub.href, link.id, currentCity)}
                                       onClick={closeMenu}
-                                      className="px-2 py-1.5 text-[12px] font-medium text-gray-600 hover:text-[#16a34a] hover:bg-green-50/50 rounded-lg flex items-center gap-2 group/nested"
+                                      className="px-2 py-1 text-[12px] font-normal text-gray-500 hover:text-[#16a34a] rounded-md flex items-center gap-2 group/nested transition-colors"
                                     >
                                       <div className="w-1 h-1 rounded-full bg-gray-400 group-hover/nested:bg-[#1a8b4c]" />
                                       {sub.name}

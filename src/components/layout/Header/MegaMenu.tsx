@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   WEBSITE_SERVICES,
   HOSTING_SERVICES,
@@ -58,19 +59,22 @@ export const MegaMenu = ({ onClose, activeMenu, currentMenuId, currentCity }: Me
   return (
     <div
       onMouseLeave={() => {}}
-      className={`absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-[0_16px_40px_-8px_rgba(0,0,0,0.15)] z-[9999] transition-all duration-200 ${
+      className={`absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-[0_16px_40px_-8px_rgba(0,0,0,0.15)] z-[9999] ${
         isVisible 
-          ? 'opacity-100 pointer-events-auto visible translate-y-0' 
-          : 'opacity-0 pointer-events-none invisible -translate-y-2'
+          ? 'opacity-100 pointer-events-auto visible' 
+          : 'opacity-0 pointer-events-none invisible'
       }`}
     >
       <div className="flex max-w-[1800px] mx-auto bg-white">
 
         {/* LEFT: image promo block with local nav-promo image */}
         <div className="w-[240px] lg:w-[290px] xl:w-[340px] shrink-0 relative overflow-hidden" style={{ minHeight: '300px' }}>
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('/nav-promo.png')` }}
+          <Image
+            src="/nav-promo.png"
+            alt="Promo Background"
+            fill
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-black/5" />
           <div className="absolute bottom-6 left-6 right-6 p-4 flex flex-col gap-2 bg-white/85 backdrop-blur-md border border-white/50 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
@@ -106,6 +110,7 @@ export const MegaMenu = ({ onClose, activeMenu, currentMenuId, currentCity }: Me
                       <Link
                         href={getPrefixedHref(item.href, currentMenuId, currentCity)}
                         onClick={onClose}
+                        prefetch={true}
                         className="flex items-center justify-between text-[14px] font-medium px-3 py-2.5 rounded-xl transition-colors duration-75 text-gray-800 hover:text-white hover:bg-[#1a8b4c] group-hover/submenu:bg-[#1a8b4c] group-hover/submenu:text-white"
                       >
                         <span>{item.name}</span>
@@ -135,6 +140,7 @@ export const MegaMenu = ({ onClose, activeMenu, currentMenuId, currentCity }: Me
                                 key={sub.name}
                                 href={getPrefixedHref(sub.href, currentMenuId, currentCity)}
                                 onClick={onClose}
+                                prefetch={true}
                                 className="text-[13px] text-gray-600 hover:text-white hover:bg-[#1a8b4c] px-2.5 py-1.5 rounded-lg transition-colors duration-75 block font-medium"
                               >
                                 {sub.name}

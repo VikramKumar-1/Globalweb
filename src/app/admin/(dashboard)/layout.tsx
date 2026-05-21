@@ -3,33 +3,75 @@ import Link from 'next/link';
 import { Newspaper, Layers, LogOut, Shield, LayoutDashboard, ArrowLeft, MessageSquare } from 'lucide-react';
 import { headers } from 'next/headers';
 import { db } from '@/lib/db';
+import { unstable_cache } from 'next/cache';
 import SidebarNav from '@/components/admin/SidebarNav';
+
+const getSidebarServices = unstable_cache(
+  async () => {
+    return await db.servicePage.findMany({
+      select: {
+        id: true,
+        title: true,
+        category: true,
+      },
+      orderBy: {
+        title: 'asc',
+      },
+    });
+  },
+  ['admin-sidebar-services'],
+  { revalidate: 60, tags: ['services'] }
+);
 
 export default async function AdminDashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Auto-seed missing category pages for the admin panel
+  const SEED_CATEGORIES = ['seo-services', 'ai-seo-services', 'social-media-marketing', 'ppc-services'];
+  try {
+    const existing = await db.servicePage.count({
+      where: { slug: { in: SEED_CATEGORIES } }
+    });
+    if (existing < SEED_CATEGORIES.length) {
+      for (const slug of SEED_CATEGORIES) {
+        const exists = await db.servicePage.findUnique({ where: { slug } });
+        if (!exists) {
+          const title = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          await db.servicePage.create({
+            data: {
+              slug,
+              title,
+              contentTitle: title,
+              seoTitle: `Best ${title} | GlobalWebify`,
+              seoDescription: `Explore our professional ${title} to grow your business online.`,
+              seoKeywords: title.toLowerCase(),
+              heroDescription: `Expert ${title} tailored to drive traffic, leads, and sales for your business.`,
+              content: `<h2>Welcome to our ${title}</h2><p>We provide industry-leading solutions to help you dominate your market.</p>`,
+              category: 'marketing',
+              image: '/web-dev-banner-bg.png',
+              isActive: true,
+            }
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.error("Auto-seed failed", e);
+  }
   const headersList = headers();
   const pathname = headersList.get('x-pathname') || '';
   const fullUrl = headersList.get('x-url') || '';
 
   const isOverview = pathname === '/admin';
-  const isServices = pathname.startsWith('/admin/services');
-  const isBlogs = pathname.startsWith('/admin/blogs');
-  const isContacts = pathname.startsWith('/admin/contacts');
+  const isServices = pathname.includes('/admin/services');
+  const isBlogs = pathname.includes('/admin/blogs');
+  const isContacts = pathname.includes('/admin/contacts');
+  const isHomepage = pathname.includes('/admin/homepage');
 
-  // Fetch services for sidebar dynamic dropdown
-  const sidebarServices = await db.servicePage.findMany({
-    select: {
-      id: true,
-      title: true,
-      category: true,
-    },
-    orderBy: {
-      title: 'asc',
-    },
-  });
+  // Fetch services for sidebar dynamic dropdown (Cached)
+  const sidebarServices = await getSidebarServices();
 
   const categories = {
     website: { label: 'Website Services', services: [] as any[] },
@@ -115,13 +157,13 @@ export default async function AdminDashboardLayout({
           <div className="w-14 h-14 rounded-2xl overflow-hidden bg-white flex items-center justify-center p-1.5 flex-shrink-0 shadow-lg shadow-black/30">
             <img
               src="/global_webify_logo.png"
-              alt="GlobalWeblify Logo"
+              alt="GlobalWebify Logo"
               className="w-full h-full object-contain"
             />
           </div>
           <div>
             <h2 className="text-[11px] font-black tracking-widest uppercase font-lexend text-white leading-none">
-              GlobalWeblify
+              GlobalWebify
             </h2>
             <span className="text-[8px] text-gray-500 font-bold uppercase tracking-widest mt-1 block">
               CMS Workstation
@@ -159,7 +201,7 @@ export default async function AdminDashboardLayout({
               </Link>
             )}
             <h1 className="text-sm font-black text-gray-900 font-lexend uppercase tracking-wider">
-              {isOverview ? 'GlobalWeblify Console' : isServices ? 'GlobalWeblify Services Portal' : isBlogs ? 'GlobalWeblify Blogs Portal' : isContacts ? 'GlobalWeblify Contacts Portal' : 'GlobalWeblify Console'}
+              {isOverview ? 'GlobalWebify Console' : isServices ? 'GlobalWebify Services Portal' : isBlogs ? 'GlobalWebify Blogs Portal' : isContacts ? 'GlobalWebify Contacts Portal' : isHomepage ? 'GlobalWebify Homepage Settings' : 'GlobalWebify Console'}
             </h1>
           </div>
 

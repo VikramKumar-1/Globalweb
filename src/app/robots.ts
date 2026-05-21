@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://globalweblify.com/sitemap.xml',
+    sitemap: 'https://globalwebify.com/sitemap.xml',
   };
 }

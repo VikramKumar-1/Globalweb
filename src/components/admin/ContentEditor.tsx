@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  Bold, Italic, Underline, Heading2, Heading3, Type, 
+  Bold, Italic, Underline, Heading1, Heading2, Heading3, Type, 
   List, ListOrdered, Link2, Quote, LayoutGrid, CheckCircle, 
   HelpCircle, MessageSquare, Unlink, Undo, Redo, Trash2
 } from 'lucide-react';
@@ -26,6 +26,7 @@ function wrapLocationTags(html: string): string {
 
 export default function ContentEditor({ content, setContent, placeholder }: ContentEditorProps) {
   const editorRef = useRef<HTMLDivElement>(null);
+  const savedSelection = useRef<Range | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   // Initialize content once on mount or when content is first loaded
@@ -69,13 +70,31 @@ export default function ContentEditor({ content, setContent, placeholder }: Cont
     }
   };
 
+  const saveSelection = () => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      savedSelection.current = sel.getRangeAt(0);
+    }
+  };
+
+  const restoreSelection = () => {
+    if (savedSelection.current) {
+      const sel = window.getSelection();
+      sel?.removeAllRanges();
+      sel?.addRange(savedSelection.current);
+    }
+  };
+
   const executeCommand = (command: string, arg?: string) => {
+    restoreSelection();
     document.execCommand(command, false, arg);
     editorRef.current?.focus();
+    saveSelection();
     handleInput();
   };
 
   const applyInlineStyle = (styleProperty: string, value: string) => {
+    restoreSelection();
     const selection = window.getSelection();
     if (selection && selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
@@ -221,6 +240,7 @@ export default function ContentEditor({ content, setContent, placeholder }: Cont
         
         {/* Headings */}
         <div className="flex items-center gap-1 border-r border-gray-800 pr-1.5 mr-1.5">
+          <ToolbarButton icon={Heading1} title="Heading 1" onClick={() => executeCommand('formatBlock', '<h1>')} />
           <ToolbarButton icon={Heading2} title="Heading 2" onClick={() => executeCommand('formatBlock', '<h2>')} />
           <ToolbarButton icon={Heading3} title="Heading 3" onClick={() => executeCommand('formatBlock', '<h3>')} />
           <ToolbarButton icon={Type} title="Paragraph" onClick={() => executeCommand('formatBlock', '<p>')} />
@@ -360,7 +380,10 @@ export default function ContentEditor({ content, setContent, placeholder }: Cont
         ref={editorRef}
         contentEditable
         onInput={handleInput}
-        onBlur={handleBlur}
+        onBlur={() => { handleBlur(); saveSelection(); }}
+        onMouseUp={saveSelection}
+        onKeyUp={saveSelection}
+        onMouseLeave={saveSelection}
         className="w-full min-h-[400px] max-h-[800px] overflow-y-auto px-8 py-8 focus:outline-none bg-white text-gray-800 text-sm md:text-base leading-relaxed font-sans"
         data-placeholder={placeholder || "Start typing your content here visually..."}
         style={{ minHeight: '400px' }}
@@ -395,6 +418,13 @@ export default function ContentEditor({ content, setContent, placeholder }: Cont
         [contenteditable] li {
           margin-bottom: 4px !important;
           display: list-item !important;
+        }
+        [contenteditable] h1 {
+          font-size: 28px !important;
+          font-weight: 900 !important;
+          color: #111827 !important;
+          margin-top: 32px !important;
+          margin-bottom: 16px !important;
         }
         [contenteditable] h2 {
           font-size: 22px !important;

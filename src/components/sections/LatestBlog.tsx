@@ -74,8 +74,8 @@ export default function LatestBlog({ dbPosts = [] }: LatestBlogProps) {
                   <div className="p-5 md:p-6 flex flex-col flex-grow">
                     
                     {/* Date stamp with Calendar Icon */}
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-gray-400 uppercase tracking-widest mb-3.5">
-                      <Calendar size={14} className="stroke-[2.5]" />
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-gray-400 uppercase tracking-widest mb-3.5">
+                      <Calendar size={14} className="stroke-[2]" />
                       <span>{date}</span>
                     </div>
                     
@@ -85,16 +85,16 @@ export default function LatestBlog({ dbPosts = [] }: LatestBlogProps) {
                     </h3>
                     
                     {/* Excerpt */}
-                    <p className="text-gray-500 text-[12.5px] font-semibold leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-gray-500 text-[12.5px] font-normal leading-relaxed mb-6 line-clamp-3">
                       {excerpt}
                     </p>
                   
                   {/* Read More Indicator anchored to bottom */}
                   <div className="mt-auto">
                     <div 
-                      className="text-[#1a8b4c] font-black flex items-center gap-1.5 group-hover:gap-2.5 transition-all text-[11.5px] uppercase tracking-widest"
+                      className="text-[#1a8b4c] font-semibold flex items-center gap-1.5 group-hover:gap-2.5 transition-all text-[11.5px] uppercase tracking-widest"
                     >
-                      Read More <ArrowRight size={14} className="stroke-[2.5]" />
+                      Read More <ArrowRight size={14} className="stroke-[2]" />
                     </div>
                   </div>
 
@@ -114,9 +114,9 @@ export default function LatestBlog({ dbPosts = [] }: LatestBlogProps) {
           >
             <Link
               href="/blog"
-              className="bg-[#1a8b4c] hover:bg-[#15703d] text-white font-black py-4 px-10 rounded-full shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 text-xs md:text-sm tracking-widest uppercase"
+              className="bg-[#1a8b4c] hover:bg-[#15703d] text-white font-bold py-3.5 px-8 rounded-full shadow-md hover:shadow-lg hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 text-xs md:text-sm tracking-widest uppercase"
             >
-              View All Blogs <ArrowRight size={16} className="stroke-[2.5]" />
+              View All Blogs <ArrowRight size={16} className="stroke-[2]" />
             </Link>
           </motion.div>
         </div>

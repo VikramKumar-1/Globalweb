@@ -82,7 +82,7 @@ export default function TechStack() {
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-green-50 border border-green-100 text-[#1a8b4c] text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 shadow-sm"
+            className="inline-flex items-center gap-2 bg-green-50 border border-green-100 text-[#1a8b4c] text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 shadow-sm"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1a8b4c] opacity-75" />
@@ -90,7 +90,7 @@ export default function TechStack() {
             </span>
             Powering Innovation
           </motion.span>
-          <h2 className="text-[28px] md:text-[36px] font-black text-gray-950 leading-tight tracking-tight mb-4">
+          <h2 className="text-[28px] md:text-[36px] font-bold text-gray-900 leading-tight tracking-tight mb-4">
             Our <span className="text-[#1a8b4c]">Cutting-Edge</span> Tech Stack
           </h2>
           <p className="text-gray-500 text-[13px] md:text-[15px] font-medium mx-auto lg:whitespace-nowrap">
@@ -125,15 +125,15 @@ export default function TechStack() {
               </div>
               
               <div className="mt-3 text-center">
-                <p className="text-[11px] md:text-[13px] font-black text-gray-950 group-hover:text-[#1a8b4c] transition-colors line-clamp-1">{tech.name}</p>
-                <p className="hidden md:block text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-0.5">{tech.desc}</p>
+                <p className="text-[11px] md:text-[13px] font-semibold text-gray-900 group-hover:text-[#1a8b4c] transition-colors line-clamp-1">{tech.name}</p>
+                <p className="hidden md:block text-[9px] font-medium text-gray-400 uppercase tracking-widest mt-0.5">{tech.desc}</p>
               </div>
             </motion.div>
           ))}
         </div>
 
         {/* Dynamic Background Text (Watermark) */}
-        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[120px] md:text-[200px] font-black text-gray-50 pointer-events-none select-none whitespace-nowrap -z-10 opacity-40 uppercase tracking-tighter">
+        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[120px] md:text-[200px] font-bold text-gray-50 pointer-events-none select-none whitespace-nowrap -z-10 opacity-40 uppercase tracking-tighter">
           Technologies
         </div>
       </div>

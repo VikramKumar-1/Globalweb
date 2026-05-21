@@ -51,14 +51,14 @@ export default function AdminLoginPage() {
         <div className="bg-gray-900/80 backdrop-blur-md rounded-[32px] p-8 md:p-10 border border-gray-800 shadow-2xl text-center">
           
           <div className="w-16 h-16 rounded-2xl overflow-hidden bg-white flex items-center justify-center p-1.5 mx-auto mb-6 shadow-lg shadow-[#1a8b4c]/10 border border-gray-800">
-            <img src="/global_webify_logo.png" alt="GlobalWeblify Logo" className="w-full h-full object-contain" />
+            <img src="/global_webify_logo.png" alt="GlobalWebify Logo" className="w-full h-full object-contain" />
           </div>
 
           <h1 className="text-2xl font-black text-white tracking-tight mb-2 uppercase font-lexend">
             Admin CMS Panel
           </h1>
           <p className="text-gray-400 text-xs font-semibold tracking-wider uppercase mb-8">
-            GlobalWeblify Management Console
+            GlobalWebify Management Console
           </p>
 
           {error && (

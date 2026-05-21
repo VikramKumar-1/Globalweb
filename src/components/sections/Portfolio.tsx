@@ -98,12 +98,12 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
               <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full mb-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80]" />
-                  <p className="text-white text-[11px] font-black uppercase tracking-widest">
+                  <p className="text-white text-[11px] font-semibold uppercase tracking-widest">
                     {project.category}
                   </p>
                 </div>
 
-                <h3 className="text-white text-[18px] md:text-[20px] font-black leading-[1.1] mb-3 tracking-tight">
+                <h3 className="text-white text-[18px] md:text-[20px] font-semibold leading-[1.1] mb-3 tracking-tight">
                   {project.title}
                 </h3>
 
@@ -140,14 +140,14 @@ export default function Portfolio() {
             className="inline-flex items-center gap-2 bg-green-100/50 border border-green-200 px-4 py-1.5 rounded-full mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-[#1a8b4c] animate-pulse" />
-            <span className="text-[#1a8b4c] text-[12px] font-black uppercase tracking-widest">Success Stories</span>
+            <span className="text-[#1a8b4c] text-[12px] font-bold uppercase tracking-widest">Success Stories</span>
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[24px] md:text-[32px] lg:text-[36px] font-black text-[#1a8b4c] leading-tight mb-6 tracking-tight font-heading xl:whitespace-nowrap"
+            className="text-[24px] md:text-[32px] lg:text-[36px] font-bold text-[#1a8b4c] leading-tight mb-6 tracking-tight font-heading xl:whitespace-nowrap"
           >
             Our Work Speaks for Itself
           </motion.h2>
@@ -159,7 +159,7 @@ export default function Portfolio() {
             transition={{ delay: 0.1 }}
             className="text-gray-600 text-[14px] md:text-[18px] font-medium lg:whitespace-nowrap"
           >
-            We've successfully delivered <span className="text-[#1a8b4c] font-black underline decoration-green-200 decoration-4 underline-offset-4">500+ live projects</span>. Explore how we help businesses win online.
+            We've successfully delivered <span className="text-[#1a8b4c] font-bold underline decoration-green-200 decoration-4 underline-offset-4">500+ live projects</span>. Explore how we help businesses win online.
           </motion.p>
         </div>
 
@@ -176,7 +176,7 @@ export default function Portfolio() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 0.8 }}
               viewport={{ once: true }}
-              className="text-[11px] md:text-[13px] font-black text-green-100 font-heading uppercase tracking-[0.4em]"
+              className="text-[11px] md:text-[13px] font-bold text-green-100 font-heading uppercase tracking-[0.4em]"
             >
               Trusted by Industry Leaders
             </motion.h3>
@@ -214,14 +214,16 @@ export default function Portfolio() {
         </div>
 
         <div className="mt-12 text-center">
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 20px -5px rgba(26,139,76,0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className="group bg-[#1a8b4c] text-white px-8 md:px-12 py-4 md:py-5 rounded-2xl text-[16px] md:text-[17px] font-black shadow-md shadow-green-900/10 hover:bg-[#15803d] transition-all flex items-center gap-3 mx-auto"
-          >
-            View All Projects
-            <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+          <Link href="/portfolio" className="inline-block">
+            <motion.div
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 20px -5px rgba(26,139,76,0.3)" }}
+              whileTap={{ scale: 0.95 }}
+              className="group bg-[#1a8b4c] text-white px-8 md:px-12 py-4 md:py-5 rounded-2xl text-[16px] md:text-[17px] font-bold shadow-md shadow-green-900/10 hover:bg-[#15803d] transition-all flex items-center gap-3 mx-auto cursor-pointer"
+            >
+              View All Projects
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </motion.div>
+          </Link>
         </div>
       </div>
     </Section>

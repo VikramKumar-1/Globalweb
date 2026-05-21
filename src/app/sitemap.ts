@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const BASE_URL = 'https://globalweblify.com';
+const BASE_URL = 'https://globalwebify.com';
 
 const routes = [
   "",

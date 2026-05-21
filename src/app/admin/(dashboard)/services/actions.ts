@@ -1,7 +1,7 @@
 'use server';
 
 import { db } from '@/lib/db';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 export async function saveService(formData: {
   id?: number;
@@ -11,6 +11,7 @@ export async function saveService(formData: {
   category: string;
   seoTitle?: string;
   seoDescription?: string;
+  heroDescription?: string;
   seoKeywords?: string;
   content: string;
   image?: string;
@@ -23,6 +24,7 @@ export async function saveService(formData: {
     category: formData.category,
     seoTitle: formData.seoTitle || null,
     seoDescription: formData.seoDescription || null,
+    heroDescription: formData.heroDescription || null,
     seoKeywords: formData.seoKeywords || null,
     content: formData.content,
     image: formData.image || null,
@@ -53,6 +55,7 @@ export async function saveService(formData: {
   revalidatePath('/sitemap.ts');
   revalidatePath('/[slug]');
   revalidatePath('/admin/services');
+  revalidateTag('services');
   
   return { success: true, id: savedRecord.id, slug: savedRecord.slug };
 }
@@ -77,6 +80,7 @@ export async function deleteService(id: number) {
   }
 
   revalidatePath('/admin/services');
+  revalidateTag('services');
 }
 
 export async function toggleServiceStatus(id: number, active: boolean) {
@@ -100,4 +104,5 @@ export async function toggleServiceStatus(id: number, active: boolean) {
   }
   
   revalidatePath('/admin/services');
+  revalidateTag('services');
 }

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { isRedirectError } from 'next/dist/client/components/redirect';
 import { saveService } from './actions';
-import { Upload, ArrowLeft, Sparkles, CheckCircle2, XCircle } from 'lucide-react';
+import { Upload, ArrowLeft, Sparkles, CheckCircle2, XCircle, Plus, Trash2, GripVertical } from 'lucide-react';
 import Link from 'next/link';
 import ContentEditor from '@/components/admin/ContentEditor';
 
@@ -17,6 +17,7 @@ interface Service {
   category: string;
   seoTitle?: string;
   seoDescription?: string;
+  heroDescription?: string;
   seoKeywords?: string;
   content: string;
   image?: string;
@@ -33,8 +34,34 @@ export default function ServiceForm({ service }: { service?: Service }) {
   const [category, setCategory] = useState(service?.category || queryCat);
   const [seoTitle, setSeoTitle] = useState(service?.seoTitle || '');
   const [seoDescription, setSeoDescription] = useState(service?.seoDescription || '');
+  const [heroDescription, setHeroDescription] = useState(service?.heroDescription || '');
   const [seoKeywords, setSeoKeywords] = useState(service?.seoKeywords || '');
-  const [content, setContent] = useState(service?.content || '');
+  let initialFaqs = [];
+  let initialContent = service?.content || '';
+
+  if (initialContent) {
+    const match = initialContent.match(/<!-- FAQ_DATA: (.*?) -->/);
+    if (match) {
+      try {
+        initialFaqs = JSON.parse(match[1]);
+        initialContent = initialContent.replace(match[0], '');
+      } catch (e) {
+        console.error("Failed to parse FAQ data", e);
+      }
+    }
+  }
+
+  if (!service?.id && initialFaqs.length === 0) {
+    initialFaqs = [
+      { question: '', answer: '' },
+      { question: '', answer: '' },
+      { question: '', answer: '' },
+      { question: '', answer: '' },
+    ];
+  }
+
+  const [faqs, setFaqs] = useState<{ question: string; answer: string }[]>(initialFaqs);
+  const [content, setContent] = useState(initialContent);
   const [image, setImage] = useState(service?.image || '');
   
   const [uploading, setUploading] = useState(false);
@@ -96,6 +123,8 @@ export default function ServiceForm({ service }: { service?: Service }) {
 
     setSaving(true);
     try {
+      const filteredFaqs = faqs.filter(f => f.question.trim() !== '' && f.answer.trim() !== '');
+
       const response = await fetch('/api/admin/services', {
         method: 'POST',
         headers: {
@@ -109,8 +138,9 @@ export default function ServiceForm({ service }: { service?: Service }) {
           category,
           seoTitle,
           seoDescription,
+          heroDescription,
           seoKeywords,
-          content,
+          content: content + (filteredFaqs.length > 0 ? `\n<!-- FAQ_DATA: ${JSON.stringify(filteredFaqs)} -->` : ''),
           image,
         }),
       });
@@ -354,7 +384,7 @@ export default function ServiceForm({ service }: { service?: Service }) {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Title (Overrides heading)</label>
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Title (Overrides heading) <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
               <input
                 type="text"
                 value={seoTitle}
@@ -376,12 +406,23 @@ export default function ServiceForm({ service }: { service?: Service }) {
             </div>
 
             <div className="flex flex-col gap-1.5 md:col-span-2">
-              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Meta Description</label>
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Meta Description <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
               <textarea
                 rows={2}
                 value={seoDescription}
                 onChange={(e) => setSeoDescription(e.target.value)}
                 placeholder="A compelling summary of the page for search result listings..."
+                className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-800 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all resize-none"
+              />
+            </div>
+            
+            <div className="flex flex-col gap-1.5 md:col-span-2">
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">Hero Section Description <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
+              <textarea
+                rows={2}
+                value={heroDescription}
+                onChange={(e) => setHeroDescription(e.target.value)}
+                placeholder="Description text shown in the hero section (e.g. Get dynamic, high-performance services...)"
                 className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-800 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all resize-none"
               />
             </div>
@@ -403,6 +444,74 @@ export default function ServiceForm({ service }: { service?: Service }) {
             setContent={setContent} 
             placeholder="Start drafting your premium page content here..."
           />
+        </div>
+
+        {/* FAQs Pane Card */}
+        <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4">
+          <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+            <div>
+              <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-lexend">
+                Frequently Asked Questions
+              </h3>
+              <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">
+                Manage FAQs that appear at the bottom of the page
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setFaqs([...faqs, { question: '', answer: '' }])}
+              className="px-3 py-1.5 bg-green-50 text-[#1a8b4c] border border-green-200 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:bg-green-100 transition-colors"
+            >
+              <Plus size={14} /> Add FAQ
+            </button>
+          </div>
+          
+          <div className="space-y-4 pt-2">
+            {faqs.map((faq, index) => (
+              <div key={index} className="flex gap-4 p-4 border border-gray-100 rounded-xl bg-gray-50/50 group">
+                <div className="pt-2 cursor-grab text-gray-300">
+                  <GripVertical size={16} />
+                </div>
+                <div className="flex-1 space-y-3">
+                  <input
+                    type="text"
+                    placeholder="Question..."
+                    value={faq.question}
+                    onChange={(e) => {
+                      const newFaqs = [...faqs];
+                      newFaqs[index].question = e.target.value;
+                      setFaqs(newFaqs);
+                    }}
+                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold focus:outline-none focus:border-[#1a8b4c]"
+                  />
+                  <textarea
+                    placeholder="Answer..."
+                    rows={2}
+                    value={faq.answer}
+                    onChange={(e) => {
+                      const newFaqs = [...faqs];
+                      newFaqs[index].answer = e.target.value;
+                      setFaqs(newFaqs);
+                    }}
+                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#1a8b4c] resize-none"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFaqs(faqs.filter((_, i) => i !== index))}
+                  className="text-gray-400 hover:text-red-500 transition-colors p-2"
+                  title="Remove FAQ"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
+            ))}
+            {faqs.length === 0 && (
+              <div className="text-center py-6 text-gray-400 text-sm border-2 border-dashed border-gray-100 rounded-xl">
+                No FAQs added for this service.
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Submit */}
