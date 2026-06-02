@@ -42,7 +42,7 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
       </Link>
 
       {/* Collapsible Homepage Settings Dropdown */}
-      <details className="group/details" open={isHomepage}>
+      <details className="group/details" defaultOpen={isHomepage}>
         <summary className={`flex items-center justify-between gap-2.5 px-4 py-2.5 rounded-xl transition-all duration-200 text-[11px] md:text-xs font-semibold tracking-wide cursor-pointer list-none [&::-webkit-details-marker]:hidden border group/summary ${
           isHomepage 
             ? 'bg-[#1a8b4c] text-white border-[#15703d] shadow-lg shadow-[#1a8b4c]/10' 
@@ -104,7 +104,7 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
       </details>
 
       {/* Collapsible Manage Services Dropdown */}
-      <details className="group/details" open={isServices}>
+      <details className="group/details" defaultOpen={isServices}>
         <summary className={`flex items-center justify-between gap-2.5 px-4 py-2.5 rounded-xl transition-all duration-200 text-[11px] md:text-xs font-semibold tracking-wide cursor-pointer list-none [&::-webkit-details-marker]:hidden border group/summary ${
           isServices 
             ? 'bg-[#1a8b4c] text-white border-[#15703d] shadow-lg shadow-[#1a8b4c]/10' 
