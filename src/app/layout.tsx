@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileStickyNav from "@/components/layout/MobileStickyNav";
 import BreadcrumbWrapper from "@/components/ui/BreadcrumbWrapper";
+import NextTopLoader from 'nextjs-toploader';
 
 const poppins = Poppins({ 
   subsets: ["latin"], 
@@ -44,6 +45,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${lexend.variable} ${jost.variable}`}>
       <body className="font-sans bg-white text-gray-900 antialiased overflow-x-hidden">
+        <NextTopLoader 
+          color="#1a8b4c"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #1a8b4c,0 0 5px #1a8b4c"
+        />
         {!isAdmin && <Header />}
         {!isAdmin && <BreadcrumbWrapper />}
         <main>{children}</main>
