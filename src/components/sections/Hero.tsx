@@ -5,7 +5,8 @@ import Image from "next/image";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Phone, MessageCircle } from "lucide-react";
 import { Section } from "../layout/Responsive/Section";
-import AuditModal from "../ui/AuditModal";
+import dynamic from "next/dynamic";
+const AuditModal = dynamic(() => import("../ui/AuditModal"), { ssr: false });
 
 // --- Colorful Google SVG Logo ---
 const GoogleLogo = () => (
@@ -335,8 +336,8 @@ export default function Hero({
           alt="Background Pattern"
           fill
           priority
-          sizes="(max-width: 768px) 1200px, 100vw"
-          quality={95}
+          sizes="(max-width: 768px) 100vw, 100vw"
+          quality={80}
           className="object-cover object-top opacity-[0.65] md:opacity-[0.8] saturate-[1.60] contrast-[1.15]"
         />
       </div>

@@ -44,7 +44,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${poppins.variable} ${lexend.variable} ${jost.variable}`}>
-      <body className="font-sans bg-white text-gray-900 antialiased overflow-x-hidden">
+      <body className={`${jost.className} font-sans bg-white text-gray-900 antialiased overflow-x-hidden`}>
         <NextTopLoader 
           color="#1a8b4c"
           initialPosition={0.08}

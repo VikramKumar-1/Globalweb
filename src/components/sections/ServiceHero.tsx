@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Phone, MessageSquare, TrendingUp } from "lucide-react";
-import AuditModal from "../ui/AuditModal";
+import dynamic from "next/dynamic";
+const AuditModal = dynamic(() => import("../ui/AuditModal"), { ssr: false });
 
 interface ServiceHeroProps {
   title: string;
@@ -48,6 +49,8 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
           alt={title}
           fill
           priority
+          sizes="100vw"
+          quality={80}
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gray-950/40 z-10" />

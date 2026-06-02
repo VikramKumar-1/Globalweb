@@ -43,7 +43,7 @@ const contactDetails = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f8fbfa] pt-24 pb-12 font-sans border-t border-gray-100">
+    <footer className="bg-[#f8fbfa] pt-24 pb-[90px] md:pb-12 font-sans border-t border-gray-100">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         
         {/* Main Footer Content */}
