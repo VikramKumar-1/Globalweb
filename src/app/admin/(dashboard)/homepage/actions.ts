@@ -2,6 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { requireAdmin } from '@/lib/auth';
 
 const filePath = path.join(process.cwd(), 'src', 'data', 'homepageFaqs.json');
 const heroTextsPath = path.join(process.cwd(), 'src', 'data', 'homepageHeroTexts.json');
@@ -26,6 +27,7 @@ export async function getHomepageFaqs() {
 
 export async function saveHomepageFaqs(faqs: { question: string, answer: string }[]) {
   try {
+    await requireAdmin();
     fs.writeFileSync(filePath, JSON.stringify(faqs, null, 2), 'utf8');
     return { success: true };
   } catch (error: any) {
@@ -49,6 +51,7 @@ export async function getHeroTexts() {
 
 export async function saveHeroTexts(texts: string[]) {
   try {
+    await requireAdmin();
     fs.writeFileSync(heroTextsPath, JSON.stringify(texts, null, 2), 'utf8');
     return { success: true };
   } catch (error: any) {
@@ -103,6 +106,7 @@ export async function getAboutSeo(cityKey: string = 'default') {
 
 export async function saveAboutSeo(cityKey: string, aboutData: { title: string; subtitle: string; content: string }) {
   try {
+    await requireAdmin();
     let allData: any = {};
     if (fs.existsSync(aboutSeoPath)) {
       const data = fs.readFileSync(aboutSeoPath, 'utf8');
@@ -153,6 +157,7 @@ export async function getCityHeroSettings(cityKey: string) {
 
 export async function saveCityHeroSettings(cityKey: string, data: { title: string; description: string }) {
   try {
+    await requireAdmin();
     let allData: any = {};
     if (fs.existsSync(cityHeroSettingsPath)) {
       const fileContent = fs.readFileSync(cityHeroSettingsPath, 'utf8');
@@ -186,11 +191,82 @@ export async function getHomepageHeroDesc() {
 
 export async function saveHomepageHeroDesc(description: string) {
   try {
+    await requireAdmin();
     const data = { description };
     fs.writeFileSync(homepageHeroDescPath, JSON.stringify(data, null, 2), 'utf8');
     return { success: true };
   } catch (error: any) {
     console.error("Failed to save homepage hero description", error);
+    return { success: false, error: error.message };
+  }
+}
+
+const homepageSeoPath = path.join(process.cwd(), 'src', 'data', 'homepageSeo.json');
+const citySeoPath = path.join(process.cwd(), 'src', 'data', 'citySeoSettings.json');
+
+export async function getHomepageSeo() {
+  try {
+    const defaultSeo = {
+      title: "GlobalWebify | Web Development & Digital Marketing Agency",
+      description: "Leading Web Development, SEO, and Digital Marketing Agency in India. We build AI-powered solutions for your business growth.",
+      keywords: "Web Development, SEO, Digital Marketing, AI Solutions, GlobalWebify"
+    };
+    if (fs.existsSync(homepageSeoPath)) {
+      const data = fs.readFileSync(homepageSeoPath, 'utf8');
+      return JSON.parse(data);
+    }
+    return defaultSeo;
+  } catch (error) {
+    console.error("Failed to read homepage SEO", error);
+    return { title: '', description: '', keywords: '' };
+  }
+}
+
+export async function saveHomepageSeo(data: { title: string; description: string; keywords: string }) {
+  try {
+    await requireAdmin();
+    fs.writeFileSync(homepageSeoPath, JSON.stringify(data, null, 2), 'utf8');
+    return { success: true };
+  } catch (error: any) {
+    console.error("Failed to save homepage SEO", error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function getCitySeo(cityKey: string) {
+  try {
+    const city = CITIES.find(c => c.key === cityKey);
+    const cityName = city ? city.name : cityKey;
+    const defaultSeo = {
+      title: `Best Web Development & Digital Marketing Services in ${cityName} | GlobalWebify`,
+      description: `Explore GlobalWebify's professional web development, SEO, digital marketing, and branding services in ${cityName}. Custom solutions tailored to your local market.`,
+      keywords: `Web Development, SEO, Digital Marketing, AI Solutions, GlobalWebify, ${cityName}`
+    };
+    if (fs.existsSync(citySeoPath)) {
+      const data = fs.readFileSync(citySeoPath, 'utf8');
+      const parsed = JSON.parse(data);
+      return parsed[cityKey] || defaultSeo;
+    }
+    return defaultSeo;
+  } catch (error) {
+    console.error("Failed to read city SEO", error);
+    return { title: '', description: '', keywords: '' };
+  }
+}
+
+export async function saveCitySeo(cityKey: string, data: { title: string; description: string; keywords: string }) {
+  try {
+    await requireAdmin();
+    let allData: any = {};
+    if (fs.existsSync(citySeoPath)) {
+      const fileContent = fs.readFileSync(citySeoPath, 'utf8');
+      allData = JSON.parse(fileContent);
+    }
+    allData[cityKey] = data;
+    fs.writeFileSync(citySeoPath, JSON.stringify(allData, null, 2), 'utf8');
+    return { success: true };
+  } catch (error: any) {
+    console.error("Failed to save city SEO", error);
     return { success: false, error: error.message };
   }
 }

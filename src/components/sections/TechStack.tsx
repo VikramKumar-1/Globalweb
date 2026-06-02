@@ -105,7 +105,7 @@ export default function TechStack() {
               key={tech.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ delay: i * 0.05 }}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
               className="group flex flex-col items-center"

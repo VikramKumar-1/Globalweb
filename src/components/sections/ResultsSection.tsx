@@ -57,7 +57,7 @@ export default function ResultsSection() {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "150px" }}
             className="lg:col-span-6 bg-gradient-to-br from-[#fbbf24] to-[#f59e0b] rounded-[40px] p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group min-h-[450px]"
           >
             <div className="relative z-10">
@@ -96,7 +96,7 @@ export default function ResultsSection() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               className="bg-[#dcfce7] rounded-[32px] p-8 flex flex-col justify-center flex-1 group hover:shadow-xl transition-shadow"
             >
               <h4 className="text-[42px] font-black text-blue-600 mb-2">350%</h4>
@@ -117,7 +117,7 @@ export default function ResultsSection() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ delay: 0.1 }}
               className="bg-gradient-to-br from-[#f472b6] to-[#ec4899] rounded-[32px] p-8 flex flex-col justify-center flex-1 text-white group hover:shadow-xl transition-shadow"
             >
@@ -140,7 +140,7 @@ export default function ResultsSection() {
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "150px" }}
             className="lg:col-span-3 bg-[#f3f4f6] rounded-[40px] p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group min-h-[450px]"
           >
             <div className="relative z-10 flex-1 flex flex-col">
@@ -204,7 +204,7 @@ export default function ResultsSection() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "150px" }}
             className="bg-[#f0fdf4] border-2 border-[#1a8b4c]/10 rounded-[24px] md:rounded-[32px] p-5 md:p-6 flex flex-col md:flex-row items-center justify-between group hover:border-[#1a8b4c]/30 transition-all text-center md:text-left shadow-sm"
           >
             <div>
@@ -219,7 +219,7 @@ export default function ResultsSection() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "150px" }}
             transition={{ delay: 0.1 }}
             className="bg-[#f0fdfa] border-2 border-[#0d9488]/10 rounded-[24px] md:rounded-[32px] p-5 md:p-6 flex flex-col md:flex-row items-center justify-between group hover:border-[#0d9488]/30 transition-all text-center md:text-left shadow-sm"
           >

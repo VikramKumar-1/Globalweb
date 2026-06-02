@@ -4,7 +4,7 @@ import { Newspaper, Layers, LogOut, Shield, LayoutDashboard, ArrowLeft, MessageS
 import { headers } from 'next/headers';
 import { db } from '@/lib/db';
 import { unstable_cache } from 'next/cache';
-import SidebarNav from '@/components/admin/SidebarNav';
+import SidebarNav from '@/features/admin/components/shared/SidebarNav';
 
 const getSidebarServices = unstable_cache(
   async () => {

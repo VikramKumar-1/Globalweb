@@ -16,6 +16,7 @@ import {
 } from '@/constants/navigation';
 import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
+import { CITIES_MAP } from '@/features/services/constants/cities';
 
 const socialIcons: any = {
   Facebook: Facebook,
@@ -25,7 +26,7 @@ const socialIcons: any = {
   Youtube: Youtube
 };
 
-const citySlugs = ['india', 'uk', 'ranchi', 'dubai', 'delhi', 'noida', 'gurugram', 'bangalore', 'mumbai', 'pune', 'hyderabad', 'kolkata'];
+const citySlugs = Object.keys(CITIES_MAP);
 
 const getPrefixedHref = (href: string, menuId: string, currentCity: string | null) => {
   if (!currentCity) return href;

@@ -3,6 +3,7 @@
 import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { requireAdmin } from '@/lib/auth';
 
 export async function saveBlogPost(formData: {
   id?: number;
@@ -16,6 +17,7 @@ export async function saveBlogPost(formData: {
   seoDescription?: string;
   seoKeywords?: string;
 }) {
+  await requireAdmin();
   // Format slug to start with '/blog/' prefix
   let formattedSlug = formData.slug.trim();
   if (!formattedSlug.startsWith('/blog/')) {
@@ -63,6 +65,7 @@ export async function saveBlogPost(formData: {
 }
 
 export async function deleteBlogPost(id: number) {
+  await requireAdmin();
   const post = await db.blogPost.findUnique({
     where: { id },
   });
@@ -83,6 +86,7 @@ export async function deleteBlogPost(id: number) {
 }
 
 export async function toggleBlogPostStatus(id: number, isActive: boolean) {
+  await requireAdmin();
   const post = await db.blogPost.update({
     where: { id },
     data: { isActive },

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { db } from '@/lib/db';
-import ServiceListClient from './ServiceListClient';
+import ServiceListClient from '@/features/admin/components/services/ServiceListClient';
 import Link from 'next/link';
 import { Edit2, Plus } from 'lucide-react';
 

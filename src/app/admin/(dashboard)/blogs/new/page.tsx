@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogPostForm from '../BlogPostForm';
+import BlogPostForm from '@/features/admin/components/blogs/BlogPostForm';
 
 export default function NewBlogPostPage() {
   return (

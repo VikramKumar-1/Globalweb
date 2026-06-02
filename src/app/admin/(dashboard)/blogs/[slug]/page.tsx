@@ -1,7 +1,9 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { db } from '@/lib/db';
-import BlogPostForm from '../BlogPostForm';
+import BlogPostForm from '@/features/admin/components/blogs/BlogPostForm';
+
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: { slug: string };
@@ -30,7 +32,18 @@ export default async function EditBlogPostPage({ params }: Props) {
         </p>
       </div>
 
-      <BlogPostForm post={post} />
+      <BlogPostForm post={{
+        id: post.id,
+        title: post.title,
+        slug: post.slug,
+        summary: post.summary,
+        content: post.content,
+        isActive: post.isActive,
+        image: post.image ?? undefined,
+        seoTitle: post.seoTitle ?? undefined,
+        seoDescription: post.seoDescription ?? undefined,
+        seoKeywords: post.seoKeywords ?? undefined
+      }} />
     </div>
   );
 }

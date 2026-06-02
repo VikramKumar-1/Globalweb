@@ -5,6 +5,8 @@ import { WEBSITE_SERVICES, HOSTING_SERVICES, MARKETING_SERVICES, BRANDING_SERVIC
 import fs from 'fs';
 import path from 'path';
 
+export const dynamic = 'force-dynamic';
+
 function copyFolderRecursiveSync(source: string, target: string) {
   if (!fs.existsSync(target)) {
     fs.mkdirSync(target, { recursive: true });

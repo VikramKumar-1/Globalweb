@@ -1,0 +1,450 @@
+[
+  {
+    "id": 13,
+    "name": "Vikram Bhagat",
+    "role": "Managing Director",
+    "image": "/assets/images/team/vikram.webp",
+    "bio": "Vikram is driven by a vision to blend innovation with excellence in every project. He focuses on strategic growth, operational efficiency, and empowering teams to deliver exceptional results. His leadership inspires a culture of integrity, creativity, and continuous improvement across the organization.",
+    "education": "MBA in Marketing - XISS",
+    "experience": "18+ years of experience with leading brands in Marketing Strategy and Management",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 14,
+    "name": "Shakti Singh",
+    "role": "Co-Founder",
+    "image": "/assets/images/team/Shakti Sir.avif",
+    "bio": "Shakti is dedicated to building innovative digital solutions through strategic thinking and technical expertise. He believes in fostering collaboration, driving impactful product development, and maintaining a culture of excellence. His commitment to mentorship and growth empowers teams to achieve remarkable success together.",
+    "education": "MBA in Finance IMIS",
+    "experience": "15+ years of experience in Finance and IT Sectors",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/kumari.urvashi.113701/",
+      "instagram": "https://www.instagram.com/shaktitechie?igsh=aXh2dDNpYmNlcnVs",
+      "linkedin": "https://www.linkedin.com/in/shakti-singh-b62787a8/",
+      "twitter": "https://x.com/quotationstudi"
+    }
+  },
+  {
+    "id": 18,
+    "name": "Abhishek Kumar",
+    "role": "Center Head",
+    "image": "/assets/images/team/689a34f64e8f3_Abhishek-Sir.avif",
+    "bio": "Abhishek is passionate about creating an environment that blends learning, discipline, and innovation. He focuses on optimizing operations, enhancing productivity, and ensuring smooth coordination across teams. His proactive approach and leadership drive consistent growth and excellence at every level.",
+    "education": "M-TECH in CS",
+    "experience": "15+ years of experienee in IT sector in Web Development, ERP, AI and many more.",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 20,
+    "name": "Ritesh Satyam",
+    "role": "State Head",
+    "image": "/assets/images/team/68a453d3df2cb_ritesh.jpeg",
+    "bio": "Ritesh is committed to expanding organizational reach through strategic planning and strong leadership. He excels in building high-performing teams, managing statewide operations, and driving impactful results. His focus on collaboration and innovation ensures sustainable growth and long-term success.",
+    "education": "MBA in Marketing & HR, Symbiosis Institute of Business Management, Pune",
+    "experience": "14+ years in managing businesses operations in various domains",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/19zDWzksEh/?mibextid=wwXIfr",
+      "instagram": "https://www.instagram.com/ritesh.satyam.3/profilecard/?igsh=ZHY1ZTFrbGFhdDNk",
+      "linkedin": "https://www.linkedin.com/in/ritesh-c-satyam-41a6a824?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 15,
+    "name": "Jyoti Shree",
+    "role": "HR",
+    "image": "/assets/images/team/68a459d35cc6f_jyoti.jpeg",
+    "bio": "Jyoti is a people-focused professional with a strong foundation in human resource management. She excels in talent development, employee engagement, and fostering a positive work culture that drives organizational growth.",
+    "education": "MBA – RU",
+    "experience": "5+ Years in human resource management",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/1D2HhNjWXE/",
+      "instagram": "https://www.instagram.com/jyo46210?igsh=MTdxd243cmkyN2lsdA==",
+      "linkedin": "https://www.linkedin.com/in/jyoti-shree-020a78152?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://x.com/JyotiShree68594?t=GOyRkFFYfGS38JmeKJgtcw&s=09"
+    }
+  },
+  {
+    "id": 16,
+    "name": "Aditya Singh",
+    "role": "Team Leader",
+    "image": "/assets/images/team/68ba8d8392fc2_2-2.avif",
+    "bio": "Aditya is a passionate tech innovator who leads with creativity and precision. He specializes in developing high-performing web solutions, optimizing user experiences, and mentoring teams to deliver cutting-edge digital products with excellence.",
+    "education": "BACHELOR OF ENGINEERING (INFORMATION TECHNOLOGY)",
+    "experience": "7+ Years Exp in Web Development",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 22,
+    "name": "Kundan Mehta",
+    "role": "Senior Developer",
+    "image": "/assets/images/team/68a45905dbbec_9.webp",
+    "bio": "Kundan specializes in crafting robust architectures and delivering reliable digital products. He loves mentoring junior developers, promoting best practices, and ensuring every project at Global Webify is built with precision and quality.",
+    "education": "MCA",
+    "experience": "2+ years in Web Development and Product Development",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/rkmehta26/",
+      "instagram": "https://www.instagram.com/_rkmehta?igsh=NzFsMjd1YWE4Z3I2",
+      "linkedin": "https://www.linkedin.com/in/rkmehta26",
+      "twitter": "https://x.com/kundan8485"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Baldeo Yadav",
+    "role": "Senior SEO Executive",
+    "image": "/assets/images/team/baldeo.png",
+    "bio": "Dedicated SEO Executive with a strong understanding of search engine algorithms and optimization techniques. Experienced in executing SEO strategies, performing keyword analysis, and optimizing website content to improve search rankings. Focused on delivering consistent organic growth and staying updated with the latest SEO trends and best practices.",
+    "education": "MCA",
+    "experience": "5+ years in SEO, Digital Marketing, and Organic Growth Strategy",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 35,
+    "name": "Sapna",
+    "role": "Front Desk Manager",
+    "image": "/assets/images/team/68c117e80eb12_sapna.png",
+    "bio": "Sapna is the calm, welcoming face clients meet first. She ensures every interaction is smooth, organized, and handled with genuine care—setting the tone for a positive experience from the moment someone walks in.",
+    "education": "B. Com.",
+    "experience": "2+ Years experience in Management",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/globaldigitalranchi/",
+      "instagram": "https://www.instagram.com/sapnaa642?utm_source=qr&igsh=MXUwbmZyOXllYmRobg==",
+      "linkedin": "https://www.linkedin.com/feed/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 28,
+    "name": "Vikash Mahto",
+    "role": "Web Developer",
+    "image": "/assets/images/team/68a46db99e694_IMG_20250623_121715_722.webp",
+    "bio": "Vikash combines solid coding expertise with a clear grasp of today’s web technologies. He turns concepts into smooth, high-performance digital experiences crafted with clarity, structure, and meticulous execution.",
+    "education": "BCA",
+    "experience": "1 year experience as Web Developer",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/1JKnA3tKzu/",
+      "instagram": "https://www.instagram.com/_.mr_jack?igsh=dWl6YW5vNzZtYzhv",
+      "linkedin": "https://www.linkedin.com/in/vikash-mahto-a51b08379?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://x.com/mantuxy45?t=GXgYppAGayrSgzCzKfpDOg&s=09"
+    }
+  },
+  {
+    "id": 44,
+    "name": "Master Manish",
+    "role": "Data Analyst Intern",
+    "image": "/assets/images/team/WhatsApp Image 2025-11-11 at 17.25.30_51344c16.jpg",
+    "bio": "Manish turns raw data into simple, meaningful insights. With a curiosity for patterns and a passion for problem-solving, he helps uncover trends that guide smarter decisions.",
+    "education": "Bachlors of computer application",
+    "experience": "6 months",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Dibyanshu Jha",
+    "role": "Social Media Manager",
+    "image": "/assets/images/team/dd.png",
+    "bio": "Dibyanshu Jha is a results-driven Social Media Manager with over 9 years of experience in building impactful digital strategies. With a strong foundation in Computer Science, he excels at crafting engaging content, driving audience growth, and leveraging data insights to maximize brand visibility and performance across platforms.",
+    "education": "Bachelor's of Technology (Computer Science)",
+    "experience": "9+ years",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 13,
+    "name": "Sandeep Kumar",
+    "role": "SEO Executive",
+    "image": "/assets/images/team/Sandeep.png",
+    "bio": "Results-oriented SEO professional specializing in data-driven strategies, technical optimization, and scalable organic growth. Experienced in handling end-to-end SEO campaigns, from keyword research and competitor analysis to content planning and performance tracking. Passionate about staying ahead of search engine algorithm updates and leveraging analytics to maximize ROI.",
+    "education": "MCA",
+    "experience": "2 years of experience in Search Engine Optimization (SEO)",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 50,
+    "name": "Amrita Kumari",
+    "role": "Web Developer",
+    "image": "/assets/images/team/2.png",
+    "bio": "Amrita is a detail-oriented data enthusiast with a strong analytical mindset. She specializes in transforming raw data into meaningful insights through structured dashboards and visual reports. Her commitment to accuracy and clarity adds significant value to the team’s data-driven initiatives.",
+    "education": "Bsc. Chemistry",
+    "experience": "1 Year in PowerBI",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/amrita.608439",
+      "instagram": "https://www.instagram.com/ak845721?igsh=b3A3aXZnZnptZnlk",
+      "linkedin": "https://www.linkedin.com/in/amrita-kumari-2a1105273",
+      "twitter": "https://x.com/"
+    }
+  },
+  {
+    "id": 49,
+    "name": "Amarjeet Pandey",
+    "role": "Web Developer",
+    "image": "/assets/images/team/Amarjeet.jpg",
+    "bio": "Amarjeet is an enthusiastic developer with a strong foundation in modern web technologies. He brings fresh perspective, disciplined learning, and a commitment to writing clean, efficient code. His growing expertise supports the team in delivering reliable and user-centric digital solutions.",
+    "education": "MCA | DSPMU",
+    "experience": "1 year Experience in Website Development",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://www.facebook.com/profile.php?id=100012139458432",
+      "instagram": "https://www.instagram.com/amar_jeet_1?igsh=MXkxOXRqNGRmamxlbw==",
+      "linkedin": "https://www.linkedin.com/in/amarjeet-pandey-20445b272/",
+      "twitter": "https://x.com/_AmarJeet_1"
+    }
+  },
+  {
+    "id": 48,
+    "name": "Pallavi Kumari",
+    "role": "Graphic Designer and Video Editor",
+    "image": "/assets/images/team/Pallavi.jpg",
+    "bio": "Pallavi blends visual creativity with technical finesse—crafting clean, engaging designs and videos that communicate with clarity and impact. She transforms ideas into visually compelling stories with precision and artistic depth.",
+    "education": "Bachelor of Computer Applications",
+    "experience": "2+ years of Experience in Graphic Designer and Video Editing",
+    "isExEmployee": false,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://globalwebify.com/",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 17,
+    "name": "Prem Raj Mahto",
+    "role": "Team Leader",
+    "image": "/assets/images/team/68a45985c5b33_prem.PNG",
+    "bio": "Prem is a results-driven marketing strategist with a deep understanding of digital trends and consumer behavior. He excels in campaign planning, brand positioning, and driving measurable growth through data-driven marketing solutions.",
+    "education": "MCA",
+    "experience": "5+ years Training and Digital Marketing",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/Premraj93",
+      "instagram": "https://www.instagram.com/prem_raj_mahto/",
+      "linkedin": "https://www.linkedin.com/in/prem-raj-mahto-204956250/",
+      "twitter": "https://x.com/premraj758?t=egijtUa4cj0Un_LMJ4md8g&s=09"
+    }
+  },
+  {
+    "id": 21,
+    "name": "Sweety Soni",
+    "role": "Sales Executive",
+    "image": "/assets/images/team/Sweety.png",
+    "bio": "Sweety is driven by building meaningful client relationships, understanding business needs, and delivering solutions that create real value. She thrives on clear communication, timely follow-ups, and ensuring every client’s experience with Global Webify feels seamless and dependable.",
+    "education": "M.Com.",
+    "experience": "4 years of experience in IT sales",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/19BAaaL2Uq/",
+      "instagram": "https://www.instagram.com/sweetyshalu2211?igsh=c2hsdmxqM3J1dWV0",
+      "linkedin": "https://www.linkedin.com/in/sweety-soni-719112215?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://x.com/SSoni2211?t=JF7pcZv2_rCKaTaTsvgHzA&s=09"
+    }
+  },
+  {
+    "id": 23,
+    "name": "Aditi Singh",
+    "role": "SEO Executive",
+    "image": "/assets/images/team/68a45b1fe9ffb_aditi.PNG",
+    "bio": "Aditi is passionate about data-driven SEO strategies, helping brands improve visibility and reach the right audience. She excels in keyword research, off-page optimization, and performance tracking to deliver measurable growth.",
+    "education": "B.A (English Honors)",
+    "experience": "4+ years of experience as SEO Specialist",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/1EaBSxmim8/",
+      "instagram": "https://www.instagram.com/aditisingh9036?igsh=amIycHF4bzRkb3Bx",
+      "linkedin": "https://www.linkedin.com/in/aditi-kumari-723528239?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://x.com/singh_adit64566"
+    }
+  },
+  {
+    "id": 26,
+    "name": "Kunal Bose",
+    "role": "Web Developer",
+    "image": "/assets/images/team/68a45f6621de8_WhatsApp Image 2025-07-27 at 14.55.35.jpeg",
+    "bio": "Kunal combines technical expertise with a deep understanding of modern web standards. He excels at translating ideas into reliable, high-performance websites with precision and attention to detail.",
+    "education": "MCA | LPU",
+    "experience": "2 years experience as Web Developer",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/people/Kunal-Bose/pfbid02672dSA13KcekJRwcCZdrj5d7zqv69M5ek9C8AgTXRspuZ4thH3t8DBnLSzt9k959l/?mibextid=ZbWKwL",
+      "instagram": "https://www.instagram.com/kunalbose2772/?igsh=OXo5NGtiZTlpczNh#",
+      "linkedin": "https://www.linkedin.com/authwall?trk=gf&trkInfo=AQGOTnZuPpN9ygAAAZjCEeNoXxY5a-xlsQLrp8rggnbTiQYMQglLlysQQSBZssM84F9YSluUSEWZ17nBjcPwpDADH5ZMcYzVTEriQMI5iOWpcN-9aO2a1R7-WDm9MNpFrz_DxL0=&original_referer=https://lavenderblush-chough-753646.hostingersite.co",
+      "twitter": "https://x.com/KunalBose2772?t=LEv8D9hCoaCJkeCYSVJYOg&s=08"
+    }
+  },
+  {
+    "id": 30,
+    "name": "Jashim Khan",
+    "role": "Video Editor",
+    "image": "/assets/images/team/68c1179254c2d_68a4726d27077_DSC_0553.JPG",
+    "bio": "Jashim brings stories to life through clean cuts, smooth transitions, and compelling visual flow. He is passionate about crafting engaging videos that captivate audiences and elevate brand messaging with precision.",
+    "education": "Diploma in 3D Animation and Video Editing",
+    "experience": "2+ Years in 3D Video Editing",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/16qmVSDom5/",
+      "instagram": "https://www.instagram.com/itz_jashim_0809?igsh=MW5jN2QzdDF5ODVlZw==",
+      "linkedin": "http://www.linkedin.com/in/jashim-khan-630226245",
+      "twitter": "https://x.com/MdJashimKh3270?t=q-8jWK66CS_M9U6HWGc-1Q&s=08"
+    }
+  },
+  {
+    "id": 31,
+    "name": "Anurag",
+    "role": "Videographer",
+    "image": "/assets/images/team/68a4739e2d324_IMG_3969 (1).jpg",
+    "bio": "Anurag captures moments with a cinematic eye, transforming real-life scenes into visually compelling stories. He is passionate about framing, lighting, and movement to create footage that feels immersive and emotionally engaging.",
+    "education": "Diploma in Cinematography and Lighting Techniques",
+    "experience": "5+ Years in Cinematography",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/anurag.leo.71/",
+      "instagram": "https://www.instagram.com/constant_bitrate?igsh=MXUyMTh4NnZxOG10bw==",
+      "linkedin": "https://www.linkedin.com/in/kumar-anurag-819946298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://x.com/madewithasphalt?t=oDs4UP_kNGamPBXN51eDGQ&s=09"
+    }
+  },
+  {
+    "id": 29,
+    "name": "Deepak",
+    "role": "Digital Marketer",
+    "image": "/assets/images/team/68ba8d946b2fb_gs0bdxbbi8pizogjnlcj.avif",
+    "bio": "Deepak combines the power of strategic digital marketing with the creativity of a YouTube influencer. He specializes in audience growth, content strategy, and high-impact campaigns that drive engagement across platforms.",
+    "education": "B.Tech (Computer Science)",
+    "experience": "7 years on Marketing Strategies and Youtube",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/1EYttfRaFx/?mibextid=wwXIfr",
+      "instagram": "https://www.instagram.com/ranchi_unseen?igsh=MWNxYnlxMGZzb3kzaw%3D%3D&utm_source=qr",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 33,
+    "name": "Pappu",
+    "role": "Digital Marketer",
+    "image": "/assets/images/team/68c117cc1a06e_kr_pappu_6384.jpg",
+    "bio": "Pappu is passionate about accelerating business growth through targeted digital initiatives. From audience research to performance optimization, he ensures every strategy supports long-term brand success.",
+    "education": "I.Sc. Mathematics",
+    "experience": "6 months in Web Development",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/share/1FCtHotx1g/",
+      "instagram": "https://www.instagram.com/kr_pappu_6384?igsh=aDNib3d2dXZ1Mmly",
+      "linkedin": "https://www.linkedin.com/in/kumar-pappu-chaudhary-a4b2ab334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://x.com/ChaudharyK71267?t=sYgHlad3Z_2IiUnbTQUEzQ&s=08"
+    }
+  },
+  {
+    "id": 36,
+    "name": "Surya",
+    "role": "Web Developer",
+    "image": "/assets/images/team/68ba8dadb6ecc_15.avif",
+    "bio": "Surya treats every website like a craft—balancing clean logic with thoughtful design. He loves turning rough ideas into smooth digital realities, ensuring every line of code contributes to speed, clarity, and a flawless user journey.",
+    "education": "MCA (Master's in Computer Application)",
+    "experience": "2+ years of experience in web development",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://www.instagram.com/mrsuryabhushan?igsh=MTVvZDZ0cno2anhuOA==",
+      "linkedin": "https://www.linkedin.com/in/surya-bhushan-nagar-705731201?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 40,
+    "name": "Niharika",
+    "role": "Sales Executive",
+    "image": "/assets/images/team/68b69a3f13506_niharika.png",
+    "bio": "Niharika believes great sales start with genuine connection. She listens closely, understands client needs, and ensures every interaction feels effortless, helpful, and trust-driven.",
+    "education": "BCA",
+    "experience": "5+ years experience in Sales",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/people/Niharika-K/pfbid0tjZQF5B6rwZZKMhDLesR24KNtUmLCfoCb233wFw9R6WRmM2N7nWdpdyTuJq8LUwl/",
+      "instagram": "https://www.instagram.com/7083niharika/#",
+      "linkedin": "https://www.linkedin.com/in/niharika-k-a06a55270/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://x.com/Niharik58195339?t=WFfGrk_A6CuO3soLq6svPw&s=09"
+    }
+  },
+  {
+    "id": 45,
+    "name": "Richa Mishra",
+    "role": "SEO Executive",
+    "image": "/assets/images/team/1.png",
+    "bio": "Richa blends creative thinking with deep analytical insight. She understands how users search, what they read, and how to optimize content that ranks well and resonates.",
+    "education": "BCA",
+    "experience": "1 year of experience as SEO Executive",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://globalwebify.com/",
+      "instagram": "https://www.instagram.com/richamishra311?igsh=MW0xeWljbTlmZm50bg==",
+      "linkedin": "https://www.linkedin.com/in/richa-mishra-5110052a7/",
+      "twitter": "https://globalwebify.com/"
+    }
+  },
+  {
+    "id": 46,
+    "name": "Abhinav Shreshtha",
+    "role": "Web Developer",
+    "image": "/assets/images/team/Abhinav.jpg",
+    "bio": "Abhinav, an experienced professional with established skills in project management who has direct experience marketing the education, IT, and consulting industries. Effective at leading cross-functional teams, products and services, and executing key revenue opportunities, with experience delivering products and services in a timely and budget manner.",
+    "education": "M.Tech | BITS",
+    "experience": "2.5 years experience as Project Manager & Web Developer",
+    "isExEmployee": true,
+    "socials": {
+      "facebook": "https://www.facebook.com/abhinavthekk",
+      "instagram": "https://www.instagram.com/abhinav.shreshtha1",
+      "linkedin": "https://globalwebify.com/",
+      "twitter": "https://x.com/abhinavthekk"
+    }
+  }
+]

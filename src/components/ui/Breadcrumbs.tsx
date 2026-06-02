@@ -11,6 +11,7 @@ import {
   BRANDING_SERVICES, 
   COMPANY_LINKS 
 } from '@/constants/navigation';
+import { CITIES_MAP } from '@/features/services/constants/cities';
 
 const ROUTE_NAMES: Record<string, string> = {
   '': 'Home',
@@ -53,7 +54,8 @@ const ROUTE_NAMES: Record<string, string> = {
   'social-media-marketing': 'Social Media Marketing',
   'about': 'About Us',
   'contact': 'Contact Us',
-  'portfolio': 'Portfolio',
+  'portfolio': 'Our Portfolio',
+  'gallery': 'Our Gallery',
   'blog': 'Blog',
   'branding-pr': 'Branding & PR',
   'graphic-design': 'Graphic Design'
@@ -110,17 +112,15 @@ const DEEP_PARENT_MAP: Record<string, ParentRoute> = {
   'ai-seo-services': { name: 'SEO Services', href: '/seo-services' }
 };
 
-const CITY_NAMES: Record<string, string> = {
-  'india': 'India', 'uk': 'UK', 'ranchi': 'Ranchi', 'dubai': 'Dubai',
-  'delhi': 'Delhi', 'noida': 'Noida', 'gurugram': 'Gurugram',
-  'bangalore': 'Bangalore', 'mumbai': 'Mumbai', 'pune': 'Pune',
-  'hyderabad': 'Hyderabad', 'kolkata': 'Kolkata'
-};
+const CITY_NAMES: Record<string, string> = {};
+Object.keys(CITIES_MAP).forEach((key) => {
+  CITY_NAMES[key] = CITIES_MAP[key].name;
+});
 
 export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string, dynamicPages?: any[] }) => {
   if (pathname === '/' || pathname === '') return null;
 
-  const citySlugs = ['india', 'uk', 'ranchi', 'dubai', 'delhi', 'noida', 'gurugram', 'bangalore', 'mumbai', 'pune', 'hyderabad', 'kolkata'];
+  const citySlugs = Object.keys(CITIES_MAP);
   const segments = pathname.split('/').filter(Boolean);
   const hasCity = segments.length > 0 && citySlugs.includes(segments[0].toLowerCase());
   const cityPrefix = hasCity ? segments[0].toLowerCase() : null;
@@ -156,8 +156,16 @@ export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string,
     breadcrumbsList.push({ name: CITY_NAMES[cityPrefix] || cityPrefix, href: `/${cityPrefix}` });
   }
 
+  // Add Blog crumb if we are on a blog post page
+  if (cleanSegments.length > 1 && cleanSegments[0] === 'blog') {
+    breadcrumbsList.push({ name: 'Blog', href: '/blog' });
+  }
+
   // Deep search the navigation tree to find the exact hierarchy
   const findNavHierarchy = (targetPath: string) => {
+    if (targetPath === '/blog') {
+      return null;
+    }
     for (const navLink of NAV_LINKS) {
       if (!navLink.hasDropdown) continue;
       
@@ -172,8 +180,8 @@ export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string,
         }
 
         // Check nested subLinks (e.g., SEO Services -> On-Page SEO)
-        if (service.subLinks) {
-          for (const subLink of service.subLinks) {
+        if ((service as any).subLinks) {
+          for (const subLink of (service as any).subLinks) {
             if (subLink.href === targetPath) {
               return [
                 { name: navLink.name, href: '#' }, // Root Navbar category (unclickable dropdown)
@@ -199,7 +207,7 @@ export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string,
       return pSlug === cleanPathname || pSlug === cleanSegment;
     });
 
-    if (matchedPage && matchedPage.category) {
+    if (matchedPage && matchedPage.category && matchedPage.category !== 'blog') {
       const formattedCategory = matchedPage.category
         .split(/[\s-]+/)
         .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
@@ -221,16 +229,19 @@ export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string,
   for (const nav of NAV_LINKS) {
     const services = getServiceList(nav.id);
     for (const s of services) {
-      if (s.href === lookupPathname) navbarName = s.name;
-      if (s.subLinks) {
-        for (const sub of s.subLinks) {
-          if (sub.href === lookupPathname) navbarName = sub.name;
+      if (s.href === lookupPathname && !navbarName) navbarName = s.name;
+      if ((s as any).subLinks) {
+        for (const sub of (s as any).subLinks) {
+          if (sub.href === lookupPathname && !navbarName) navbarName = sub.name;
         }
       }
     }
   }
 
-  const currentName = navbarName || matchedPage?.title || ROUTE_NAMES[currentSegment] || currentSegment.replace(/-/g, ' ');
+  let currentName = navbarName || matchedPage?.title || ROUTE_NAMES[currentSegment] || currentSegment.replace(/-/g, ' ');
+  if (currentSegment === 'blog') {
+    currentName = 'Blog';
+  }
 
   breadcrumbsList.push({
     name: currentName,
@@ -278,7 +289,7 @@ export const Breadcrumbs = ({ pathname, dynamicPages = [] }: { pathname: string,
               
               {isLast ? (
                 // Active Pill (Current Page)
-                <div className="bg-[#eef6ff] text-[#1e6091] font-semibold px-2.5 md:px-4 py-1.5 md:py-2 rounded-full text-[11.5px] md:text-[13.5px] tracking-tight shadow-sm select-text shrink-0">
+                <div className="bg-[#eff6ff] text-[#1d4ed8] border border-[#3b82f6]/30 font-bold px-2.5 md:px-4 py-1.5 md:py-2 rounded-full text-[11.5px] md:text-[13.5px] tracking-tight shadow-sm select-text shrink-0">
                   {crumb.name}
                 </div>
               ) : crumb.href === '#' ? (

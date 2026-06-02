@@ -1,6 +1,7 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { db } from '@/lib/db';
-import BlogListClient from './BlogListClient';
+import BlogListClient from '@/features/admin/components/blogs/BlogListClient';
 
 export const dynamic = 'force-dynamic';
 

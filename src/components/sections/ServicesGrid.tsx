@@ -90,7 +90,7 @@ function ServiceCard({ service, index, cityKey, onOpenQuote }: { service: Servic
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "150px" }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
       className="group relative flex flex-col w-full h-full"
     >
@@ -116,12 +116,12 @@ function ServiceCard({ service, index, cityKey, onOpenQuote }: { service: Servic
           </div>
 
           {/* Title */}
-            <h3 className="text-[17px] md:text-[19px] font-bold font-lexend mb-2 leading-snug tracking-[-0.01em] group-hover:text-gray-950 transition-colors" style={{ color: "#064e3b" }}>
+          <h3 className="text-[17px] md:text-[19px] font-bold font-lexend mb-2 leading-snug tracking-[-0.01em] group-hover:text-gray-950 transition-colors" style={{ color: "#064e3b" }}>
             {service.title}
           </h3>
 
-          {/* Description */}
-          <p className="text-[13.5px] md:text-[14px] text-gray-500 font-normal font-jost leading-[1.65] mb-5 md:mb-6">
+          {/* Description with safe wrapping and line-clamp truncation */}
+          <p className="text-gray-500 font-jost text-[13.5px] leading-relaxed mb-4 line-clamp-2 md:line-clamp-3 overflow-hidden text-ellipsis break-all">
             {service.desc}
           </p>
 
@@ -162,7 +162,7 @@ function ServiceCard({ service, index, cityKey, onOpenQuote }: { service: Servic
   );
 }
 
-export default function ServicesGrid({ cityKey }: { cityKey?: string }) {
+export default function ServicesGrid({ cityKey, dynamicDescriptions }: { cityKey?: string, dynamicDescriptions?: Record<string, string> }) {
   const [activeService, setActiveService] = useState<string | null>(null);
 
   const openQuoteModal = (serviceTitle: string) => {
@@ -190,7 +190,7 @@ export default function ServicesGrid({ cityKey }: { cityKey?: string }) {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "150px" }}
           className="inline-flex items-center gap-2 bg-gray-50 border border-gray-100 text-[#1a8b4c] text-[10px] md:text-[11px] font-bold px-3 py-1 md:px-4 md:py-1.5 rounded-full uppercase tracking-widest mb-4 md:mb-5 shadow-sm"
         >
           Our Expertise
@@ -205,9 +205,15 @@ export default function ServicesGrid({ cityKey }: { cityKey?: string }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">
-        {services.map((service, i) => (
-          <ServiceCard key={i} service={service} index={i} cityKey={cityKey} onOpenQuote={openQuoteModal} />
-        ))}
+        {services.map((service, i) => {
+          const slug = service.link.replace('/', '');
+          let finalDesc = service.desc;
+          if (dynamicDescriptions && dynamicDescriptions[slug]) {
+            // Inherit the dynamic description from the database hero section
+            finalDesc = dynamicDescriptions[slug];
+          }
+          return <ServiceCard key={i} service={{ ...service, desc: finalDesc }} index={i} cityKey={cityKey} onOpenQuote={openQuoteModal} />;
+        })}
       </div>
 
       <AnimatePresence>

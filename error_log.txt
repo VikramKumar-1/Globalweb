@@ -1,103 +1,20 @@
 
 === ERROR REPORT ===
-Time: 2026-05-20T11:21:41.264Z
-Message: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-Digest: 739214285
-Stack Trace:
-Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-    at eF (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:272865)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265943
-    at Object.toJSON (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:266407)
-    at stringify (<anonymous>)
-    at eq (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:274775)
-    at eJ (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:275293)
-    at Timeout._onTimeout (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265080)
-    at listOnTimeout (node:internal/timers:605:17)
-    at process.processTimers (node:internal/timers:541:7)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-20T11:21:41.269Z
-Message: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-Digest: 739214285
-Stack Trace:
-Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-    at eF (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:272865)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265943
-    at Object.toJSON (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:266407)
-    at stringify (<anonymous>)
-    at eq (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:274775)
-    at eJ (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:275293)
-    at Timeout._onTimeout (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265080)
-    at listOnTimeout (node:internal/timers:605:17)
-    at process.processTimers (node:internal/timers:541:7)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-20T11:22:57.816Z
-Message: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-Digest: 739214285
-Stack Trace:
-Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-    at eF (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:272865)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265943
-    at Object.toJSON (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:266407)
-    at stringify (<anonymous>)
-    at eq (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:274775)
-    at eJ (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:275293)
-    at Timeout._onTimeout (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265080)
-    at listOnTimeout (node:internal/timers:605:17)
-    at process.processTimers (node:internal/timers:541:7)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-20T11:22:57.819Z
-Message: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-Digest: 739214285
-Stack Trace:
-Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
-  {$$typeof: ..., render: function Monitor}
-                          ^^^^^^^^^^^^^^^^
-    at eF (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:272865)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265943
-    at Object.toJSON (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:266407)
-    at stringify (<anonymous>)
-    at eq (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:274775)
-    at eJ (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:275293)
-    at Timeout._onTimeout (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:265080)
-    at listOnTimeout (node:internal/timers:605:17)
-    at process.processTimers (node:internal/timers:541:7)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-20T12:10:43.913Z
-Message: Building2 is not defined
+Time: 2026-05-27T07:53:11.214Z
+Message: editorMode is not defined
 Digest: undefined
 Stack Trace:
-ReferenceError: Building2 is not defined
-    at WebDevClient (webpack-internal:///(app-pages-browser)/./src/app/web-development/WebDevClient.tsx:403:117)
+ReferenceError: editorMode is not defined
+    at BlogPostForm (webpack-internal:///(app-pages-browser)/./src/features/admin/components/blogs/BlogPostForm.tsx:749:164)
     at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:11121:18)
-    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16290:20)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18472:16)
+    at mountIndeterminateComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16869:13)
+    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18458:16)
     at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
     at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
     at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
     at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
-    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24887:20)
+    at recoverFromConcurrentError (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24597:20)
+    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24899:20)
     at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7758:13)
     at flushSyncWorkOnAllRoots (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7718:3)
     at flushSync$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24999:7)
@@ -107,25 +24,26 @@ ReferenceError: Building2 is not defined
     at Object.performReactRefresh (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-refresh/cjs/react-refresh-runtime.development.js:254:26)
     at applyUpdate (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:139:31)
     at statusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:156:13)
-    at setStatus (http://localhost:3000/_next/static/chunks/webpack.js?v=1779278574614:508:55)
-    at http://localhost:3000/_next/static/chunks/webpack.js?v=1779278574614:678:21
+    at setStatus (http://localhost:3000/_next/static/chunks/webpack.js?v=1779867397230:508:55)
+    at http://localhost:3000/_next/static/chunks/webpack.js?v=1779867397230:678:21
 ====================
 
 === ERROR REPORT ===
-Time: 2026-05-20T12:10:43.920Z
-Message: Building2 is not defined
+Time: 2026-05-27T07:53:11.218Z
+Message: editorMode is not defined
 Digest: undefined
 Stack Trace:
-ReferenceError: Building2 is not defined
-    at WebDevClient (webpack-internal:///(app-pages-browser)/./src/app/web-development/WebDevClient.tsx:403:117)
+ReferenceError: editorMode is not defined
+    at BlogPostForm (webpack-internal:///(app-pages-browser)/./src/features/admin/components/blogs/BlogPostForm.tsx:749:164)
     at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:11121:18)
-    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16290:20)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18472:16)
+    at mountIndeterminateComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16869:13)
+    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18458:16)
     at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
     at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
     at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
     at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
-    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24887:20)
+    at recoverFromConcurrentError (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24597:20)
+    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24899:20)
     at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7758:13)
     at flushSyncWorkOnAllRoots (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7718:3)
     at flushSync$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24999:7)
@@ -135,418 +53,82 @@ ReferenceError: Building2 is not defined
     at Object.performReactRefresh (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-refresh/cjs/react-refresh-runtime.development.js:254:26)
     at applyUpdate (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:139:31)
     at statusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:156:13)
-    at setStatus (http://localhost:3000/_next/static/chunks/webpack.js?v=1779278574614:508:55)
-    at http://localhost:3000/_next/static/chunks/webpack.js?v=1779278574614:678:21
+    at setStatus (http://localhost:3000/_next/static/chunks/webpack.js?v=1779867397230:508:55)
+    at http://localhost:3000/_next/static/chunks/webpack.js?v=1779867397230:678:21
 ====================
 
 === ERROR REPORT ===
-Time: 2026-05-20T12:12:21.623Z
-Message: Building2 is not defined
+Time: 2026-05-29T08:06:50.911Z
+Message: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `ContentEditor`.
 Digest: undefined
 Stack Trace:
-ReferenceError: Building2 is not defined
-    at WebDevClient (webpack-internal:///(app-pages-browser)/./src/app/web-development/WebDevClient.tsx:403:117)
-    at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:11121:18)
-    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16290:20)
-    at mountLazyComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16765:17)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18464:16)
+Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `ContentEditor`.
+    at createFiberFromTypeAndProps (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:27944:17)
+    at createFiberFromElement (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:27970:15)
+    at createChild (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:9726:28)
+    at reconcileChildrenArray (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:10088:25)
+    at reconcileChildFibersImpl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:10515:16)
+    at reconcileChildFibers (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:10573:27)
+    at reconcileChildren (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:15802:28)
+    at updateHostComponent$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16687:3)
+    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18503:14)
     at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
     at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
     at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
     at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
     at recoverFromConcurrentError (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24597:20)
-    at performConcurrentWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24542:26)
-    at workLoop (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:256:34)
-    at flushWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:225:14)
-    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:534:21)
+    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24899:20)
+    at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7758:13)
+    at flushSyncWorkOnAllRoots (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7718:3)
+    at flushSync$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24999:7)
+    at Object.scheduleRefresh (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:27285:5)
+    at eval (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-refresh/cjs/react-refresh-runtime.development.js:265:17)
+    at Set.forEach (<anonymous>)
+    at Object.performReactRefresh (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-refresh/cjs/react-refresh-runtime.development.js:254:26)
+    at applyUpdate (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:139:31)
+    at statusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:156:13)
+    at setStatus (http://localhost:3001/_next/static/chunks/webpack.js?v=1780041660927:508:55)
+    at http://localhost:3001/_next/static/chunks/webpack.js?v=1780041660927:678:21
 ====================
 
 === ERROR REPORT ===
-Time: 2026-05-20T12:12:21.813Z
-Message: Building2 is not defined
+Time: 2026-05-29T08:06:50.916Z
+Message: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `ContentEditor`.
 Digest: undefined
 Stack Trace:
-ReferenceError: Building2 is not defined
-    at WebDevClient (webpack-internal:///(app-pages-browser)/./src/app/web-development/WebDevClient.tsx:403:117)
-    at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:11121:18)
-    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16290:20)
-    at mountLazyComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16765:17)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18464:16)
+Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `ContentEditor`.
+    at createFiberFromTypeAndProps (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:27944:17)
+    at createFiberFromElement (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:27970:15)
+    at createChild (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:9726:28)
+    at reconcileChildrenArray (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:10088:25)
+    at reconcileChildFibersImpl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:10515:16)
+    at reconcileChildFibers (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:10573:27)
+    at reconcileChildren (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:15802:28)
+    at updateHostComponent$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16687:3)
+    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18503:14)
     at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
     at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
     at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
     at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
     at recoverFromConcurrentError (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24597:20)
-    at performConcurrentWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24542:26)
-    at workLoop (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:256:34)
-    at flushWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:225:14)
-    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:534:21)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T05:03:54.813Z
-Message: text.replace is not a function
-Digest: 1171394708
-Stack Trace:
-TypeError: text.replace is not a function
-    at replaceLocation (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:63:28)
-    at BlogPostPage (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:131:38)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T05:03:54.818Z
-Message: text.replace is not a function
-Digest: 1171394708
-Stack Trace:
-TypeError: text.replace is not a function
-    at replaceLocation (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:63:28)
-    at BlogPostPage (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:131:38)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T05:08:38.905Z
-Message: text.replace is not a function
-Digest: 1171394708
-Stack Trace:
-TypeError: text.replace is not a function
-    at replaceLocation (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:63:28)
-    at BlogPostPage (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:131:38)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T05:08:38.908Z
-Message: text.replace is not a function
-Digest: 1171394708
-Stack Trace:
-TypeError: text.replace is not a function
-    at replaceLocation (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:63:28)
-    at BlogPostPage (webpack-internal:///(rsc)/./src/app/blog/[slug]/page.tsx:131:38)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T06:25:13.435Z
-Message: 
-Invalid `prisma.servicePage.findMany()` invocation:
-
-{
-  where: {
-    category: "website",
-    isActive: true,
-    slug: {
-      notIn: [
-        "web-development",
-        "/web-development"
-      ]
-    }
-  },
-  select: {
-    title: true,
-    slug: true,
-    seoDescription: true,
-    heroDescription: true,
-    ~~~~~~~~~~~~~~~
-    content: true,
-    image: true,
-?   id?: true,
-?   contentTitle?: true,
-?   seoTitle?: true,
-?   seoKeywords?: true,
-?   category?: true,
-?   isActive?: true,
-?   createdAt?: true,
-?   updatedAt?: true
-  },
-  orderBy: {
-    createdAt: "desc"
-  }
-}
-
-Unknown field `heroDescription` for select statement on model `ServicePage`. Available options are marked with ?.
-Digest: 587861231
-Stack Trace:
-PrismaClientValidationError: 
-Invalid `prisma.servicePage.findMany()` invocation:
-
-{
-  where: {
-    category: "website",
-    isActive: true,
-    slug: {
-      notIn: [
-        "web-development",
-        "/web-development"
-      ]
-    }
-  },
-  select: {
-    title: true,
-    slug: true,
-    seoDescription: true,
-    heroDescription: true,
-    ~~~~~~~~~~~~~~~
-    content: true,
-    image: true,
-?   id?: true,
-?   contentTitle?: true,
-?   seoTitle?: true,
-?   seoKeywords?: true,
-?   category?: true,
-?   isActive?: true,
-?   createdAt?: true,
-?   updatedAt?: true
-  },
-  orderBy: {
-    createdAt: "desc"
-  }
-}
-
-Unknown field `heroDescription` for select statement on model `ServicePage`. Available options are marked with ?.
-    at Nn (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at ei.handleRequestError (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:121:6911)
-    at ei.handleAndLogRequestError (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:121:6593)
-    at ei.request (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:121:6300)
-    at async a (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:130:9551)
-    at async WebDevelopmentPage (webpack-internal:///(rsc)/./src/app/web-development/page.tsx:64:22)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T06:25:13.438Z
-Message: 
-Invalid `prisma.servicePage.findMany()` invocation:
-
-{
-  where: {
-    category: "website",
-    isActive: true,
-    slug: {
-      notIn: [
-        "web-development",
-        "/web-development"
-      ]
-    }
-  },
-  select: {
-    title: true,
-    slug: true,
-    seoDescription: true,
-    heroDescription: true,
-    ~~~~~~~~~~~~~~~
-    content: true,
-    image: true,
-?   id?: true,
-?   contentTitle?: true,
-?   seoTitle?: true,
-?   seoKeywords?: true,
-?   category?: true,
-?   isActive?: true,
-?   createdAt?: true,
-?   updatedAt?: true
-  },
-  orderBy: {
-    createdAt: "desc"
-  }
-}
-
-Unknown field `heroDescription` for select statement on model `ServicePage`. Available options are marked with ?.
-Digest: 587861231
-Stack Trace:
-PrismaClientValidationError: 
-Invalid `prisma.servicePage.findMany()` invocation:
-
-{
-  where: {
-    category: "website",
-    isActive: true,
-    slug: {
-      notIn: [
-        "web-development",
-        "/web-development"
-      ]
-    }
-  },
-  select: {
-    title: true,
-    slug: true,
-    seoDescription: true,
-    heroDescription: true,
-    ~~~~~~~~~~~~~~~
-    content: true,
-    image: true,
-?   id?: true,
-?   contentTitle?: true,
-?   seoTitle?: true,
-?   seoKeywords?: true,
-?   category?: true,
-?   isActive?: true,
-?   createdAt?: true,
-?   updatedAt?: true
-  },
-  orderBy: {
-    createdAt: "desc"
-  }
-}
-
-Unknown field `heroDescription` for select statement on model `ServicePage`. Available options are marked with ?.
-    at Nn (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:29:1363)
-    at ei.handleRequestError (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:121:6911)
-    at ei.handleAndLogRequestError (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:121:6593)
-    at ei.request (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:121:6300)
-    at async a (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\@prisma\client\runtime\library.js:130:9551)
-    at async WebDevelopmentPage (webpack-internal:///(rsc)/./src/app/web-development/page.tsx:64:22)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T09:12:09.412Z
-Message: Cannot read properties of undefined (reading 'toLowerCase')
-Digest: 317969648
-Stack Trace:
-TypeError: Cannot read properties of undefined (reading 'toLowerCase')
-    at Module.generateMetadata (webpack-internal:///(rsc)/./src/app/[slug]/page.tsx:268:41)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:399557
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\server\lib\trace\tracer.js:140:36
-    at NoopContextManager.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
-    at ContextAPI.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
-    at NoopTracer.startActiveSpan (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
-    at ProxyTracer.startActiveSpan (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\server\lib\trace\tracer.js:122:103
-    at NoopContextManager.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
-    at ContextAPI.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
-    at NextTracerImpl.trace (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:399461
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:401477
-    at tC (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:401570)
-    at tx (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:402032)
-    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    at async tR (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:36:2296)
-    at async C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:36:2722
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T09:12:09.417Z
-Message: Cannot read properties of undefined (reading 'toLowerCase')
-Digest: 317969648
-Stack Trace:
-TypeError: Cannot read properties of undefined (reading 'toLowerCase')
-    at Module.generateMetadata (webpack-internal:///(rsc)/./src/app/[slug]/page.tsx:268:41)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:399557
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\server\lib\trace\tracer.js:140:36
-    at NoopContextManager.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
-    at ContextAPI.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
-    at NoopTracer.startActiveSpan (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
-    at ProxyTracer.startActiveSpan (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\server\lib\trace\tracer.js:122:103
-    at NoopContextManager.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
-    at ContextAPI.with (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
-    at NextTracerImpl.trace (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:399461
-    at C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:401477
-    at tC (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:401570)
-    at tx (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:35:402032)
-    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    at async tR (C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:36:2296)
-    at async C:\Users\vikur\Downloads\GlobalWeblify\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:36:2722
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T10:41:50.815Z
-Message: Sparkles is not defined
-Digest: undefined
-Stack Trace:
-ReferenceError: Sparkles is not defined
-    at eval (webpack-internal:///(app-pages-browser)/./src/components/sections/ServicesGrid.tsx:59:91)
-    at (app-pages-browser)/./src/components/sections/ServicesGrid.tsx (http://localhost:3000/_next/static/chunks/app/page.js:895:1)
-    at options.factory (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360106525:715:31)
-    at __webpack_require__ (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360106525:37:33)
-    at fn (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360106525:371:21)
-    at requireModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:198:23)
-    at initializeModuleChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1370:17)
-    at readChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1180:7)
-    at mountLazyComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16750:19)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18464:16)
-    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
-    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
-    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
-    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
-    at performConcurrentWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24504:74)
-    at workLoop (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:256:34)
-    at flushWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:225:14)
-    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:534:21)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T10:41:50.819Z
-Message: Sparkles is not defined
-Digest: undefined
-Stack Trace:
-ReferenceError: Sparkles is not defined
-    at eval (webpack-internal:///(app-pages-browser)/./src/components/sections/ServicesGrid.tsx:59:91)
-    at (app-pages-browser)/./src/components/sections/ServicesGrid.tsx (http://localhost:3000/_next/static/chunks/app/page.js:895:1)
-    at options.factory (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360106525:715:31)
-    at __webpack_require__ (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360106525:37:33)
-    at fn (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360106525:371:21)
-    at requireModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:198:23)
-    at initializeModuleChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1370:17)
-    at readChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1180:7)
-    at mountLazyComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16750:19)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18464:16)
-    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
-    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
-    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
-    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
-    at performConcurrentWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24504:74)
-    at workLoop (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:256:34)
-    at flushWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:225:14)
-    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:534:21)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T10:45:02.440Z
-Message: Sparkles is not defined
-Digest: undefined
-Stack Trace:
-ReferenceError: Sparkles is not defined
-    at eval (webpack-internal:///(app-pages-browser)/./src/components/sections/ServicesGrid.tsx:59:91)
-    at (app-pages-browser)/./src/components/sections/ServicesGrid.tsx (http://localhost:3000/_next/static/chunks/app/page.js:895:1)
-    at options.factory (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360299954:715:31)
-    at __webpack_require__ (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360299954:37:33)
-    at fn (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360299954:371:21)
-    at requireModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:198:23)
-    at initializeModuleChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1370:17)
-    at readChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1180:7)
-    at mountLazyComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16750:19)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18464:16)
-    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
-    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
-    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
-    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
-    at performConcurrentWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24504:74)
-    at workLoop (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:256:34)
-    at flushWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:225:14)
-    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:534:21)
-====================
-
-=== ERROR REPORT ===
-Time: 2026-05-21T10:45:02.443Z
-Message: Sparkles is not defined
-Digest: undefined
-Stack Trace:
-ReferenceError: Sparkles is not defined
-    at eval (webpack-internal:///(app-pages-browser)/./src/components/sections/ServicesGrid.tsx:59:91)
-    at (app-pages-browser)/./src/components/sections/ServicesGrid.tsx (http://localhost:3000/_next/static/chunks/app/page.js:895:1)
-    at options.factory (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360299954:715:31)
-    at __webpack_require__ (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360299954:37:33)
-    at fn (http://localhost:3000/_next/static/chunks/webpack.js?v=1779360299954:371:21)
-    at requireModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:198:23)
-    at initializeModuleChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1370:17)
-    at readChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1180:7)
-    at mountLazyComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:16750:19)
-    at beginWork$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:18464:16)
-    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:26927:14)
-    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25748:12)
-    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25464:5)
-    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:25419:7)
-    at performConcurrentWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24504:74)
-    at workLoop (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:256:34)
-    at flushWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:225:14)
-    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:534:21)
+    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24899:20)
+    at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7758:13)
+    at flushSyncWorkOnAllRoots (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:7718:3)
+    at flushSync$1 (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:24999:7)
+    at Object.scheduleRefresh (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:27285:5)
+    at eval (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-refresh/cjs/react-refresh-runtime.development.js:265:17)
+    at Set.forEach (<anonymous>)
+    at Object.performReactRefresh (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-refresh/cjs/react-refresh-runtime.development.js:254:26)
+    at applyUpdate (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:139:31)
+    at statusHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/@next/react-refresh-utils/dist/internal/helpers.js:156:13)
+    at setStatus (http://localhost:3001/_next/static/chunks/webpack.js?v=1780041660927:508:55)
+    at http://localhost:3001/_next/static/chunks/webpack.js?v=1780041660927:678:21
 ====================

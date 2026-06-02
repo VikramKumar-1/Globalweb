@@ -7,23 +7,31 @@ import {
   Facebook, Twitter, Instagram, Linkedin, Youtube, 
   Mail, Phone, MapPin, Code, ShoppingCart, Globe, 
   Smartphone, Settings, Search, Share2, FileText, 
-  Megaphone, BarChart3, Headphones, Award,
-  ExternalLink
+  Megaphone, BarChart3, Headphones,
+  ExternalLink, Palette, RefreshCw, Wrench, Target, MessageCircle
 } from 'lucide-react';
-import { Section } from './Responsive/Section';
 import { SOCIAL_LINKS } from '@/constants/navigation';
 
-const serviceLinks = [
-  { name: "Custom Web Development", icon: <Code size={16} />, color: "bg-purple-50 text-purple-600" },
-  { name: "E-commerce Solutions", icon: <ShoppingCart size={16} />, color: "bg-blue-50 text-blue-600" },
-  { name: "WordPress Development", icon: <Globe size={16} />, color: "bg-green-50 text-green-600" },
-  { name: "Responsive Design", icon: <Smartphone size={16} />, color: "bg-amber-50 text-amber-600" },
-  { name: "Website Maintenance", icon: <Settings size={16} />, color: "bg-pink-50 text-pink-600" },
-  { name: "SEO Services", icon: <Search size={16} />, color: "bg-emerald-50 text-emerald-600" },
-  { name: "Social Media Marketing", icon: <Share2 size={16} />, color: "bg-orange-50 text-orange-600" },
-  { name: "Content Marketing", icon: <FileText size={16} />, color: "bg-indigo-50 text-indigo-600" },
-  { name: "PPC Advertising", icon: <Megaphone size={16} />, color: "bg-rose-50 text-rose-600" },
-  { name: "Digital Marketing", icon: <BarChart3 size={16} />, color: "bg-cyan-50 text-cyan-600" },
+const serviceCol1 = [
+  { name: "Custom Web Development", href: "/web-development", icon: Code, color: "text-teal-500 bg-teal-50" },
+  { name: "E-commerce Solutions", href: "/ecommerce-web-designing", icon: ShoppingCart, color: "text-orange-500 bg-orange-50" },
+  { name: "Web Design Services", href: "/web-design-services", icon: Palette, color: "text-purple-500 bg-purple-50" },
+  { name: "Responsive Design", href: "/responsive-web-designing", icon: Smartphone, color: "text-blue-500 bg-blue-50" },
+  { name: "Website Redesigning", href: "/website-redesigning", icon: RefreshCw, color: "text-cyan-500 bg-cyan-50" },
+  { name: "Website Maintenance", href: "/website-maintenance", icon: Wrench, color: "text-gray-500 bg-gray-100" },
+  { name: "Small Business Website", href: "/small-business-website", icon: Globe, color: "text-emerald-500 bg-emerald-50" },
+  { name: "Customised Website", href: "/customised-website-designing", icon: Settings, color: "text-indigo-500 bg-indigo-50" },
+];
+
+const serviceCol2 = [
+  { name: "SEO Services", href: "/seo-services", icon: Search, color: "text-orange-500 bg-orange-50" },
+  { name: "Social Media Marketing", href: "/social-media-marketing", icon: Share2, color: "text-pink-500 bg-pink-50" },
+  { name: "Content Marketing", href: "/content-marketing", icon: FileText, color: "text-teal-500 bg-teal-50" },
+  { name: "Google Ads Management", href: "/google-ads-management", icon: Target, color: "text-red-500 bg-red-50" },
+  { name: "Digital Marketing", href: "/digital-marketing", icon: BarChart3, color: "text-blue-500 bg-blue-50" },
+  { name: "AI SEO Services", href: "/ai-seo-services", icon: Search, color: "text-violet-500 bg-violet-50" },
+  { name: "SMO Services", href: "/smo-services", icon: Megaphone, color: "text-amber-500 bg-amber-50" },
+  { name: "WhatsApp Marketing", href: "/whatsapp-marketing", icon: MessageCircle, color: "text-green-500 bg-green-50" },
 ];
 
 const contactDetails = [
@@ -57,26 +65,53 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Services Columns */}
-          <div className="lg:col-span-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-            <div className="md:col-span-2 flex items-center gap-3 mb-4 justify-center md:justify-start">
+          {/* Our Services - 2 icon columns */}
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3 mb-6 justify-center md:justify-start">
                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-[#1a8b4c]">
                  <Settings size={20} className="animate-spin-slow" />
                </div>
                <h4 className="text-[20px] font-black text-gray-950 uppercase tracking-tight">Our Services</h4>
             </div>
-            {serviceLinks.map((service, i) => (
-              <Link 
-                key={i} 
-                href="#" 
-                className="group flex items-center gap-4 p-3 bg-white border border-gray-50 rounded-2xl shadow-sm hover:shadow-md hover:border-[#1a8b4c]/20 transition-all duration-300"
-              >
-                <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center ${service.color} transition-transform group-hover:scale-110`}>
-                  {service.icon}
-                </div>
-                <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#1a8b4c] transition-colors">{service.name}</span>
-              </Link>
-            ))}
+            
+            <div className="grid grid-cols-2 gap-x-6">
+              {/* Left service column */}
+              <div className="space-y-3.5">
+                {serviceCol1.map((service, i) => {
+                  const Icon = service.icon;
+                  return (
+                    <Link 
+                      key={i}
+                      href={service.href} 
+                      className="group flex items-center gap-2.5 hover:translate-x-1 transition-transform duration-200"
+                    >
+                      <div className={`w-7 h-7 shrink-0 rounded-lg flex items-center justify-center ${service.color} transition-transform group-hover:scale-110`}>
+                        <Icon size={14} />
+                      </div>
+                      <span className="text-[13px] text-gray-600 font-semibold group-hover:text-[#1a8b4c] transition-colors leading-tight">{service.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+              {/* Right service column */}
+              <div className="space-y-3.5">
+                {serviceCol2.map((service, i) => {
+                  const Icon = service.icon;
+                  return (
+                    <Link 
+                      key={i}
+                      href={service.href} 
+                      className="group flex items-center gap-2.5 hover:translate-x-1 transition-transform duration-200"
+                    >
+                      <div className={`w-7 h-7 shrink-0 rounded-lg flex items-center justify-center ${service.color} transition-transform group-hover:scale-110`}>
+                        <Icon size={14} />
+                      </div>
+                      <span className="text-[13px] text-gray-600 font-semibold group-hover:text-[#1a8b4c] transition-colors leading-tight">{service.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Contact Column */}

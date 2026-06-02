@@ -1,8 +1,10 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { db } from '@/lib/db';
-import ServiceForm from '../ServiceForm';
+import ServiceForm from '@/features/admin/components/services/ServiceForm';
 import { getSlugTitle } from '@/lib/replaceLocation';
+
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: { slug: string };

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Save, FileText, CheckCircle2, XCircle } from 'lucide-react';
 import { getAboutSeo, saveAboutSeo } from '../actions';
-import RichTextInlineEditor from '@/components/admin/RichTextInlineEditor';
+import RichTextInlineEditor from '@/features/admin/components/shared/RichTextInlineEditor';
 
 export default function AboutSeoSettingsPage() {
   const [aboutSeo, setAboutSeo] = useState<{ title: string; subtitle: string; content: string }>({

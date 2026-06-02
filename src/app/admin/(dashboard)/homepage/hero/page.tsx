@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2, ArrowUp, ArrowDown, Type, CheckCircle2, XCircle, Layout } from 'lucide-react';
 import { getHeroTexts, saveHeroTexts, getHomepageHeroDesc, saveHomepageHeroDesc } from '../actions';
-import RichTextInlineEditor from '@/components/admin/RichTextInlineEditor';
+import RichTextInlineEditor from '@/features/admin/components/shared/RichTextInlineEditor';
 
 export default function HeroSettingsPage() {
   // Global Typing Text states

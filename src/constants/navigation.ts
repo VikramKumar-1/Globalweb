@@ -109,8 +109,12 @@ export const BRANDING_SERVICES = [
 export const COMPANY_LINKS = [
   { name: "About Us", href: "/about" },
   { name: "Our Process", href: "/about" },
-  { name: "Our Team", href: "/about" },
-  { name: "Careers", href: "/about" }
+  { name: "Our Team", href: "/team" },
+  { name: "Careers", href: "/about" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Blogs", href: "/blog" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Market Area", href: "/market-area" }
 ];
 
 export const NAV_LINKS = [

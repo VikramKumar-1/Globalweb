@@ -40,7 +40,7 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
   }
 
   return (
-    <section className="relative w-full min-h-[280px] md:min-h-[400px] py-6 md:py-14 flex items-center justify-center bg-gray-950 overflow-hidden border-b border-gray-900">
+    <section className="relative w-full min-h-[340px] md:min-h-[400px] py-8 md:py-14 flex items-center justify-center bg-gray-950 overflow-hidden border-b border-gray-900">
       {/* Background Image Banner */}
       <div className="absolute inset-0 w-full h-full z-0">
         <Image
@@ -80,14 +80,14 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
           )}
 
           {/* Heading */}
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-black font-heading text-gray-950 uppercase leading-tight tracking-wide mb-4 w-full">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-black font-heading text-gray-950 uppercase leading-tight tracking-wide mb-4 w-full break-all md:break-words">
             <span className="text-purple-700">{mainTitle}</span>
             {locationPart && <span className="text-gray-950"> {locationPart}</span>}
           </h1>
 
           {/* Description */}
           {description && (
-            <p className="text-sm md:text-[15.5px] text-gray-800 leading-relaxed font-semibold w-full mb-8">
+            <p className="text-sm md:text-[15.5px] text-gray-800 leading-relaxed font-semibold w-full mb-8 break-all whitespace-normal">
               {description}
             </p>
           )}

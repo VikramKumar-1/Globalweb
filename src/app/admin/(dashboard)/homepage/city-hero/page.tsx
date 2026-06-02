@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Save, CheckCircle2, XCircle, Globe, ChevronDown } from 'lucide-react';
 import { getCityHeroSettings, saveCityHeroSettings } from '../actions';
 import { CITIES } from '../cities';
-import RichTextInlineEditor from '@/components/admin/RichTextInlineEditor';
+import RichTextInlineEditor from '@/features/admin/components/shared/RichTextInlineEditor';
 
 export default function CityHeroSettingsPage() {
   const [selectedCity, setSelectedCity] = useState<string>('delhi');

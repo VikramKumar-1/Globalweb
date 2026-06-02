@@ -2,6 +2,7 @@
 
 import { db } from '@/lib/db';
 import { revalidatePath, revalidateTag } from 'next/cache';
+import { requireAdmin } from '@/lib/auth';
 
 export async function saveService(formData: {
   id?: number;
@@ -17,6 +18,7 @@ export async function saveService(formData: {
   image?: string;
   isActive?: boolean;
 }) {
+  await requireAdmin();
   const data = {
     title: formData.title,
     contentTitle: formData.contentTitle || null,
@@ -61,6 +63,7 @@ export async function saveService(formData: {
 }
 
 export async function deleteService(id: number) {
+  await requireAdmin();
   const service = await db.servicePage.findUnique({
     where: { id },
   });
@@ -84,6 +87,7 @@ export async function deleteService(id: number) {
 }
 
 export async function toggleServiceStatus(id: number, active: boolean) {
+  await requireAdmin();
   await db.servicePage.update({
     where: { id },
     data: { isActive: active },

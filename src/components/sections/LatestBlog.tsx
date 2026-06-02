@@ -85,7 +85,7 @@ export default function LatestBlog({ dbPosts = [] }: LatestBlogProps) {
                     </h3>
                     
                     {/* Excerpt */}
-                    <p className="text-gray-500 text-[12.5px] font-normal leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-gray-500 text-[12.5px] font-normal leading-relaxed mb-6 line-clamp-3 whitespace-normal break-words">
                       {excerpt}
                     </p>
                   

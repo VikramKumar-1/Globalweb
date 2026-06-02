@@ -1,6 +1,6 @@
 import React from 'react';
 import { db } from '@/lib/db';
-import ContactsListClient from './ContactsListClient';
+import ContactsListClient from '@/features/admin/components/contacts/ContactsListClient';
 
 export const revalidate = 0;
 
