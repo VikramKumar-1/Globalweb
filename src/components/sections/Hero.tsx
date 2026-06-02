@@ -78,8 +78,8 @@ const TypingHeadline = ({ phrases = [] }: { phrases?: string[] }) => {
   }, [currentText, isDeleting, loopNum, mounted, typingSpeed, activePhrases]);
 
   return (
-    <div className="min-h-[120px] md:min-h-[160px] flex items-start w-full overflow-visible">
-      <h1 className="text-[28px] sm:text-4xl md:text-[44px] font-bold text-gray-950 leading-relaxed tracking-normal text-left font-jost">
+    <div className="min-h-[76px] md:min-h-[115px] flex items-start w-full overflow-visible">
+      <h1 className="text-[28px] sm:text-4xl md:text-[44px] font-extrabold md:font-black text-gray-950 leading-tight tracking-tight text-left font-jost">
         {currentText}
         <motion.span
           animate={{ opacity: [1, 0] }}
@@ -361,9 +361,9 @@ export default function Hero({
             </div>
 
             {city ? (
-              <div className="min-h-[120px] md:min-h-[160px] flex items-start w-full overflow-visible">
+              <div className="min-h-[76px] md:min-h-[115px] flex items-start w-full overflow-visible">
                 <h1 
-                  className="text-[25px] sm:text-3xl md:text-[38px] lg:text-[42px] font-bold text-gray-950 leading-relaxed tracking-normal text-left font-jost"
+                  className="text-[25px] sm:text-3xl md:text-[38px] lg:text-[42px] font-extrabold md:font-black text-gray-950 leading-tight tracking-tight text-left font-jost"
                   dangerouslySetInnerHTML={{ __html: cityHeroSettings?.title || `Your Website Isn’t Bringing Leads—and It’s Costing You Business in <span class="text-[#1a8b4c]">${city}</span>` }}
                 />
               </div>
