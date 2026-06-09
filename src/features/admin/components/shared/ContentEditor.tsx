@@ -13,10 +13,10 @@ import { TextStyle } from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import Highlight from '@tiptap/extension-highlight';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
-import Table from '@tiptap/extension-table';
-import TableRow from '@tiptap/extension-table-row';
-import TableHeader from '@tiptap/extension-table-header';
-import TableCell from '@tiptap/extension-table-cell';
+import { Table } from '@tiptap/extension-table';
+import { TableRow } from '@tiptap/extension-table-row';
+import { TableHeader } from '@tiptap/extension-table-header';
+import { TableCell } from '@tiptap/extension-table-cell';
 import { common, createLowlight } from 'lowlight';
 
 const lowlight = createLowlight(common);
@@ -432,7 +432,7 @@ export default function ContentEditor({ content, setContent, placeholder, isBlog
         // Route it through our universal HTML transformer to guarantee 100% consistency
         // with rich text pastes (same line-by-line bullet detection, styling, etc.)
         const transformer = editor.options.editorProps.transformPastedHTML;
-        const finalHtml = transformer ? transformer(basicHtml) : basicHtml;
+        const finalHtml = transformer ? transformer(basicHtml, editor.view) : basicHtml;
         
         setTimeout(() => editor.commands.insertContent(finalHtml), 0);
       }

@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
 
     const contentType = mimeMap[ext] || 'application/octet-stream';
 
-    return new NextResponse(fileBuffer, {
+    return new NextResponse(fileBuffer as unknown as BodyInit, {
       headers: {
         'Content-Type': contentType,
         'Content-Length': fileBuffer.length.toString(),
