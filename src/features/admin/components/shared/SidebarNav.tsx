@@ -20,14 +20,20 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
   const isServices = pathname.startsWith('/admin/services');
   const isBlogs = pathname.startsWith('/admin/blogs');
   const isContacts = pathname.startsWith('/admin/contacts');
-  const isHomepage = pathname.startsWith('/admin/homepage');
+  const isHomepage = pathname.startsWith('/admin/homepage') && !pathname.startsWith('/admin/subdomains/homepage');
+  const isSubdomainHomepage = pathname.startsWith('/admin/subdomains/homepage');
 
   const [openHomepage, setOpenHomepage] = React.useState(isHomepage);
+  const [openSubdomainHomepage, setOpenSubdomainHomepage] = React.useState(isSubdomainHomepage);
   const [openServices, setOpenServices] = React.useState(isServices);
 
   React.useEffect(() => {
     setOpenHomepage(isHomepage);
   }, [isHomepage]);
+
+  React.useEffect(() => {
+    setOpenSubdomainHomepage(isSubdomainHomepage);
+  }, [isSubdomainHomepage]);
 
   React.useEffect(() => {
     setOpenServices(isServices);
@@ -82,16 +88,6 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
             Hero Text
           </Link>
           <Link 
-            href="/admin/homepage/city-hero" 
-            className={`text-xs font-semibold tracking-wide block px-3.5 py-2.5 rounded-xl transition-all duration-300 border ${
-              pathname === '/admin/homepage/city-hero'
-                ? 'text-[#22c55e] bg-[#1a8b4c]/10 border-[#1a8b4c]/30 shadow-md font-bold'
-                : 'text-gray-400 bg-transparent hover:bg-[#132a1d]/40 border-transparent hover:border-[#132a1d] hover:text-white'
-            }`}
-          >
-            City Landing Hero
-          </Link>
-          <Link 
             href="/admin/homepage/about-seo" 
             className={`text-xs font-semibold tracking-wide block px-3.5 py-2.5 rounded-xl transition-all duration-300 border ${
               pathname === '/admin/homepage/about-seo'
@@ -131,6 +127,16 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
           >
             FAQ Accordions
           </Link>
+          <Link 
+            href="/admin/homepage/section-headers" 
+            className={`text-xs font-semibold tracking-wide block px-3.5 py-2.5 rounded-xl transition-all duration-300 border ${
+              pathname === '/admin/homepage/section-headers'
+                ? 'text-[#22c55e] bg-[#1a8b4c]/10 border-[#1a8b4c]/30 shadow-md font-bold'
+                : 'text-gray-400 bg-transparent hover:bg-[#132a1d]/40 border-transparent hover:border-[#132a1d] hover:text-white'
+            }`}
+          >
+            Section Headers
+          </Link>
         </div>
       </details>
 
@@ -149,7 +155,105 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
         </summary>
         
         {/* Submenu List Categories */}
-        <SidebarCategories initialActiveServiceCategory={initialActiveServiceCategory} />
+        <SidebarCategories initialActiveServiceCategory={initialActiveServiceCategory} prefix="/admin/services" />
+      </details>
+
+      {/* Collapsible Subdomain/Market Areas Dropdown */}
+      <details className="group/details" open={pathname.startsWith('/admin/subdomains')} onToggle={() => {}}>
+        <summary className={`flex items-center justify-between gap-2.5 px-4 py-2.5 rounded-xl transition-all duration-300 text-[11px] md:text-xs font-semibold tracking-wide cursor-pointer list-none [&::-webkit-details-marker]:hidden border group/summary ${
+          pathname.startsWith('/admin/subdomains') 
+            ? 'bg-gradient-to-r from-[#1a8b4c] to-[#0e5e3b] text-white border-[#15703d] shadow-xl shadow-[#1a8b4c]/20' 
+            : 'text-gray-400 hover:text-white hover:bg-[#132a1d]/60 border-transparent hover:border-[#132a1d] hover:shadow-lg backdrop-blur-sm'
+        }`}>
+          <div className="flex items-center gap-2.5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={`flex-shrink-0 transition-colors ${pathname.startsWith('/admin/subdomains') ? 'text-white' : 'text-gray-500 group-hover/summary:text-white'}`}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+            <span>Market Areas</span>
+          </div>
+          <span className="text-[10px] group-open/details:rotate-90 transition-transform font-bold text-gray-500 group-hover/summary:text-white">▶</span>
+        </summary>
+
+        {/* Subdomain Homepage Settings Dropdown */}
+        <div className="mt-2 pl-3 border-l-2 border-[#132a1d] ml-3 flex flex-col gap-1">
+          <details className="group/subdetails" open={openSubdomainHomepage} onToggle={(e: any) => setOpenSubdomainHomepage(e.currentTarget.open)}>
+            <summary className={`flex items-center justify-between gap-2.5 px-3 py-2 rounded-xl transition-all duration-300 text-[11px] md:text-xs font-semibold tracking-wide cursor-pointer list-none [&::-webkit-details-marker]:hidden border ${
+              isSubdomainHomepage 
+                ? 'bg-[#1a8b4c]/20 text-[#22c55e] border-[#1a8b4c]/30 shadow-md' 
+                : 'text-gray-400 hover:text-white hover:bg-[#132a1d]/60 border-transparent'
+            }`}>
+              <div className="flex items-center gap-2">
+                <Home className="w-4 h-4" />
+                <span>Homepage Settings</span>
+              </div>
+              <span className="text-[9px] group-open/subdetails:rotate-90 transition-transform font-bold">▶</span>
+            </summary>
+            
+            <div className="mt-1.5 ml-2 pl-2 border-l border-[#132a1d]/50 flex flex-col gap-1">
+              <Link 
+                href="/admin/subdomains/homepage/hero" 
+                className={`text-[10px] md:text-xs font-semibold tracking-wide block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  pathname === '/admin/subdomains/homepage/hero'
+                    ? 'text-white bg-[#1a8b4c] font-bold shadow-md'
+                    : 'text-gray-500 hover:bg-[#132a1d]/40 hover:text-gray-200'
+                }`}
+              >
+                Hero Text
+              </Link>
+              <Link 
+                href="/admin/subdomains/homepage/about-seo" 
+                className={`text-[10px] md:text-xs font-semibold tracking-wide block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  pathname === '/admin/subdomains/homepage/about-seo'
+                    ? 'text-white bg-[#1a8b4c] font-bold shadow-md'
+                    : 'text-gray-500 hover:bg-[#132a1d]/40 hover:text-gray-200'
+                }`}
+              >
+                About SEO Settings
+              </Link>
+              <Link 
+                href="/admin/subdomains/homepage/growth-card" 
+                className={`text-[10px] md:text-xs font-semibold tracking-wide block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  pathname === '/admin/subdomains/homepage/growth-card'
+                    ? 'text-white bg-[#1a8b4c] font-bold shadow-md'
+                    : 'text-gray-500 hover:bg-[#132a1d]/40 hover:text-gray-200'
+                }`}
+              >
+                Growth Agency Card
+              </Link>
+              <Link 
+                href="/admin/subdomains/homepage/seo" 
+                className={`text-[10px] md:text-xs font-semibold tracking-wide block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  pathname === '/admin/subdomains/homepage/seo'
+                    ? 'text-white bg-[#1a8b4c] font-bold shadow-md'
+                    : 'text-gray-500 hover:bg-[#132a1d]/40 hover:text-gray-200'
+                }`}
+              >
+                Homepage SEO
+              </Link>
+              <Link 
+                href="/admin/subdomains/homepage/faqs" 
+                className={`text-[10px] md:text-xs font-semibold tracking-wide block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  pathname === '/admin/subdomains/homepage/faqs'
+                    ? 'text-white bg-[#1a8b4c] font-bold shadow-md'
+                    : 'text-gray-500 hover:bg-[#132a1d]/40 hover:text-gray-200'
+                }`}
+              >
+                FAQ Accordions
+              </Link>
+              <Link 
+                href="/admin/subdomains/homepage/section-headers" 
+                className={`text-[10px] md:text-xs font-semibold tracking-wide block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  pathname === '/admin/subdomains/homepage/section-headers'
+                    ? 'text-white bg-[#1a8b4c] font-bold shadow-md'
+                    : 'text-gray-500 hover:bg-[#132a1d]/40 hover:text-gray-200'
+                }`}
+              >
+                Section Headers
+              </Link>
+            </div>
+          </details>
+        </div>
+        
+        {/* Submenu List Categories */}
+        <SidebarCategories initialActiveServiceCategory={initialActiveServiceCategory} prefix="/admin/subdomains/services" />
       </details>
 
       {/* Blogs Button */}

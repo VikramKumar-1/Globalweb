@@ -108,7 +108,7 @@ export default function ServiceListClient({ services }: { services: Service[] })
       
       {/* Page Title & Search Filter */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <h3 className="text-xl md:text-2xl font-black text-[#1a8b4c] font-lexend uppercase tracking-tight">
+        <h3 className="text-xl md:text-2xl font-black text-[#1a8b4c] font-poppins uppercase tracking-tight">
           {currentCat.label}
         </h3>
         

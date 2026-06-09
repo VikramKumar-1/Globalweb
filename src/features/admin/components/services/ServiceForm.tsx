@@ -189,7 +189,7 @@ export default function ServiceForm({ service }: { service?: Service }) {
       <div className="mb-6">
         <Link
           href={`/admin/services?category=${category}`}
-          className="inline-flex items-center gap-2 text-[#1a8b4c] font-black text-xs uppercase tracking-wider hover:gap-3 transition-all font-lexend"
+          className="inline-flex items-center gap-2 text-[#1a8b4c] font-black text-xs uppercase tracking-wider hover:gap-3 transition-all font-poppins"
         >
           <ArrowLeft size={14} className="stroke-[2.5]" /> Back to {category} services
         </Link>
@@ -200,7 +200,7 @@ export default function ServiceForm({ service }: { service?: Service }) {
         {/* Core Details Card */}
         <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-5">
           <div className="border-b border-gray-100 pb-3">
-            <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-lexend">
+            <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-poppins">
               Service Details
             </h3>
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">
@@ -223,7 +223,7 @@ export default function ServiceForm({ service }: { service?: Service }) {
             {/* Title */}
             <div className="flex flex-col gap-1.5">
               <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">
-                Page Title *
+                Hero Section Title (Page Title) *
               </label>
               <input
                 type="text"
@@ -252,18 +252,25 @@ export default function ServiceForm({ service }: { service?: Service }) {
               </select>
             </div>
 
-            {/* Content Headline */}
+            {/* Hero Description */}
             <div className="flex flex-col gap-1.5 md:col-span-2">
-              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">
-                Content Section Headline (H2 Title)
-              </label>
-              <input
-                type="text"
-                value={contentTitle}
-                onChange={(e) => setContentTitle(e.target.value)}
-                placeholder="e.g. Professional Web Design Services to Build a Strong Online Presence"
-                className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs md:text-sm font-semibold text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all"
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">Hero Section Description <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
+              <textarea
+                rows={2}
+                value={heroDescription}
+                onChange={(e) => setHeroDescription(e.target.value)}
+                maxLength={260}
+                placeholder="Description text shown in the hero section (e.g. Get dynamic, high-performance services...)"
+                className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-800 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all resize-none"
               />
+              <div className="flex justify-between items-center w-full mt-0.5 px-1">
+                <span className="text-[10px] text-[#1a8b4c] font-semibold tracking-wide flex items-center gap-1">
+                  ⚠️ Note: Hero descriptions are limited to 260 characters to fit perfectly within the hero banner and avoid breaking the UI layout.
+                </span>
+                <span className="text-[10px] font-bold text-gray-400">
+                  {heroDescription.length} / 260 characters
+                </span>
+              </div>
             </div>
 
             {/* Slug */}
@@ -371,10 +378,13 @@ export default function ServiceForm({ service }: { service?: Service }) {
           </div>
         </div>
 
-        {/* SEO Settings Card */}
-        <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-5">
-          <div className="border-b border-gray-100 pb-3">
-            <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-lexend flex items-center gap-1.5">
+        {/* SEO Settings Card - HIGHLIGHTED */}
+        <div className="bg-gradient-to-br from-blue-50 to-[#f0f9ff] border-2 border-blue-200 rounded-2xl p-7 shadow-lg shadow-blue-100/50 space-y-5 relative overflow-hidden">
+          <div className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-bl-xl uppercase tracking-widest shadow-md">
+            High Priority SEO
+          </div>
+          <div className="border-b border-blue-200/60 pb-3">
+            <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-poppins flex items-center gap-1.5">
               <Sparkles size={14} className="text-[#1a8b4c]" /> SEO Metadata Properties
             </h3>
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">
@@ -382,8 +392,8 @@ export default function ServiceForm({ service }: { service?: Service }) {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="flex flex-col gap-1.5">
+          <div className="grid grid-cols-1 gap-5">
+            <div className="flex flex-col gap-1.5 md:col-span-2">
               <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Title (Overrides heading) <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
               <input
                 type="text"
@@ -394,14 +404,14 @@ export default function ServiceForm({ service }: { service?: Service }) {
               />
             </div>
             
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5 md:col-span-2">
               <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">SEO Keywords (Comma separated)</label>
-              <input
-                type="text"
+              <textarea
+                rows={2}
                 value={seoKeywords}
                 onChange={(e) => setSeoKeywords(e.target.value)}
                 placeholder="keyword1, keyword2, keyword3"
-                className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-800 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all"
+                className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-800 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all resize-none"
               />
             </div>
 
@@ -421,50 +431,52 @@ export default function ServiceForm({ service }: { service?: Service }) {
               </div>
             </div>
             
-            <div className="flex flex-col gap-1.5 md:col-span-2">
-              <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">Hero Section Description <span className="text-[#1a8b4c] normal-case tracking-normal font-semibold ml-1">Supports {'{location}'}</span></label>
-              <textarea
-                rows={2}
-                value={heroDescription}
-                onChange={(e) => setHeroDescription(e.target.value)}
-                maxLength={260}
-                placeholder="Description text shown in the hero section (e.g. Get dynamic, high-performance services...)"
-                className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-800 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all resize-none"
-              />
-              <div className="flex justify-between items-center w-full mt-0.5 px-1">
-                <span className="text-[10px] text-[#1a8b4c] font-semibold tracking-wide flex items-center gap-1">
-                  ⚠️ Note: Hero descriptions are limited to 260 characters to fit perfectly within the hero banner and avoid breaking the UI layout.
-                </span>
-                <span className="text-[10px] font-bold text-gray-400">
-                  {heroDescription.length} / 260 characters
-                </span>
-              </div>
-            </div>
+
           </div>
         </div>
 
         {/* Content Pane Card */}
         <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4">
           <div className="border-b border-gray-100 pb-3">
-            <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-lexend">
+            <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-poppins">
               Page Content HTML *
             </h3>
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">
               Draft and structure the main body of the service page
             </p>
           </div>
-          <ContentEditor 
-            content={content} 
-            setContent={setContent} 
-            placeholder="Start drafting your premium page content here..."
-          />
+
+          {/* Content Headline */}
+          <div className="flex flex-col gap-1.5 mt-2">
+            <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider">
+              Content Section Headline (H1 Title)
+            </label>
+            <input
+              type="text"
+              value={contentTitle}
+              onChange={(e) => setContentTitle(e.target.value)}
+              placeholder="e.g. Professional Web Design Services to Build a Strong Online Presence"
+              className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs md:text-sm font-semibold text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all"
+            />
+          </div>
+
+          <div className="mt-2 border-t border-gray-100 pt-4">
+            <label className="text-[10px] font-black text-gray-500 uppercase tracking-wider mb-2 block">
+              Body Content
+            </label>
+            <ContentEditor 
+              content={content} 
+              setContent={setContent} 
+              placeholder="Start drafting your premium page content here..."
+            />
+          </div>
         </div>
 
         {/* FAQs Pane Card */}
         <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4">
           <div className="flex items-center justify-between border-b border-gray-100 pb-3">
             <div>
-              <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-lexend">
+              <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest font-poppins">
                 Frequently Asked Questions
               </h3>
               <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">
@@ -532,7 +544,7 @@ export default function ServiceForm({ service }: { service?: Service }) {
         <div className="flex justify-end gap-3 mt-4">
           <Link
             href={`/admin/services?category=${category}`}
-            className={`border border-gray-200 hover:bg-gray-50 text-gray-700 font-bold py-2.5 px-5 rounded-xl text-xs uppercase tracking-wider font-lexend flex items-center gap-1 ${
+            className={`border border-gray-200 hover:bg-gray-50 text-gray-700 font-bold py-2.5 px-5 rounded-xl text-xs uppercase tracking-wider font-poppins flex items-center gap-1 ${
               saving || uploading ? 'pointer-events-none opacity-50' : ''
             }`}
           >

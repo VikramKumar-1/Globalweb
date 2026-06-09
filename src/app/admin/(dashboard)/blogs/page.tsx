@@ -21,7 +21,7 @@ export default async function AdminBlogsPage() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-1.5">
-        <h2 className="text-xl md:text-2xl font-black text-gray-900 font-lexend uppercase tracking-tight">
+        <h2 className="text-xl md:text-2xl font-black text-gray-900 font-poppins uppercase tracking-tight">
           Blog Posts CMS
         </h2>
         <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">

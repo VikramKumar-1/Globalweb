@@ -6,22 +6,25 @@ import { useSearchParams, usePathname } from 'next/navigation';
 
 interface SidebarCategoriesProps {
   initialActiveServiceCategory?: string;
+  prefix?: string;
 }
 
-export default function SidebarCategories({ initialActiveServiceCategory }: SidebarCategoriesProps) {
+export default function SidebarCategories({ initialActiveServiceCategory, prefix = '/admin/services' }: SidebarCategoriesProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  // Determine active category
-  let activeCategory = searchParams.get('category') || '';
+  let activeCategory = '';
 
-  // If activeCategory is empty and we are on a service edit page, determine category from initialActiveServiceCategory
-  if (!activeCategory && pathname.startsWith('/admin/services/')) {
-    activeCategory = initialActiveServiceCategory || '';
+  // Only read the category parameter or initialActiveServiceCategory if we are actually in this section
+  if (pathname.startsWith(prefix)) {
+    activeCategory = searchParams.get('category') || '';
+    if (!activeCategory && pathname.startsWith(prefix + '/')) {
+      activeCategory = initialActiveServiceCategory || '';
+    }
   }
 
-  const getLinkClass = (catKey: string) => {
-    const isActive = activeCategory === catKey;
+  const getLinkClass = (catKey: string, exactMatch: boolean = false) => {
+    const isActive = exactMatch ? pathname === catKey : activeCategory === catKey;
     return `text-xs font-semibold tracking-wide block px-3.5 py-2.5 rounded-xl transition-all duration-300 border ${
       isActive
         ? 'text-[#22c55e] bg-gradient-to-r from-[#1a8b4c]/20 to-transparent border-[#1a8b4c]/30 shadow-md font-bold'
@@ -36,16 +39,17 @@ export default function SidebarCategories({ initialActiveServiceCategory }: Side
         Submenus
       </div>
 
-      <Link href="/admin/services?category=website" className={getLinkClass('website')}>
+
+      <Link href={`${prefix}?category=website`} className={getLinkClass('website')}>
         Website Services
       </Link>
-      <Link href="/admin/services?category=marketing" className={getLinkClass('marketing')}>
+      <Link href={`${prefix}?category=marketing`} className={getLinkClass('marketing')}>
         Digital Marketing
       </Link>
-      <Link href="/admin/services?category=branding" className={getLinkClass('branding')}>
+      <Link href={`${prefix}?category=branding`} className={getLinkClass('branding')}>
         Branding & PR
       </Link>
-      <Link href="/admin/services?category=hosting" className={getLinkClass('hosting')}>
+      <Link href={`${prefix}?category=hosting`} className={getLinkClass('hosting')}>
         Hosting & Server
       </Link>
     </div>

@@ -9,9 +9,11 @@ import { blogPosts } from '@/data/posts';
 
 interface LatestBlogProps {
   dbPosts?: any[];
+  sectionTitle?: string;
+  sectionDesc?: string;
 }
 
-export default function LatestBlog({ dbPosts = [] }: LatestBlogProps) {
+export default function LatestBlog({ dbPosts = [], sectionTitle, sectionDesc }: LatestBlogProps) {
   // Merge database posts and static posts, taking exactly the top 4
   const latestPosts = [...dbPosts, ...blogPosts].slice(0, 4);
 
@@ -34,22 +36,43 @@ export default function LatestBlog({ dbPosts = [] }: LatestBlogProps) {
           >
             <Calendar size={18} /> Our Blog
           </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[28px] md:text-[36px] font-black text-gray-950 leading-tight lg:whitespace-nowrap"
-          >
-            Latest <span className="text-[#1a8b4c]">Insights & News</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-gray-500 mt-4 font-medium max-w-2xl mx-auto"
-          >
-            Stay up to date with the latest trends, strategies, and growth hacks in the digital world.
-          </motion.p>
+          {sectionTitle ? (
+            <motion.h2 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[28px] md:text-[36px] font-black text-gray-950 leading-tight lg:whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: sectionTitle }}
+            />
+          ) : (
+            <motion.h2 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[28px] md:text-[36px] font-black text-gray-950 leading-tight lg:whitespace-nowrap"
+            >
+              Latest <span className="text-[#1a8b4c]">Insights & News</span>
+            </motion.h2>
+          )}
+
+          {sectionDesc ? (
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-gray-500 mt-4 font-medium max-w-2xl mx-auto"
+              dangerouslySetInnerHTML={{ __html: sectionDesc }}
+            />
+          ) : (
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-gray-500 mt-4 font-medium max-w-2xl mx-auto"
+            >
+              Stay up to date with the latest trends, strategies, and growth hacks in the digital world.
+            </motion.p>
+          )}
         </div>
 
         {/* 4-Column Responsive Grid */}

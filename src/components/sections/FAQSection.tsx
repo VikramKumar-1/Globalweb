@@ -8,7 +8,7 @@ export interface FAQItem {
   answer: string;
 }
 
-export function FAQSection({ faqs }: { faqs: FAQItem[] }) {
+export function FAQSection({ faqs, sectionTitle, sectionDesc }: { faqs: FAQItem[]; sectionTitle?: string; sectionDesc?: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   if (!faqs || faqs.length === 0) return null;
@@ -23,12 +23,26 @@ export function FAQSection({ faqs }: { faqs: FAQItem[] }) {
     <section className="py-10 md:py-14 bg-white font-lexend">
       <div className="w-full max-w-[95%] lg:max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">
-            Frequently Asked <span className="text-[#1a8b4c]">Questions</span>
-          </h2>
-          <p className="mt-4 text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider">
-            Everything you need to know about our process and booking.
-          </p>
+          {sectionTitle ? (
+            <h2 
+              className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight"
+              dangerouslySetInnerHTML={{ __html: sectionTitle }}
+            />
+          ) : (
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">
+              Frequently Asked <span className="text-[#1a8b4c]">Questions</span>
+            </h2>
+          )}
+          {sectionDesc ? (
+            <p 
+              className="mt-4 text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider"
+              dangerouslySetInnerHTML={{ __html: sectionDesc }}
+            />
+          ) : (
+            <p className="mt-4 text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider">
+              Everything you need to know about our process and booking.
+            </p>
+          )}
         </div>
 
         <div className="w-full space-y-4">

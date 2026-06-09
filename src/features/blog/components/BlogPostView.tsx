@@ -194,12 +194,14 @@ export function BlogPostView({ post, isDbPost, headings = [], displayDate, displ
           width: 100%;
           overflow: hidden;
           background: var(--gray-100);
+          aspect-ratio: 16/9;
+          max-height: 480px;
         }
         .article-detail-img {
           width: 100%;
-          height: auto;
-          max-height: 550px;
-          object-fit: contain;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
           display: block;
         }
         .article-detail-overlay {
@@ -416,15 +418,16 @@ export function BlogPostView({ post, isDbPost, headings = [], displayDate, displ
           line-height: 1.25 !important;
         }
 
-        .article-detail-body h2:not([style*="color"]) {
-          color: #2CA65A !important;
-        }
-        .article-detail-body h2 {
+        .article-detail-body h2,
+        .article-detail-body h2 * {
           font-family: 'Jost', var(--font-jost), sans-serif !important;
           font-size: 16px !important;
           font-weight: 700 !important;
-          color: #2CA65A !important;
+          color: #1a8b4c !important;
+        }
+        .article-detail-body h2 {
           text-decoration: underline !important;
+          text-decoration-color: rgba(26, 139, 76, 0.6) !important;
           text-underline-offset: 4px;
           margin-top: 2rem !important;
           margin-bottom: 0.75rem !important;
@@ -433,28 +436,21 @@ export function BlogPostView({ post, isDbPost, headings = [], displayDate, displ
           scroll-margin-top: 120px !important;
           line-height: 1.375 !important;
         }
-        .article-detail-body h2 strong,
-        .article-detail-body h2 b {
-          color: inherit !important;
-          font-weight: inherit !important;
-        }
 
-        .article-detail-body h3 {
+        .article-detail-body h3,
+        .article-detail-body h3 * {
           font-family: 'Jost', var(--font-jost), sans-serif !important;
           font-size: 15px !important;
-          font-weight: 600 !important;
-          color: var(--neutral-dark) !important;
+          font-weight: 700 !important;
+          color: #030712 !important; /* gray-950 */
+        }
+        .article-detail-body h3 {
           margin-top: 1.75rem !important;
           margin-bottom: 0.5rem !important;
           line-height: 1.375 !important;
           border-bottom: none !important;
           padding-bottom: 0 !important;
           scroll-margin-top: 120px !important;
-        }
-        .article-detail-body h3 strong,
-        .article-detail-body h3 b {
-          color: inherit !important;
-          font-weight: inherit !important;
         }
 
         .article-detail-body h4 {
@@ -494,33 +490,40 @@ export function BlogPostView({ post, isDbPost, headings = [], displayDate, displ
           margin-bottom: 1rem !important;
           font-family: 'Jost', var(--font-jost), sans-serif;
         }
+        .article-detail-body li,
+        .article-detail-body li * {
+          font-weight: 500 !important;
+          color: #374151 !important;
+        }
         .article-detail-body li {
           font-size: var(--font-base);
-          font-weight: 400;
           line-height: 1.625;
-          color: #000000 !important;
           margin-bottom: 0.5rem !important;
         }
         .article-detail-body li::marker {
-          color: #000000 !important;
+          color: #374151 !important;
         }
         @media (max-width: 480px) {
           .article-detail-body li { font-size: var(--font-sm); line-height: 1.5; }
         }
 
         .article-detail-body strong,
-        .article-detail-body b {
+        .article-detail-body b,
+        .article-detail-body strong *,
+        .article-detail-body b * {
           font-weight: 700 !important;
         }
 
-        .article-detail-body a {
-          color: #2CA65A !important;
+        .article-detail-body a,
+        .article-detail-body a * {
+          color: #1a8b4c !important;
           font-weight: 700 !important;
           text-decoration: none !important;
           transition: color 0.15s ease;
         }
-        .article-detail-body a:hover {
-          color: #166534 !important;
+        .article-detail-body a:hover,
+        .article-detail-body a:hover * {
+          color: #15703d !important;
           text-decoration: underline !important;
         }
 

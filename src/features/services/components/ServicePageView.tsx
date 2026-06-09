@@ -51,9 +51,9 @@ export function ServicePageView({ page, remainingSubMenus, faqs, locationName = 
         <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-3 min-w-0 font-jost">
-              <h2 className="text-[25px] font-black text-[#22c55e] text-left mb-6 tracking-tight leading-tight break-words font-lexend underline underline-offset-8 decoration-[#22c55e]">
+              <h1 className="text-[22px] md:text-[24px] font-bold text-[#1a8b4c] text-left mb-6 tracking-tight leading-tight break-words font-lexend">
                 {page.contentTitle || `Professional ${page.title}`}
-              </h2>
+              </h1>
               
               {page.content && page.content.trim() !== "" && stripHtml(page.content).trim() !== "" ? (
                 <ExpandableContent htmlContent={page.content} maxHeight={300} />

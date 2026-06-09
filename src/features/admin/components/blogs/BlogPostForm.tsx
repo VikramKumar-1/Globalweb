@@ -527,7 +527,7 @@ export default function BlogPostForm({ post }: { post?: BlogPost }) {
               {/* Local styling for Admin Article Preview */}
               <style dangerouslySetInnerHTML={{__html: `
                 .admin-preview-content h1 {
-                  font-family: var(--font-lexend), sans-serif;
+                  font-family: var(--font-poppins), sans-serif;
                   font-size: 30px;
                   font-weight: 800;
                   color: #111827;
@@ -551,7 +551,7 @@ export default function BlogPostForm({ post }: { post?: BlogPost }) {
                   color: #2CA65A !important;
                 }
                 .admin-preview-content.prose h2 {
-                  font-family: var(--font-lexend), sans-serif !important;
+                  font-family: var(--font-poppins), sans-serif !important;
                   font-size: 24px !important;
                   font-weight: 700 !important;
                   margin-top: 32px !important;
@@ -577,7 +577,7 @@ export default function BlogPostForm({ post }: { post?: BlogPost }) {
 
                 /* Direct overrides for Tailwind prose to ensure H3 headings are dark and NOT underlined in preview */
                 .admin-preview-content.prose h3 {
-                  font-family: var(--font-lexend), sans-serif !important;
+                  font-family: var(--font-poppins), sans-serif !important;
                   font-size: 20px !important;
                   font-weight: 600 !important;
                   color: #1f2937 !important;
@@ -603,7 +603,7 @@ export default function BlogPostForm({ post }: { post?: BlogPost }) {
                 }
 
                 .admin-preview-content h4 {
-                  font-family: var(--font-lexend), sans-serif;
+                  font-family: var(--font-poppins), sans-serif;
                   font-size: 18px;
                   font-weight: 600;
                   color: #374151;

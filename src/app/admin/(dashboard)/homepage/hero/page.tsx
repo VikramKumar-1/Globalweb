@@ -85,7 +85,7 @@ export default function HeroSettingsPage() {
   };
 
   if (loading) {
-    return <div className="p-10 text-center text-gray-500 font-semibold font-lexend">Loading Hero Settings...</div>;
+    return <div className="p-10 text-center text-gray-500 font-semibold font-poppins">Loading Hero Settings...</div>;
   }
 
   return (
@@ -93,7 +93,7 @@ export default function HeroSettingsPage() {
       {toast && (
         <div className={`fixed top-4 right-4 md:top-8 md:right-8 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl shadow-xl border ${
           toast.type === 'success' ? 'bg-[#1a8b4c] text-white border-[#15703d]' : 'bg-red-600 text-white border-red-700'
-        } animate-in slide-in-from-top-2 fade-in duration-300 font-bold font-lexend`}>
+        } animate-in slide-in-from-top-2 fade-in duration-300 font-bold font-poppins`}>
           {toast.type === 'success' ? <CheckCircle2 size={20} /> : <XCircle size={20} />}
           <span className="text-sm tracking-wide">{toast.message}</span>
         </div>
@@ -101,7 +101,7 @@ export default function HeroSettingsPage() {
 
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-black text-gray-950 font-lexend flex items-center gap-2">
+        <h1 className="text-2xl font-black text-gray-950 font-poppins flex items-center gap-2">
           <Type className="text-[#1a8b4c]" /> Hero Banner Settings
         </h1>
         <p className="text-sm text-gray-500 mt-1">Configure typing texts and descriptions for your main root homepage hero banner.</p>
@@ -111,7 +111,7 @@ export default function HeroSettingsPage() {
       <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-bold text-gray-905 flex items-center gap-2 font-lexend">
+            <h2 className="text-lg font-bold text-gray-905 flex items-center gap-2 font-poppins">
               <Layout size={20} className="text-[#1a8b4c]" /> Main Homepage Typing Phrases
             </h2>
             <p className="text-xs text-gray-500 mt-1">These phrases show one by one sequentially with a typing effect on the root homepage main banner.</p>
@@ -119,14 +119,14 @@ export default function HeroSettingsPage() {
           <div className="flex items-center gap-3">
             <button
               onClick={addHeroText}
-              className="px-3.5 py-2 bg-green-50 text-[#1a8b4c] border border-[#BBE3CB] rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:bg-green-100 transition-colors font-lexend"
+              className="px-3.5 py-2 bg-green-50 text-[#1a8b4c] border border-[#BBE3CB] rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:bg-green-100 transition-colors font-poppins"
             >
               <Plus size={14} /> Add Phrase
             </button>
             <button
               onClick={handleSaveTypingTexts}
               disabled={saving}
-              className="bg-[#1a8b4c] hover:bg-[#157a41] text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm disabled:opacity-50 font-lexend"
+              className="bg-[#1a8b4c] hover:bg-[#157a41] text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm disabled:opacity-50 font-poppins"
             >
               <Save size={14} /> {saving ? 'Saving...' : 'Save Phrases'}
             </button>
@@ -190,7 +190,7 @@ export default function HeroSettingsPage() {
       <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
         <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
           <div>
-            <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2 font-lexend">
+            <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2 font-poppins">
               <Layout size={20} className="text-[#1a8b4c]" /> Main Homepage Description
             </h2>
             <p className="text-xs text-gray-500 mt-1">Customize the description sentence displayed under the typing banner on the main homepage.</p>
@@ -198,7 +198,7 @@ export default function HeroSettingsPage() {
           <button
             onClick={handleSaveHomepageDesc}
             disabled={savingDesc}
-            className="bg-[#1a8b4c] hover:bg-[#157a41] text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-md disabled:opacity-50 font-lexend text-xs"
+            className="bg-[#1a8b4c] hover:bg-[#157a41] text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-md disabled:opacity-50 font-poppins text-xs"
           >
             <Save size={16} /> {savingDesc ? 'Saving...' : 'Save Description'}
           </button>
@@ -206,7 +206,7 @@ export default function HeroSettingsPage() {
 
         <div className="space-y-4">
           <div>
-            <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2 font-lexend">Homepage Description (HTML Rich Text)</label>
+            <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2 font-poppins">Homepage Description (HTML Rich Text)</label>
             <RichTextInlineEditor
               placeholder="Main homepage hero description..."
               value={homepageDesc}

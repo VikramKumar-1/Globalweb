@@ -11,11 +11,16 @@ interface Props {
 }
 
 export default async function EditServicePage({ params }: Props) {
-  // Service slug starts with '/' in the database. Format it correctly.
-  const serviceSlug = `/${params.slug}`;
+  // Service slug might or might not start with '/' in the database. Try both.
+  const serviceSlug = params.slug;
 
-  const service = await db.servicePage.findUnique({
-    where: { slug: serviceSlug },
+  const service = await db.servicePage.findFirst({
+    where: {
+      OR: [
+        { slug: serviceSlug },
+        { slug: `/${serviceSlug}` }
+      ]
+    },
   });
 
   if (!service) {

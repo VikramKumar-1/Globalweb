@@ -3,7 +3,8 @@ import dynamic from 'next/dynamic';
 import Hero from '@/components/sections/Hero';
 import { db } from '@/lib/db';
 import { FAQSection } from '@/components/sections/FAQSection';
-import { getHomepageFaqs, getHeroTexts, getAboutSeo, getCityHeroSettings, getHomepageHeroDesc, getHomepageAboutCard } from '@/app/admin/(dashboard)/homepage/actions';
+import { getHomepageFaqs, getHeroTexts, getAboutSeo, getCityHeroSettings, getHomepageHeroDesc, getHomepageAboutCard, getSectionHeaders } from '@/app/admin/(dashboard)/homepage/actions';
+import { getSubdomainHomepageFaqs, getSubdomainHomepageHeroDesc, getSubdomainAboutSeo, getSubdomainHomepageAboutCard, getSubdomainSectionHeaders } from '@/app/admin/(dashboard)/subdomains/homepage/actions';
 
 import ServicesGrid from '@/components/sections/ServicesGrid';
 import Portfolio from '@/components/sections/Portfolio';
@@ -28,7 +29,7 @@ function replaceLocation(text: string, loc: string = ""): string {
   return text.replace(spanRegex, loc).replace(rawRegex, loc);
 }
 
-export default async function HomeView({ city, cityKey }: { city?: string; cityKey?: string } = {}) {
+export default async function HomeView({ city, cityKey, location, subdomainContent }: { city?: string; cityKey?: string; location?: string; subdomainContent?: any } = {}) {
   let dbPosts: any[] = [];
 
   try {
@@ -43,46 +44,35 @@ export default async function HomeView({ city, cityKey }: { city?: string; cityK
 
   let homepageFaqs = [];
   let heroTexts: string[] = [];
-  try {
-    homepageFaqs = await getHomepageFaqs();
-  } catch (e) {
-    console.error("Could not fetch FAQs:", e);
-  }
-
-  try {
-    heroTexts = await getHeroTexts();
-  } catch (e) {
-    console.error("Could not fetch hero texts:", e);
-  }
-
+  let homepageHeroTitle = "";
   let homepageHeroDesc = "";
-  try {
-    homepageHeroDesc = await getHomepageHeroDesc();
-  } catch (e) {
-    console.error("Could not fetch homepage hero description:", e);
-  }
-
-  let cityHeroSettings = null;
-  if (cityKey) {
-    try {
-      cityHeroSettings = await getCityHeroSettings(cityKey);
-    } catch (e) {
-      console.error("Could not fetch city hero settings:", e);
-    }
-  }
-
   let aboutSeoData = null;
-  try {
-    aboutSeoData = await getAboutSeo();
-  } catch (e) {
-    console.error("Could not fetch AboutSEO data:", e);
-  }
-
   let aboutCard: any = null;
-  try {
-    aboutCard = await getHomepageAboutCard();
-  } catch (e) {
-    console.error("Could not fetch about card:", e);
+  let sectionHeaders: any = null;
+
+  if (location || subdomainContent) {
+    try {
+      homepageFaqs = await getSubdomainHomepageFaqs();
+      const heroData = await getSubdomainHomepageHeroDesc();
+      homepageHeroTitle = heroData.title;
+      homepageHeroDesc = heroData.description;
+      aboutSeoData = await getSubdomainAboutSeo();
+      aboutCard = await getSubdomainHomepageAboutCard();
+      sectionHeaders = await getSubdomainSectionHeaders();
+    } catch (e) {
+      console.error("Could not fetch subdomain homepage settings:", e);
+    }
+  } else {
+    try {
+      homepageFaqs = await getHomepageFaqs();
+      heroTexts = await getHeroTexts();
+      homepageHeroDesc = await getHomepageHeroDesc();
+      aboutSeoData = await getAboutSeo();
+      aboutCard = await getHomepageAboutCard();
+      sectionHeaders = await getSectionHeaders();
+    } catch (e) {
+      console.error("Could not fetch global homepage settings:", e);
+    }
   }
 
   // Load and process location for descriptions for ServicesGrid from database
@@ -102,7 +92,46 @@ export default async function HomeView({ city, cityKey }: { city?: string; cityK
     console.error("Could not fetch service descriptions:", e);
   }
 
-  const locationName = city || "";
+  // Apply Location Replacements
+  const locationName = location || city || "";
+
+  if (locationName) {
+    homepageHeroTitle = replaceLocation(homepageHeroTitle, locationName);
+    homepageHeroDesc = replaceLocation(homepageHeroDesc, locationName);
+    
+    if (aboutSeoData) {
+      aboutSeoData = {
+        title: replaceLocation(aboutSeoData.title, locationName),
+        subtitle: replaceLocation(aboutSeoData.subtitle, locationName),
+        content: replaceLocation(aboutSeoData.content, locationName)
+      };
+    }
+    
+    if (aboutCard) {
+      aboutCard = {
+        ...aboutCard,
+        title: replaceLocation(aboutCard.title, locationName),
+        content: replaceLocation(aboutCard.content, locationName)
+      };
+    }
+
+    if (sectionHeaders) {
+      for (const key of Object.keys(sectionHeaders)) {
+        if (sectionHeaders[key]) {
+          sectionHeaders[key].title = replaceLocation(sectionHeaders[key].title, locationName);
+          sectionHeaders[key].description = replaceLocation(sectionHeaders[key].description, locationName);
+        }
+      }
+    }
+
+    // Overrides from subdomain content if needed
+    if (subdomainContent?.title) {
+      homepageHeroTitle = replaceLocation(subdomainContent.title, locationName);
+    }
+    if (subdomainContent?.heroDescription) {
+      homepageHeroDesc = replaceLocation(subdomainContent.heroDescription, locationName);
+    }
+  }
 
   const processedPosts = dbPosts.map(p => ({
     ...p,
@@ -124,24 +153,23 @@ export default async function HomeView({ city, cityKey }: { city?: string; cityK
       </div>
 
       {/* New Hero Section Component */}
-      <Hero city={city} heroTexts={heroTexts} cityHeroSettings={cityHeroSettings} homepageHeroDesc={homepageHeroDesc} />
+      <Hero city={locationName} heroTexts={heroTexts} homepageHeroTitle={homepageHeroTitle} homepageHeroDesc={homepageHeroDesc} />
 
       <div className="space-y-0">
         {/* New Services Grid Section */}
-        <ServicesGrid cityKey={cityKey} dynamicDescriptions={serviceDescriptions} />
+        <ServicesGrid cityKey={cityKey} dynamicDescriptions={serviceDescriptions} location={locationName} sectionTitle={sectionHeaders?.services?.title} sectionDesc={sectionHeaders?.services?.description} />
 
-        <Portfolio />
+        <Portfolio sectionTitle={sectionHeaders?.portfolio?.title} sectionDesc={sectionHeaders?.portfolio?.description} />
 
-        <TechStack />
+        <TechStack sectionTitle={sectionHeaders?.techStack?.title} sectionDesc={sectionHeaders?.techStack?.description} />
 
-        <LatestBlog dbPosts={processedPosts} />
+        <LatestBlog dbPosts={processedPosts} sectionTitle={sectionHeaders?.latestBlog?.title} sectionDesc={sectionHeaders?.latestBlog?.description} />
 
         <ResultsSection cardData={aboutCard} />
 
-        {!cityKey && <AboutSEO data={aboutSeoData} />}
-        <TrustSection />
-        
-        {homepageFaqs.length > 0 && <FAQSection faqs={homepageFaqs} />}
+        {(!cityKey || subdomainContent) && <AboutSEO data={aboutSeoData} />}
+        <TrustSection sectionTitle={sectionHeaders?.trust?.title} sectionDesc={sectionHeaders?.trust?.description} />
+        {homepageFaqs.length > 0 && <FAQSection faqs={homepageFaqs} sectionTitle={sectionHeaders?.faq?.title} sectionDesc={sectionHeaders?.faq?.description} />}
       </div>
 
     </div>

@@ -71,7 +71,7 @@ const techStack = [
   }
 ];
 
-export default function TechStack() {
+export default function TechStack({ sectionTitle, sectionDesc }: { sectionTitle?: string; sectionDesc?: string }) {
   return (
     <Section id="tech-stack" variant="dark" className="bg-gradient-to-br from-[#064e3b] to-[#022c22] relative overflow-hidden font-sans border-t border-[#064e3b]">
       {/* Decorative liquid glass lighting */}
@@ -92,12 +92,26 @@ export default function TechStack() {
             </span>
             Powering Innovation
           </motion.span>
-          <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight tracking-tight mb-4">
-            Our <span className="text-[#1cb05b]">Cutting-Edge</span> Tech Stack
-          </h2>
-          <p className="text-gray-400 text-[13px] md:text-[15px] font-medium mx-auto lg:whitespace-nowrap">
-            We use the most powerful and modern technologies to build scalable, high-performance digital solutions for your business.
-          </p>
+          {sectionTitle ? (
+            <h2 
+              className="text-[28px] md:text-[36px] font-bold text-white leading-tight tracking-tight mb-4"
+              dangerouslySetInnerHTML={{ __html: sectionTitle }}
+            />
+          ) : (
+            <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight tracking-tight mb-4">
+              Our <span className="text-[#1cb05b]">Cutting-Edge</span> Tech Stack
+            </h2>
+          )}
+          {sectionDesc ? (
+            <p 
+              className="text-gray-400 text-[13px] md:text-[15px] font-medium mx-auto lg:whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: sectionDesc }}
+            />
+          ) : (
+            <p className="text-gray-400 text-[13px] md:text-[15px] font-medium mx-auto lg:whitespace-nowrap">
+              We use the most powerful and modern technologies to build scalable, high-performance digital solutions for your business.
+            </p>
+          )}
         </div>
 
         {/* Tech Grid */}

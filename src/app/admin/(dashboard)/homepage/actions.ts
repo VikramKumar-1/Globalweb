@@ -335,3 +335,41 @@ export async function saveHomepageAboutCard(data: { title: string; content: stri
     return { success: false, error: error.message };
   }
 }
+
+// 8. Section Headers
+const defaultSectionHeaders = {
+  services: { title: "Our Premium Services", description: "Elevate your business with our top-tier digital solutions." },
+  portfolio: { title: "Our Digital Masterpieces", description: "A showcase of our best work and client successes." },
+  techStack: { title: "Our Technology Arsenal", description: "We use the latest technology stack to build robust and scalable solutions." },
+  latestBlog: { title: "Digital Insights & Strategies", description: "Stay ahead of the curve with our latest articles and news." },
+  trust: { title: "Why Leading Brands Trust Us", description: "We deliver results that matter to your bottom line." },
+  faq: { title: "Frequently Asked Questions", description: "Everything you need to know about our services." }
+};
+
+export async function getSectionHeaders() {
+  try {
+    const setting = await db.siteSetting.findUnique({ where: { key: 'homepageSectionHeaders' } });
+    if (setting) return { ...defaultSectionHeaders, ...JSON.parse(setting.value) };
+    return defaultSectionHeaders;
+  } catch (error) {
+    console.error("Failed to read homepage section headers", error);
+    return defaultSectionHeaders;
+  }
+}
+
+export async function saveSectionHeaders(headers: any) {
+  try {
+    await requireAdmin();
+    const value = JSON.stringify(headers);
+    await db.siteSetting.upsert({
+      where: { key: 'homepageSectionHeaders' },
+      update: { value },
+      create: { key: 'homepageSectionHeaders', value }
+    });
+    revalidatePath('/');
+    return { success: true };
+  } catch (error: any) {
+    console.error("Failed to save homepage section headers", error);
+    return { success: false, error: error.message };
+  }
+}

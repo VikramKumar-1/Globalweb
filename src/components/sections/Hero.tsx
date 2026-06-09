@@ -312,12 +312,12 @@ const badges = [
 export default function Hero({ 
   city, 
   heroTexts = [], 
-  cityHeroSettings,
+  homepageHeroTitle,
   homepageHeroDesc
 }: { 
   city?: string; 
   heroTexts?: string[]; 
-  cityHeroSettings?: { title: string; description: string } | null;
+  homepageHeroTitle?: string;
   homepageHeroDesc?: string;
 }) {
   const [mounted, setMounted] = useState(false);
@@ -364,7 +364,7 @@ export default function Hero({
               <div className="min-h-[120px] md:min-h-[115px] flex items-start justify-start w-full overflow-visible">
                 <h1 
                   className="text-[32px] sm:text-3xl md:text-[38px] lg:text-[42px] font-extrabold md:font-black text-[#171717] leading-tight tracking-tight text-left font-sans font-lexend"
-                  dangerouslySetInnerHTML={{ __html: cityHeroSettings?.title || `Your Website Isn’t Bringing Leads—and It’s Costing You Business in <span class="text-[#1a8b4c]">${city}</span>` }}
+                  dangerouslySetInnerHTML={{ __html: homepageHeroTitle || `Your Website Isn’t Bringing Leads—and It’s Costing You Business in <span class="text-[#1a8b4c]">${city}</span>` }}
                 />
               </div>
             ) : (
@@ -375,7 +375,7 @@ export default function Hero({
               {city ? (
                 <div 
                   className="block city-hero-desc"
-                  dangerouslySetInnerHTML={{ __html: cityHeroSettings?.description || `We combine result-oriented Digital Marketing, modern Web Design, and branding strategies to help <span class="text-[#1a8b4c] font-bold">${city}</span> businesses stand out online and grow faster without wasted ad spend.` }}
+                  dangerouslySetInnerHTML={{ __html: homepageHeroDesc || `We combine result-oriented Digital Marketing, modern Web Design, and branding strategies to help <span class="text-[#1a8b4c] font-bold">${city}</span> businesses stand out online and grow faster without wasted ad spend.` }}
                 />
               ) : (
                 <div 

@@ -17,10 +17,11 @@ model BlogPost {
   isActive       Boolean  @default(true)
   seoTitle       String?  @db.VarChar(255)
   seoDescription String?  @db.VarChar(500)
-  seoKeywords    String?  @db.VarChar(255)
+  seoKeywords    String?  @db.Text
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
+  @@index([isActive, createdAt(sort: Desc)])
   @@map("blogpost")
 }
 
@@ -42,7 +43,7 @@ model ServicePage {
   title           String
   seoTitle        String?  @db.VarChar(255)
   seoDescription  String?  @db.VarChar(500)
-  seoKeywords     String?  @db.VarChar(255)
+  seoKeywords     String?  @db.Text
   content         String   @db.Text
   image           String?
   category        String
@@ -52,6 +53,8 @@ model ServicePage {
   contentTitle    String?  @db.VarChar(255)
   heroDescription String?  @db.VarChar(500)
 
+  @@index([category, isActive])
+  @@index([slug, isActive])
   @@map("servicepage")
 }
 
@@ -68,6 +71,21 @@ model SiteSetting {
   id    Int    @id @default(autoincrement())
   key   String @unique
   value String @db.LongText
-  
+
   @@map("sitesetting")
+}
+
+model SubdomainContent {
+  id              Int      @id @default(autoincrement())
+  pageType        String   @unique
+  title           String?
+  heroTitle       String?  @db.VarChar(255)
+  heroDescription String?  @db.VarChar(500)
+  seoTitle        String?  @db.VarChar(255)
+  seoDescription  String?  @db.VarChar(500)
+  seoKeywords     String?  @db.Text
+  content         String   @db.Text
+  updatedAt       DateTime @updatedAt
+
+  @@map("subdomaincontent")
 }

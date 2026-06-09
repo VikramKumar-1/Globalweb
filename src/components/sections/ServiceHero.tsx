@@ -79,7 +79,7 @@ export default function ServiceHero({ title, description, city }: ServiceHeroPro
           {/* Heading */}
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-black font-heading text-gray-950 uppercase leading-tight tracking-wide mb-4 w-full break-all md:break-words">
             <span className="text-purple-700">{mainTitle}</span>
-            {locationPart && <span className="text-gray-950"> {locationPart}</span>}
+            {locationPart && <span className="text-purple-700"> {locationPart}</span>}
           </h1>
 
           {/* Description */}

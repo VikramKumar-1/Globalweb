@@ -132,3 +132,21 @@ Check the render method of `ContentEditor`.
     at setStatus (http://localhost:3001/_next/static/chunks/webpack.js?v=1780041660927:508:55)
     at http://localhost:3001/_next/static/chunks/webpack.js?v=1780041660927:678:21
 ====================
+
+=== ERROR REPORT ===
+Time: 2026-06-05T06:58:14.248Z
+Message: getSubdomainContent is not defined
+Digest: 222357742
+Stack Trace:
+ReferenceError: getSubdomainContent is not defined
+    at CityServicePage (webpack-internal:///(rsc)/./src/app/[slug]/[serviceSlug]/page.tsx:136:24)
+====================
+
+=== ERROR REPORT ===
+Time: 2026-06-05T06:58:14.252Z
+Message: getSubdomainContent is not defined
+Digest: 222357742
+Stack Trace:
+ReferenceError: getSubdomainContent is not defined
+    at CityServicePage (webpack-internal:///(rsc)/./src/app/[slug]/[serviceSlug]/page.tsx:136:24)
+====================

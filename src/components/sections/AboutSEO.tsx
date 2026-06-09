@@ -57,59 +57,76 @@ export default function AboutSEO({ data }: AboutSEOProps) {
           />
 
           <style dangerouslySetInnerHTML={{__html: `
+            .about-seo-content h1, .about-seo-content h1 * {
+              font-size: 1.75rem !important;
+              font-weight: 800 !important;
+              color: #111827 !important;
+            }
             .about-seo-content h1 {
-              font-size: 1.75rem;
-              font-weight: 800;
-              color: #111827;
-              margin-top: 1.5rem;
-              margin-bottom: 0.75rem;
-              line-height: 1.25;
+              margin-top: 1.5rem !important;
+              margin-bottom: 0.75rem !important;
+              line-height: 1.25 !important;
+            }
+            .about-seo-content h2, .about-seo-content h2 * {
+              font-size: 1.5rem !important;
+              font-weight: 800 !important;
+              color: #1a8b4c !important;
             }
             .about-seo-content h2 {
-              font-size: 1.5rem;
-              font-weight: 800;
-              color: #111827;
-              margin-top: 1.25rem;
-              margin-bottom: 0.75rem;
-              line-height: 1.35;
+              margin-top: 1.25rem !important;
+              margin-bottom: 0.75rem !important;
+              line-height: 1.35 !important;
+              text-decoration: underline !important;
+              text-underline-offset: 4px;
+              text-decoration-color: rgba(26, 139, 76, 0.6) !important;
+            }
+            .about-seo-content h3, .about-seo-content h3 * {
+              font-size: 1.25rem !important;
+              font-weight: 700 !important;
+              color: #030712 !important;
             }
             .about-seo-content h3 {
-              font-size: 1.25rem;
-              font-weight: 700;
-              color: #111827;
-              margin-top: 1rem;
-              margin-bottom: 0.5rem;
-              line-height: 1.4;
+              margin-top: 1rem !important;
+              margin-bottom: 0.5rem !important;
+              line-height: 1.4 !important;
             }
             .about-seo-content blockquote {
-              border-left: 4px solid #1a8b4c;
-              padding-left: 1rem;
-              margin: 1.5rem 0;
-              color: #4b5563;
-              font-style: italic;
-              background-color: #f3f4f6;
-              padding-top: 0.5rem;
-              padding-bottom: 0.5rem;
-              border-radius: 0 4px 4px 0;
+              border-left: 4px solid #1a8b4c !important;
+              padding-left: 1rem !important;
+              margin: 1.5rem 0 !important;
+              color: #4b5563 !important;
+              font-style: italic !important;
+              background-color: #f3f4f6 !important;
+              padding-top: 0.5rem !important;
+              padding-bottom: 0.5rem !important;
+              border-radius: 0 4px 4px 0 !important;
             }
             .about-seo-content ul {
-              list-style-type: disc;
-              padding-left: 1.5rem;
-              margin-bottom: 1rem;
+              list-style-type: disc !important;
+              padding-left: 1.5rem !important;
+              margin-bottom: 1rem !important;
             }
             .about-seo-content ol {
-              list-style-type: decimal;
-              padding-left: 1.5rem;
-              margin-bottom: 1rem;
+              list-style-type: decimal !important;
+              padding-left: 1.5rem !important;
+              margin-bottom: 1rem !important;
             }
-            .about-seo-content a {
+            .about-seo-content li, .about-seo-content li * {
+              font-weight: 500 !important;
+              color: #374151 !important;
+            }
+            .about-seo-content a, .about-seo-content a * {
               color: #1a8b4c !important;
-              text-decoration: underline !important;
-              font-weight: 750;
+              text-decoration: none !important;
+              font-weight: 750 !important;
             }
-            .about-seo-content strong {
+            .about-seo-content a:hover, .about-seo-content a:hover * {
+              color: #15703d !important;
+              text-decoration: underline !important;
+            }
+            .about-seo-content strong, .about-seo-content b, .about-seo-content strong *, .about-seo-content b * {
               font-weight: 800 !important;
-              color: #111827;
+              color: #111827 !important;
             }
           `}} />
 

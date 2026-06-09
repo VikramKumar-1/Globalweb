@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { v2 as cloudinary } from 'cloudinary';
+import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
-import fs from 'fs';
-import sharp from 'sharp';
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,32 +26,47 @@ export async function POST(request: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Define public/uploads directory path
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-    
-    // Ensure directory exists
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
+    // Check if we should use local storage instead of Cloudinary
+    if (process.env.STORAGE_PROVIDER === 'local') {
+      const filename = `${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
+      const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+      
+      // Ensure the uploads directory exists
+      try {
+        await mkdir(uploadDir, { recursive: true });
+      } catch (err) {
+        // Ignore if directory already exists
+      }
+
+      const filePath = path.join(uploadDir, filename);
+      await writeFile(filePath, buffer);
+
+      return NextResponse.json({
+        success: true,
+        url: `/uploads/${filename}`,
+      });
     }
 
-    // Sanitize and create a unique file name, forcing .webp extension
-    const baseName = file.name.substring(0, file.name.lastIndexOf('.')).replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
-    const uniqueFilename = `${Date.now()}-${baseName || 'image'}.webp`;
-    const filePath = path.join(uploadDir, uniqueFilename);
+    // Default: Upload to Cloudinary using a stream
+    const result: any = await new Promise((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        { 
+          folder: 'global-weblify/uploads', // Places images in this specific folder
+        },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      );
+      
+      // End the stream with the buffer
+      uploadStream.end(buffer);
+    });
 
-    // Process image with Sharp: Resize max width to 1600px, compress to WebP at 80% quality
-    await sharp(buffer)
-      .resize({
-        width: 1600,
-        withoutEnlargement: true, // Don't scale up smaller images
-      })
-      .webp({ quality: 80, effort: 4 })
-      .toFile(filePath);
-
-    // Return the URL path to access it
+    // Return the secure URL from Cloudinary
     return NextResponse.json({
       success: true,
-      url: `/uploads/${uniqueFilename}`,
+      url: result.secure_url,
     });
   } catch (error) {
     console.error('Upload Error:', error);
@@ -54,3 +76,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+

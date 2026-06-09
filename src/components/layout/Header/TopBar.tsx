@@ -70,24 +70,24 @@ export const TopBar = ({ isOpen, setIsOpen }: TopBarProps) => {
         {/* RIGHT: Contacts, Desktop Socials, and Hamburger */}
         <div className="flex items-center gap-2 md:gap-4 z-10 h-full">
           {/* Desktop & Tablet Contacts */}
-          <div className="hidden md:flex items-center gap-3 xl:gap-5 text-[11px] xl:text-[12.8px] font-medium text-gray-700 tracking-tight mr-2 xl:mr-4 font-sans">
-            <a href={`tel:${TOP_BAR_CONTACT.phone1}`} className="flex items-center gap-1.5 hover:text-primary transition-colors group">
-              <div className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-pink-50 flex items-center justify-center text-pink-500 shadow-sm border border-pink-100 group-hover:bg-pink-100 transition-colors">
+          <div className="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-5 text-[11px] xl:text-[12.8px] font-medium text-gray-700 tracking-tight mr-1 lg:mr-2 xl:mr-4 font-sans whitespace-nowrap shrink-0">
+            <a href={`tel:${TOP_BAR_CONTACT.phone1}`} className="flex items-center gap-1 xl:gap-1.5 hover:text-primary transition-colors group whitespace-nowrap shrink-0">
+              <div className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 rounded-full bg-pink-50 flex items-center justify-center text-pink-500 shadow-sm border border-pink-100 group-hover:bg-pink-100 transition-colors shrink-0">
                 <Phone size={10} className="xl:w-3 xl:h-3" fill="currentColor" />
               </div>
-              <span className="font-sans">{TOP_BAR_CONTACT.phone1}</span>
+              <span className="font-sans whitespace-nowrap">{TOP_BAR_CONTACT.phone1}</span>
             </a>
-            <a href={`tel:${TOP_BAR_CONTACT.phone2}`} className="hidden lg:flex items-center gap-1.5 hover:text-primary transition-colors group">
-              <div className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-pink-50 flex items-center justify-center text-pink-500 shadow-sm border border-pink-100 group-hover:bg-pink-100 transition-colors">
+            <a href={`tel:${TOP_BAR_CONTACT.phone2}`} className="hidden lg:flex items-center gap-1 xl:gap-1.5 hover:text-primary transition-colors group whitespace-nowrap shrink-0">
+              <div className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 rounded-full bg-pink-50 flex items-center justify-center text-pink-500 shadow-sm border border-pink-100 group-hover:bg-pink-100 transition-colors shrink-0">
                 <Phone size={10} className="xl:w-3 xl:h-3" fill="currentColor" />
               </div>
-              <span className="font-sans">{TOP_BAR_CONTACT.phone2}</span>
+              <span className="font-sans whitespace-nowrap">{TOP_BAR_CONTACT.phone2}</span>
             </a>
-            <a href={`mailto:${TOP_BAR_CONTACT.email}`} className="hidden lg:flex items-center gap-1.5 hover:text-primary transition-colors group">
-              <div className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 shadow-sm border border-purple-100 group-hover:bg-purple-100 transition-colors">
+            <a href={`mailto:${TOP_BAR_CONTACT.email}`} className="hidden lg:flex items-center gap-1 xl:gap-1.5 hover:text-primary transition-colors group whitespace-nowrap shrink-0">
+              <div className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 shadow-sm border border-purple-100 group-hover:bg-purple-100 transition-colors shrink-0">
                 <Mail size={10} className="xl:w-3 xl:h-3" fill="currentColor" />
               </div>
-              <span className="lowercase font-sans">{TOP_BAR_CONTACT.email}</span>
+              <span className="lowercase font-sans whitespace-nowrap">{TOP_BAR_CONTACT.email}</span>
             </a>
           </div>
 

@@ -8,6 +8,8 @@ import { CityLandingView } from '@/features/services/components/CityLandingView'
 import { parseFaqs } from '@/features/services/utils/faq-parser';
 import { getCitySeo } from '@/app/admin/(dashboard)/homepage/actions';
 import { CITIES_MAP } from '@/features/services/constants/cities';
+import { getSubdomainLocation } from '@/lib/subdomain';
+import { getSubdomainContent } from '@/app/admin/(dashboard)/subdomains/actions';
 
 export const revalidate = 3600; // Cache page and revalidate at most every hour or on-demand
 
@@ -35,10 +37,20 @@ export async function generateStaticParams() {
 // ---------- Metadata ----------
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const rawSlug = params?.slug || '';
-
+  
   // City landing page metadata
   const cityInfo = rawSlug ? CITIES_MAP[rawSlug.toLowerCase()] : null;
   if (cityInfo) {
+    const locationName = cityInfo.name;
+    const subContent = await getSubdomainContent('homepage');
+    if (subContent) {
+      return {
+        title: replaceLocation(subContent.seoTitle || '', locationName) || `Best Web Development & Digital Marketing Services in ${locationName} | GlobalWebify`,
+        description: replaceLocation(subContent.seoDescription || '', locationName),
+        keywords: `Web Development ${locationName}, SEO ${locationName}, Digital Marketing ${locationName}`,
+      };
+    }
+
     try {
       const citySeo = await getCitySeo(rawSlug.toLowerCase());
       return {
@@ -49,13 +61,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     } catch (error) {
       console.error("Failed to load city SEO metadata:", error);
       return {
-        title: `Best Web Development & Digital Marketing Services in ${cityInfo.name} | GlobalWebify`,
-        description: `Explore GlobalWebify's professional web development, SEO, digital marketing, and branding services in ${cityInfo.name}. Custom solutions tailored to your local market.`,
+        title: `Best Web Development & Digital Marketing Services in ${locationName} | GlobalWebify`,
+        description: `Explore GlobalWebify's professional web development, SEO, digital marketing, and branding services in ${locationName}. Custom solutions tailored to your local market.`,
       };
     }
   }
 
-  // Service page metadata
+  // Service page metadata (Fallback for non-city pages)
   try {
     const slugsToTry = [rawSlug, `/${rawSlug}`];
     const page = await db.servicePage.findFirst({
@@ -81,7 +93,8 @@ export default async function DynamicPage({ params }: Props) {
   // ===== CITY LANDING PAGE =====
   const cityInfo = rawSlug ? CITIES_MAP[rawSlug.toLowerCase()] : null;
   if (cityInfo) {
-    return <CityLandingView cityKey={rawSlug.toLowerCase()} cityInfo={cityInfo} />;
+    const subContent = await getSubdomainContent('homepage');
+    return <CityLandingView cityKey={rawSlug.toLowerCase()} cityInfo={cityInfo} subdomainContent={subContent || undefined} />;
   }
 
   // ===== SERVICE PAGE =====

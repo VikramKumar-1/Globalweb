@@ -54,7 +54,7 @@ export default function AdminLoginPage() {
             <img src="/global_webify_logo.png" alt="GlobalWebify Logo" className="w-full h-full object-contain" />
           </div>
 
-          <h1 className="text-2xl font-black text-white tracking-tight mb-2 uppercase font-lexend">
+          <h1 className="text-2xl font-black text-white tracking-tight mb-2 uppercase font-poppins">
             Admin CMS Panel
           </h1>
           <p className="text-gray-400 text-xs font-semibold tracking-wider uppercase mb-8">

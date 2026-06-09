@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Lexend, Jost } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import MobileStickyNav from "@/components/layout/MobileStickyNav";
-import BreadcrumbWrapper from "@/components/ui/BreadcrumbWrapper";
+// Removed unused direct imports of Header, Footer, MobileStickyNav, and BreadcrumbWrapper since they are now handled by PublicLayoutWrapper or imported further down
 import NextTopLoader from 'nextjs-toploader';
 
 const poppins = Poppins({ 
@@ -31,17 +28,14 @@ export const metadata: Metadata = {
   keywords: "Web Development, SEO, Digital Marketing, AI Solutions, GlobalWebify",
 };
 
-import { headers } from 'next/headers';
+import PublicLayoutWrapper from "@/components/layout/PublicLayoutWrapper";
+import BreadcrumbWrapper from "@/components/ui/BreadcrumbWrapper";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
-  const pathname = headersList.get('x-pathname') || '';
-  const isAdmin = pathname.startsWith('/admin');
-
   return (
     <html lang="en" className={`${poppins.variable} ${lexend.variable} ${jost.variable}`}>
       <body className={`${jost.className} font-sans bg-white text-gray-900 antialiased overflow-x-hidden`}>
@@ -57,11 +51,9 @@ export default function RootLayout({
           shadow="0 0 10px #1a8b4c,0 0 5px #1a8b4c"
           zIndex={1600000}
         />
-        {!isAdmin && <Header />}
-        {!isAdmin && <BreadcrumbWrapper />}
-        <main>{children}</main>
-        {!isAdmin && <Footer />}
-        {!isAdmin && <MobileStickyNav />}
+        <PublicLayoutWrapper breadcrumb={<BreadcrumbWrapper />}>
+          {children}
+        </PublicLayoutWrapper>
       </body>
     </html>
   );

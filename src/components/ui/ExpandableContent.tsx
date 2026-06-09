@@ -43,13 +43,14 @@ export function ExpandableContent({
             [&_strong]:!font-bold [&_strong]:text-gray-900
             [&_b]:!font-bold [&_b]:text-gray-900
             [&_li]:text-gray-600 [&_li]:mb-1.5 [&_li]:leading-[1.7] [&_li]:list-item
-            [&_h1]:text-2xl md:text-3xl [&_h1]:font-black [&_h1]:text-gray-900 [&_h1]:mb-4 [&_h1]:mt-8 [&_h1]:leading-tight
-            [&_h2]:text-xl md:text-2xl [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:leading-snug
-            [&_h3]:text-lg md:text-xl [&_h3]:font-bold [&_h3]:text-gray-900 [&_h3]:mb-2 [&_h3]:mt-5
-            [&_h4]:text-base md:text-lg [&_h4]:font-bold [&_h4]:text-gray-900 [&_h4]:mb-2 [&_h4]:mt-4
-            [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:space-y-1 [&_ul]:text-left
-            [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol]:space-y-1 [&_ol]:text-left
-            [&_a]:!text-[#2CA65A] [&_a]:!font-bold [&_a]:!no-underline hover:[&_a]:!text-[#166534] hover:[&_a]:!underline
+            [&_h1]:text-2xl md:[&_h1]:text-3xl [&_h1]:font-black [&_h1]:!text-gray-900 [&_h1_*]:!text-gray-900 [&_h1]:mb-4 [&_h1]:mt-8 [&_h1]:leading-tight
+            [&_h2]:text-xl md:[&_h2]:text-2xl [&_h2]:font-bold [&_h2]:!text-[#1a8b4c] [&_h2_*]:!text-[#1a8b4c] [&_h2]:underline [&_h2]:underline-offset-4 [&_h2]:decoration-[#1a8b4c]/60 [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:leading-snug
+            [&_h3]:text-lg md:[&_h3]:text-xl [&_h3]:font-bold [&_h3]:!text-gray-950 [&_h3_*]:!text-gray-950 [&_h3]:mb-2 [&_h3]:mt-5
+            [&_h4]:text-base md:[&_h4]:text-lg [&_h4]:font-bold [&_h4]:!text-gray-900 [&_h4_*]:!text-gray-900 [&_h4]:mb-2 [&_h4]:mt-4
+            [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:space-y-1.5 [&_ul]:text-left
+            [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol]:space-y-1.5 [&_ol]:text-left
+            [&_li]:text-gray-700 [&_li]:font-[500] [&_li]:mb-1.5 [&_li]:leading-[1.7] [&_li]:list-item
+            [&_a]:!text-[#1a8b4c] [&_a_*]:!text-[#1a8b4c] [&_a]:!font-bold [&_a]:!no-underline hover:[&_a]:!text-[#15703d] hover:[&_a_*]:!text-[#15703d] hover:[&_a]:!underline
             [&_blockquote]:border-l-4 [&_blockquote]:border-gray-200 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-500 [&_blockquote]:my-4
           "
           dangerouslySetInnerHTML={{ __html: htmlContent }}

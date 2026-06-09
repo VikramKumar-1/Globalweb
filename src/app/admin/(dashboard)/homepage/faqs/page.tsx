@@ -67,7 +67,7 @@ export default function FaqsSettingsPage() {
   };
 
   if (loading) {
-    return <div className="p-10 text-center text-gray-500 font-semibold font-lexend">Loading FAQ Settings...</div>;
+    return <div className="p-10 text-center text-gray-500 font-semibold font-poppins">Loading FAQ Settings...</div>;
   }
 
   return (
@@ -75,7 +75,7 @@ export default function FaqsSettingsPage() {
       {toast && (
         <div className={`fixed top-4 right-4 md:top-8 md:right-8 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl shadow-xl border ${
           toast.type === 'success' ? 'bg-[#1a8b4c] text-white border-[#15703d]' : 'bg-red-600 text-white border-red-700'
-        } animate-in slide-in-from-top-2 fade-in duration-300 font-bold font-lexend`}>
+        } animate-in slide-in-from-top-2 fade-in duration-300 font-bold font-poppins`}>
           {toast.type === 'success' ? <CheckCircle2 size={20} /> : <XCircle size={20} />}
           <span className="text-sm tracking-wide">{toast.message}</span>
         </div>
@@ -83,7 +83,7 @@ export default function FaqsSettingsPage() {
 
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-black text-gray-900 font-lexend flex items-center gap-2">
+          <h1 className="text-2xl font-black text-gray-900 font-poppins flex items-center gap-2">
             <HelpCircle className="text-[#1a8b4c]" /> FAQ Accordions
           </h1>
           <p className="text-sm text-gray-500 mt-1">Configure the frequently asked questions segment visible at the bottom of the homepage.</p>
@@ -91,7 +91,7 @@ export default function FaqsSettingsPage() {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="bg-[#1a8b4c] hover:bg-[#157a41] text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-md disabled:opacity-50 font-lexend"
+          className="bg-[#1a8b4c] hover:bg-[#157a41] text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-md disabled:opacity-50 font-poppins"
         >
           <Save size={18} /> {saving ? 'Saving...' : 'Save Settings'}
         </button>
@@ -105,7 +105,7 @@ export default function FaqsSettingsPage() {
           </div>
           <button
             onClick={addFaq}
-            className="px-3.5 py-2 bg-green-50 text-[#1a8b4c] border border-green-200 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:bg-green-100 transition-colors font-lexend"
+            className="px-3.5 py-2 bg-green-50 text-[#1a8b4c] border border-green-200 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:bg-green-100 transition-colors font-poppins"
           >
             <Plus size={14} /> Add FAQ
           </button>
@@ -137,7 +137,7 @@ export default function FaqsSettingsPage() {
               
               <div className="flex-1 space-y-3">
                 <div>
-                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1 font-lexend">
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1 font-poppins">
                     Question #{index + 1}
                   </label>
                   <input
@@ -149,7 +149,7 @@ export default function FaqsSettingsPage() {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1 font-lexend">
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1 font-poppins">
                     Answer
                   </label>
                   <textarea

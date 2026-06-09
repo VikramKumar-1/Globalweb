@@ -159,7 +159,15 @@ function ServiceCard({ service, index, cityKey, onOpenQuote }: { service: Servic
   );
 }
 
-export default function ServicesGrid({ cityKey, dynamicDescriptions }: { cityKey?: string, dynamicDescriptions?: Record<string, string> }) {
+interface ServicesGridProps {
+  cityKey?: string;
+  dynamicDescriptions?: Record<string, string>;
+  sectionTitle?: string;
+  sectionDesc?: string;
+  location?: string;
+}
+
+export default function ServicesGrid({ cityKey, dynamicDescriptions, sectionTitle, sectionDesc, location }: ServicesGridProps) {
   const [activeService, setActiveService] = useState<string | null>(null);
 
   const openQuoteModal = (serviceTitle: string) => {
@@ -192,13 +200,23 @@ export default function ServicesGrid({ cityKey, dynamicDescriptions }: { cityKey
         >
           Our Expertise
         </motion.div>
-        <h2 id="services-title" className="text-[24px] md:text-[32px] lg:text-[36px] font-bold text-gray-900 leading-[1.2] tracking-tight mb-4 font-heading px-2">
-          <span className="block xl:whitespace-nowrap">Is your business losing customers because of weak online platforms?</span>
-          <span className="text-[#1a8b4c]">We have the solution.</span>
-        </h2>
-        <p className="text-gray-500 text-[14px] md:text-[16px] font-medium mx-auto leading-relaxed xl:whitespace-nowrap px-4">
-          Explore our high-performance digital solutions designed for modern business growth and conversion.
-        </p>
+        
+        {sectionTitle ? (
+          <h2 id="services-title" className="text-[24px] md:text-[32px] lg:text-[36px] font-bold text-gray-900 leading-[1.2] tracking-tight mb-4 font-heading px-2" dangerouslySetInnerHTML={{ __html: sectionTitle }} />
+        ) : (
+          <h2 id="services-title" className="text-[24px] md:text-[32px] lg:text-[36px] font-bold text-gray-900 leading-[1.2] tracking-tight mb-4 font-heading px-2">
+            <span className="block xl:whitespace-nowrap">Is your business losing customers because of weak online platforms?</span>
+            <span className="text-[#1a8b4c]">We have the solution.</span>
+          </h2>
+        )}
+
+        {sectionDesc ? (
+          <p className="text-gray-500 text-[14px] md:text-[16px] font-medium mx-auto leading-relaxed xl:whitespace-nowrap px-4" dangerouslySetInnerHTML={{ __html: sectionDesc }} />
+        ) : (
+          <p className="text-gray-500 text-[14px] md:text-[16px] font-medium mx-auto leading-relaxed xl:whitespace-nowrap px-4">
+            Explore our high-performance digital solutions designed for modern business growth and conversion.
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12">

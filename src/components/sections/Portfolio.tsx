@@ -122,7 +122,7 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
   );
 };
 
-export default function Portfolio() {
+export default function Portfolio({ sectionTitle, sectionDesc }: { sectionTitle?: string; sectionDesc?: string }) {
   const logos = [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 14, 15];
 
   return (
@@ -143,24 +143,45 @@ export default function Portfolio() {
             <span className="text-[#1a8b4c] text-[12px] font-bold uppercase tracking-widest">Success Stories</span>
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[24px] md:text-[32px] lg:text-[36px] font-bold text-[#1a8b4c] leading-tight mb-6 tracking-tight font-heading xl:whitespace-nowrap"
-          >
-            Our Work Speaks for Itself
-          </motion.h2>
+          {sectionTitle ? (
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[24px] md:text-[32px] lg:text-[36px] font-bold text-[#1a8b4c] leading-tight mb-6 tracking-tight font-heading xl:whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: sectionTitle }}
+            />
+          ) : (
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[24px] md:text-[32px] lg:text-[36px] font-bold text-[#1a8b4c] leading-tight mb-6 tracking-tight font-heading xl:whitespace-nowrap"
+            >
+              Our Work Speaks for Itself
+            </motion.h2>
+          )}
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-600 text-[14px] md:text-[18px] font-medium lg:whitespace-nowrap"
-          >
-            We've successfully delivered <span className="text-[#1a8b4c] font-bold underline decoration-green-200 decoration-4 underline-offset-4">500+ live projects</span>. Explore how we help businesses win online.
-          </motion.p>
+          {sectionDesc ? (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-600 text-[14px] md:text-[18px] font-medium lg:whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: sectionDesc }}
+            />
+          ) : (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-600 text-[14px] md:text-[18px] font-medium lg:whitespace-nowrap"
+            >
+              We've successfully delivered <span className="text-[#1a8b4c] font-bold underline decoration-green-200 decoration-4 underline-offset-4">500+ live projects</span>. Explore how we help businesses win online.
+            </motion.p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-[1400px] mx-auto px-4">

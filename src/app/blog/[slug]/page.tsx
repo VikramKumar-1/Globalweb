@@ -88,9 +88,9 @@ export default async function BlogPostPage({ params }: Props) {
   if (post.summary) post.summary = replaceLocation(post.summary, locationName);
   if (post.seoTitle) post.seoTitle = replaceLocation(post.seoTitle, locationName);
   if (post.seoDescription) post.seoDescription = replaceLocation(post.seoDescription, locationName);
-  if (post.content) {
+  if (post.content && typeof post.content === 'string') {
     let content = replaceLocation(post.content, locationName);
-    content = content.replace(/<(h2|h3)([^>]*)>([\s\S]*?)<\/h[23]>/gi, (match, tag, attrs, innerHtml) => {
+    content = content.replace(/<(h2|h3)([^>]*)>([\s\S]*?)<\/h[23]>/gi, (match: string, tag: string, attrs: string, innerHtml: string) => {
       const text = innerHtml.replace(/<[^>]*>/g, '').trim();
       const slugId = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       const cleanAttrs = attrs.replace(/\bid\s*=\s*['"][^'"]*['"]/gi, '').trim();

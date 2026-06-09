@@ -16,7 +16,7 @@ const certificates = [
   "/Certificate7.avif",
 ];
 
-export default function TrustSection() {
+export default function TrustSection({ sectionTitle, sectionDesc }: { sectionTitle?: string; sectionDesc?: string }) {
   const [certIndex, setCertIndex] = useState(0);
 
   useEffect(() => {
@@ -38,12 +38,26 @@ export default function TrustSection() {
           <div className="inline-flex items-center gap-2 bg-green-50 text-[#1a8b4c] px-4 py-2 rounded-full text-[12px] font-black uppercase tracking-widest mb-4">
             <Award size={18} /> Accredited & Certified
           </div>
-          <h2 className="text-[28px] md:text-[36px] font-black text-gray-950 leading-tight lg:whitespace-nowrap">
-            Our Excellence <span className="text-[#1a8b4c]">Officially Certified</span>
-          </h2>
-          <p className="text-gray-500 mt-4 font-medium mx-auto lg:whitespace-nowrap">
-            We take pride in our industry-recognized certifications and proven digital framework that validate our commitment to quality and performance.
-          </p>
+          {sectionTitle ? (
+            <h2 
+              className="text-[28px] md:text-[36px] font-black text-gray-950 leading-tight lg:whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: sectionTitle }}
+            />
+          ) : (
+            <h2 className="text-[28px] md:text-[36px] font-black text-gray-950 leading-tight lg:whitespace-nowrap">
+              Our Excellence <span className="text-[#1a8b4c]">Officially Certified</span>
+            </h2>
+          )}
+          {sectionDesc ? (
+            <p 
+              className="text-gray-500 mt-4 font-medium mx-auto lg:whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: sectionDesc }}
+            />
+          ) : (
+            <p className="text-gray-500 mt-4 font-medium mx-auto lg:whitespace-nowrap">
+              We take pride in our industry-recognized certifications and proven digital framework that validate our commitment to quality and performance.
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">

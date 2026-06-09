@@ -8,6 +8,7 @@ import { MapPin } from 'lucide-react';
 import { ServicePageView } from '@/features/services/components/ServicePageView';
 import { CITIES_MAP } from '@/features/services/constants/cities';
 import { parseFaqs } from '@/features/services/utils/faq-parser';
+import { getSubdomainContent } from '@/app/admin/(dashboard)/subdomains/actions';
 
 export const revalidate = 3600; // Cache page and revalidate at most every hour or on-demand
 
@@ -45,6 +46,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
     if (!page) return {};
     const loc = cityInfo.name;
+
+    // Check Subdomain override
+    const subContent = await getSubdomainContent(raw);
+    if (subContent) {
+      return {
+        title: replaceLocation(subContent.seoTitle || page.seoTitle || page.title || '', loc),
+        description: replaceLocation(subContent.seoDescription || page.seoDescription || '', loc),
+        keywords: page.seoKeywords ? page.seoKeywords.split(',').map(k => replaceLocation(k, loc).trim()) : undefined,
+      };
+    }
+
     const title = replaceLocation(page.seoTitle || page.title || '', loc);
     const desc = replaceLocation(page.seoDescription || '', loc);
     return {
@@ -94,6 +106,17 @@ export default async function CityServicePage({ params }: Props) {
   }
 
   if (!rawPage) return notFound();
+
+  // Apply Subdomain Content Override
+  const subContent = await getSubdomainContent(raw);
+  if (subContent) {
+    if (subContent.title) rawPage.contentTitle = subContent.title;
+    if (subContent.heroTitle) rawPage.title = subContent.heroTitle;
+    if (subContent.seoTitle) rawPage.seoTitle = subContent.seoTitle;
+    if (subContent.seoDescription) rawPage.seoDescription = subContent.seoDescription;
+    if (subContent.heroDescription) rawPage.heroDescription = subContent.heroDescription;
+    if (subContent.content) rawPage.content = subContent.content;
+  }
 
   const { faqs, cleanedContent } = parseFaqs(rawPage.content ?? '', locationName);
 

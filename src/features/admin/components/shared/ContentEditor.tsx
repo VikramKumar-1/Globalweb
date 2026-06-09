@@ -717,7 +717,7 @@ export default function ContentEditor({ content, setContent, placeholder, isBlog
         /* HEADINGS — matching live page typography */
         .tiptap-editor-canvas h1,
         .tiptap h1 {
-          font-family: var(--font-lexend, 'Lexend', 'Inter', sans-serif);
+          font-family: var(--font-poppins, 'Lexend', 'Inter', sans-serif);
           font-size: 48px;
           font-weight: 800;
           color: #111827;
@@ -727,7 +727,7 @@ export default function ContentEditor({ content, setContent, placeholder, isBlog
         }
         .tiptap-editor-canvas h2,
         .tiptap h2 {
-          font-family: var(--font-lexend, 'Lexend', 'Inter', sans-serif);
+          font-family: var(--font-poppins, 'Lexend', 'Inter', sans-serif);
           font-size: 36px;
           font-weight: 700;
           color: #111827;
@@ -737,7 +737,7 @@ export default function ContentEditor({ content, setContent, placeholder, isBlog
         }
         .tiptap-editor-canvas h3,
         .tiptap h3 {
-          font-family: var(--font-lexend, 'Lexend', 'Inter', sans-serif);
+          font-family: var(--font-poppins, 'Lexend', 'Inter', sans-serif);
           font-size: 24px;
           font-weight: 600;
           color: #1f2937;
@@ -746,7 +746,7 @@ export default function ContentEditor({ content, setContent, placeholder, isBlog
         }
         .tiptap-editor-canvas h4,
         .tiptap h4 {
-          font-family: var(--font-lexend, 'Lexend', 'Inter', sans-serif);
+          font-family: var(--font-poppins, 'Lexend', 'Inter', sans-serif);
           font-size: 20px;
           font-weight: 600;
           color: #374151;
@@ -755,7 +755,7 @@ export default function ContentEditor({ content, setContent, placeholder, isBlog
         }
         .tiptap-editor-canvas h5,
         .tiptap h5 {
-          font-family: var(--font-lexend, 'Lexend', 'Inter', sans-serif);
+          font-family: var(--font-poppins, 'Lexend', 'Inter', sans-serif);
           font-size: 16px;
           font-weight: 600;
           color: #4b5563;
@@ -765,7 +765,7 @@ export default function ContentEditor({ content, setContent, placeholder, isBlog
         }
         .tiptap-editor-canvas h6,
         .tiptap h6 {
-          font-family: var(--font-lexend, 'Lexend', 'Inter', sans-serif);
+          font-family: var(--font-poppins, 'Lexend', 'Inter', sans-serif);
           font-size: 14px;
           font-weight: 600;
           color: #6b7280;

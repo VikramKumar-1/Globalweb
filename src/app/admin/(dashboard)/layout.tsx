@@ -29,16 +29,31 @@ export default async function AdminDashboardLayout({
   children: React.ReactNode;
 }) {
   // Auto-seed missing category pages for the admin panel
-  const SEED_CATEGORIES = ['seo-services', 'ai-seo-services', 'social-media-marketing', 'ppc-services'];
+  const SEED_CATEGORIES = ['/seo-services', '/ai-seo-services', '/social-media-marketing', '/ppc-services'];
   try {
     const existing = await db.servicePage.count({
-      where: { slug: { in: SEED_CATEGORIES } }
+      where: {
+        slug: {
+          in: [
+            ...SEED_CATEGORIES,
+            ...SEED_CATEGORIES.map(s => s.replace(/^\//, ''))
+          ]
+        }
+      }
     });
     if (existing < SEED_CATEGORIES.length) {
       for (const slug of SEED_CATEGORIES) {
-        const exists = await db.servicePage.findUnique({ where: { slug } });
+        const exists = await db.servicePage.findFirst({
+          where: {
+            OR: [
+              { slug },
+              { slug: slug.replace(/^\//, '') }
+            ]
+          }
+        });
         if (!exists) {
-          const title = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          const cleanSlug = slug.replace(/^\//, '');
+          const title = cleanSlug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
           await db.servicePage.create({
             data: {
               slug,
@@ -162,7 +177,7 @@ export default async function AdminDashboardLayout({
             />
           </div>
           <div>
-            <h2 className="text-[11px] font-black tracking-widest uppercase font-lexend text-white leading-none">
+            <h2 className="text-[11px] font-black tracking-widest uppercase font-poppins text-white leading-none">
               GlobalWebify
             </h2>
             <span className="text-[8px] text-gray-500 font-bold uppercase tracking-widest mt-1 block">
@@ -210,7 +225,7 @@ export default async function AdminDashboardLayout({
                 <ArrowLeft size={14} className="stroke-[2.5]" />
               </Link>
             )}
-            <h1 className="text-sm font-black text-gray-900 font-lexend uppercase tracking-wider">
+            <h1 className="text-sm font-black text-gray-900 font-poppins uppercase tracking-wider">
               {isOverview ? 'GlobalWebify Console' : isServices ? 'GlobalWebify Services Portal' : isBlogs ? 'GlobalWebify Blogs Portal' : isContacts ? 'GlobalWebify Contacts Portal' : isHomepage ? 'GlobalWebify Homepage Settings' : 'GlobalWebify Console'}
             </h1>
           </div>
