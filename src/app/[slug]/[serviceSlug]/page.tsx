@@ -17,20 +17,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  try {
-    const pages = await db.servicePage.findMany({
-      where: { isActive: true },
-      select: { slug: true }
-    });
-    const params: { slug: string; serviceSlug: string }[] = [];
-    Object.keys(CITIES_MAP).forEach((city) => {
-      pages.forEach((page) => {
-        const clean = page.slug.startsWith('/') ? page.slug.slice(1) : page.slug;
-        params.push({ slug: city, serviceSlug: clean });
-      });
-    });
-    return params;
-  } catch { return []; }
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

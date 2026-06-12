@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { blogPosts as staticBlogPosts } from '@/data/posts';
-import { WEBSITE_SERVICES, HOSTING_SERVICES, MARKETING_SERVICES, BRANDING_SERVICES } from '@/constants/navigation';
+import { WEBSITE_SERVICES, CRM_SERVICES, SEO_SERVICES, HOSTING_SERVICES, MARKETING_SERVICES, BRANDING_SERVICES } from '@/constants/navigation';
 import fs from 'fs';
 import path from 'path';
 
@@ -160,13 +160,23 @@ async function handleSeed(clean: boolean) {
       });
 
       if (exists) {
-        return; // Already exists, keep user edits
+        if (exists.category !== category) {
+          await db.servicePage.update({
+            where: { id: exists.id },
+            data: { category }
+          });
+        }
+        return; // Already exists, keep category updated and keep user edits
       }
 
       // Select default images based on category
       let defaultImage = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80';
       if (category === 'website') {
         defaultImage = 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80';
+      } else if (category === 'crm') {
+        defaultImage = 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80';
+      } else if (category === 'seo') {
+        defaultImage = 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=800&q=80';
       } else if (category === 'marketing') {
         defaultImage = 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=800&q=80';
       } else if (category === 'branding') {
@@ -205,9 +215,25 @@ async function handleSeed(clean: boolean) {
       await createServicePage(item.name, item.href, 'website');
     }
 
+    // Seed CRM services
+    for (const item of CRM_SERVICES) {
+      await createServicePage(item.name, item.href, 'crm');
+    }
+
     // Seed hosting services
     for (const item of HOSTING_SERVICES) {
       await createServicePage(item.name, item.href, 'hosting');
+    }
+
+    // Seed SEO services
+    for (const item of SEO_SERVICES) {
+      if (item.subLinks && item.subLinks.length > 0) {
+        for (const sub of item.subLinks) {
+          await createServicePage(sub.name, sub.href, 'seo');
+        }
+      } else {
+        await createServicePage(item.name, item.href, 'seo');
+      }
     }
 
     // Seed branding services

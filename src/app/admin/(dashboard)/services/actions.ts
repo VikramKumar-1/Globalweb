@@ -110,3 +110,21 @@ export async function toggleServiceStatus(id: number, active: boolean) {
   revalidatePath('/admin/services');
   revalidateTag('services');
 }
+
+export async function getHostingStatus() {
+  const setting = await db.siteSetting.findUnique({
+    where: { key: 'hostingMenuEnabled' }
+  });
+  return setting ? setting.value === 'true' : true;
+}
+
+export async function setHostingStatus(enabled: boolean) {
+  await requireAdmin();
+  await db.siteSetting.upsert({
+    where: { key: 'hostingMenuEnabled' },
+    update: { value: String(enabled) },
+    create: { key: 'hostingMenuEnabled', value: String(enabled) }
+  });
+  revalidatePath('/');
+  revalidateTag('services');
+}

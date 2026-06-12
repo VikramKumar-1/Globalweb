@@ -10,6 +10,7 @@ import { getCitySeo } from '@/app/admin/(dashboard)/homepage/actions';
 import { CITIES_MAP } from '@/features/services/constants/cities';
 import { getSubdomainLocation } from '@/lib/subdomain';
 import { getSubdomainContent } from '@/app/admin/(dashboard)/subdomains/actions';
+import PartnershipClient from '@/features/company/components/PartnershipClient';
 
 export const revalidate = 3600; // Cache page and revalidate at most every hour or on-demand
 
@@ -19,25 +20,33 @@ interface Props {
 
 // ---------- Static params ----------
 export async function generateStaticParams() {
-  try {
-    const pages = await db.servicePage.findMany({
-      where: { isActive: true },
-      select: { slug: true }
-    });
-    const serviceParams = pages.map((page) => ({
-      slug: page.slug.startsWith('/') ? page.slug.slice(1) : page.slug,
-    }));
-    const cityParams = Object.keys(CITIES_MAP).map((city) => ({ slug: city }));
-    return [...serviceParams, ...cityParams];
-  } catch (error) {
-    return [];
-  }
+  return [];
 }
 
 // ---------- Metadata ----------
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const rawSlug = params?.slug || '';
   
+  // Dynamic Partnership Metadata check
+  try {
+    const allSettings = await db.siteSetting.findMany();
+    const settingsMap = allSettings.reduce((acc, curr) => {
+      acc[curr.key] = curr.value;
+      return acc;
+    }, {} as Record<string, string>);
+    const partnershipSlug = settingsMap['partnershipPageSlug'] || 'partnership';
+    const cleanSlug = rawSlug.startsWith('/') ? rawSlug.slice(1) : rawSlug;
+    const cleanPartnerSlug = partnershipSlug.startsWith('/') ? partnershipSlug.slice(1) : partnershipSlug;
+
+    if (cleanSlug.toLowerCase() === cleanPartnerSlug.toLowerCase()) {
+      return {
+        title: settingsMap['partnershipPageTitle'] || 'Partner Network | GlobalWeblify',
+        description: settingsMap['partnershipHeroDesc'] || 'Join the GlobalWeblify Partner Network.',
+        keywords: ['GlobalWeblify Partnerships', 'Agency Partnership Program']
+      };
+    }
+  } catch {}
+
   // City landing page metadata
   const cityInfo = rawSlug ? CITIES_MAP[rawSlug.toLowerCase()] : null;
   if (cityInfo) {
@@ -45,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const subContent = await getSubdomainContent('homepage');
     if (subContent) {
       return {
-        title: replaceLocation(subContent.seoTitle || '', locationName) || `Best Web Development & Digital Marketing Services in ${locationName} | GlobalWebify`,
+        title: replaceLocation(subContent.seoTitle || '', locationName) || `Best Web Development & Digital Marketing Services in ${locationName} | GlobalWeblify`,
         description: replaceLocation(subContent.seoDescription || '', locationName),
         keywords: `Web Development ${locationName}, SEO ${locationName}, Digital Marketing ${locationName}`,
       };
@@ -61,8 +70,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     } catch (error) {
       console.error("Failed to load city SEO metadata:", error);
       return {
-        title: `Best Web Development & Digital Marketing Services in ${locationName} | GlobalWebify`,
-        description: `Explore GlobalWebify's professional web development, SEO, digital marketing, and branding services in ${locationName}. Custom solutions tailored to your local market.`,
+        title: `Best Web Development & Digital Marketing Services in ${locationName} | GlobalWeblify`,
+        description: `Explore GlobalWeblify's professional web development, SEO, digital marketing, and branding services in ${locationName}. Custom solutions tailored to your local market.`,
       };
     }
   }
@@ -89,6 +98,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ---------- Page component ----------
 export default async function DynamicPage({ params }: Props) {
   const rawSlug = params?.slug || '';
+
+  // ===== DYNAMIC PARTNERSHIP PAGE =====
+  let partnershipSlug = 'partnership';
+  let partnershipSettings: Record<string, string> = {};
+  try {
+    const allSettings = await db.siteSetting.findMany();
+    partnershipSettings = allSettings.reduce((acc, curr) => {
+      acc[curr.key] = curr.value;
+      return acc;
+    }, {} as Record<string, string>);
+    
+    partnershipSlug = partnershipSettings['partnershipPageSlug'] || 'partnership';
+  } catch (e) {
+    console.error("Failed to load partnership settings:", e);
+  }
+
+  const cleanSlug = rawSlug.startsWith('/') ? rawSlug.slice(1) : rawSlug;
+  const cleanPartnerSlug = partnershipSlug.startsWith('/') ? partnershipSlug.slice(1) : partnershipSlug;
+
+  if (cleanSlug.toLowerCase() === cleanPartnerSlug.toLowerCase()) {
+    const settings = {
+      partnershipPageTitle: partnershipSettings['partnershipPageTitle'],
+      partnershipPageSlug: partnershipSettings['partnershipPageSlug'],
+      partnershipHeroTitle: partnershipSettings['partnershipHeroTitle'],
+      partnershipHeroDesc: partnershipSettings['partnershipHeroDesc'],
+      partnershipHeading: partnershipSettings['partnershipHeading'],
+      partnershipDesc: partnershipSettings['partnershipDesc'],
+      partnershipPageImage: partnershipSettings['partnershipPageImage'],
+      partnershipExpandHeading: partnershipSettings['partnershipExpandHeading'],
+      partnershipExpandParagraph: partnershipSettings['partnershipExpandParagraph']
+    };
+    return <PartnershipClient settings={settings} />;
+  }
 
   // ===== CITY LANDING PAGE =====
   const cityInfo = rawSlug ? CITIES_MAP[rawSlug.toLowerCase()] : null;

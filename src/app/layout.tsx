@@ -3,6 +3,7 @@ import { Poppins, Lexend, Jost } from "next/font/google";
 import "./globals.css";
 // Removed unused direct imports of Header, Footer, MobileStickyNav, and BreadcrumbWrapper since they are now handled by PublicLayoutWrapper or imported further down
 import NextTopLoader from 'nextjs-toploader';
+import { db } from "@/lib/db";
 
 const poppins = Poppins({ 
   subsets: ["latin"], 
@@ -31,11 +32,33 @@ export const metadata: Metadata = {
 import PublicLayoutWrapper from "@/components/layout/PublicLayoutWrapper";
 import BreadcrumbWrapper from "@/components/ui/BreadcrumbWrapper";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let initialSettings = {
+    hostingMenuEnabled: true,
+    brandingMenuEnabled: true,
+    partnershipPageSlug: 'partnership'
+  };
+
+  try {
+    const allSettings = await db.siteSetting.findMany();
+    const settingsMap = allSettings.reduce((acc, curr) => {
+      acc[curr.key] = curr.value;
+      return acc;
+    }, {} as Record<string, string>);
+
+    initialSettings = {
+      hostingMenuEnabled: settingsMap['hostingMenuEnabled'] !== 'false',
+      brandingMenuEnabled: settingsMap['brandingMenuEnabled'] !== 'false',
+      partnershipPageSlug: settingsMap['partnershipPageSlug'] || 'partnership'
+    };
+  } catch (error) {
+    console.error("Failed to load settings in layout:", error);
+  }
+
   return (
     <html lang="en" className={`${poppins.variable} ${lexend.variable} ${jost.variable}`}>
       <body className={`${jost.className} font-sans bg-white text-gray-900 antialiased overflow-x-hidden`}>
@@ -51,7 +74,7 @@ export default function RootLayout({
           shadow="0 0 10px #1a8b4c,0 0 5px #1a8b4c"
           zIndex={1600000}
         />
-        <PublicLayoutWrapper breadcrumb={<BreadcrumbWrapper />}>
+        <PublicLayoutWrapper breadcrumb={<BreadcrumbWrapper />} initialSettings={initialSettings}>
           {children}
         </PublicLayoutWrapper>
       </body>

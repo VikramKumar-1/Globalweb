@@ -204,6 +204,16 @@ export default function SubdomainServiceListClient({ services }: { services: Ser
                     >
                       <Edit2 size={14} />
                     </Link>
+
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(service.id)}
+                      disabled={deletingId === service.id}
+                      className="p-2 hover:bg-red-50 text-red-400 hover:text-red-600 rounded-xl transition-all"
+                      title="Delete Page"
+                    >
+                      <Trash2 size={14} />
+                    </button>
                   </div>
                 </div>
 

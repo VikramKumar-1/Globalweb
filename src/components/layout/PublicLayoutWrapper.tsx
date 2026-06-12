@@ -9,15 +9,20 @@ import MobileStickyNav from "@/components/layout/MobileStickyNav";
 interface PublicLayoutWrapperProps {
   children: React.ReactNode;
   breadcrumb: React.ReactNode;
+  initialSettings?: {
+    hostingMenuEnabled: boolean;
+    brandingMenuEnabled: boolean;
+    partnershipPageSlug: string;
+  };
 }
 
-export default function PublicLayoutWrapper({ children, breadcrumb }: PublicLayoutWrapperProps) {
+export default function PublicLayoutWrapper({ children, breadcrumb, initialSettings }: PublicLayoutWrapperProps) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith('/admin');
 
   return (
     <>
-      {!isAdmin && <Header />}
+      {!isAdmin && <Header initialSettings={initialSettings} />}
       {!isAdmin && breadcrumb}
       <main>{children}</main>
       {!isAdmin && <Footer />}

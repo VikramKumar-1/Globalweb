@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   WEBSITE_SERVICES,
+  CRM_SERVICES,
+  SEO_SERVICES,
   HOSTING_SERVICES,
   MARKETING_SERVICES,
   BRANDING_SERVICES,
@@ -28,6 +30,8 @@ const getPrefixedHref = (href: string, menuId: string, currentCity: string | nul
 
 const menuData: Record<string, any[]> = {
   website: WEBSITE_SERVICES,
+  crm: CRM_SERVICES,
+  seo: SEO_SERVICES,
   hosting: HOSTING_SERVICES,
   marketing: MARKETING_SERVICES,
   branding: BRANDING_SERVICES,
@@ -36,6 +40,8 @@ const menuData: Record<string, any[]> = {
 
 const promoLabels: Record<string, { title: string; sub: string }> = {
   website:   { title: 'Need a Website?',    sub: 'Get a stunning website built for growth.' },
+  crm:       { title: 'Need CRM Solutions?', sub: 'Boost efficiency with custom software.' },
+  seo:       { title: 'Drive Organic Traffic', sub: 'Dominate search rankings with expert SEO.' },
   hosting:   { title: 'Need Hosting?',       sub: 'Fast, secure & reliable hosting.' },
   marketing: { title: 'Grow Your Business', sub: 'Drive more leads with digital marketing.' },
   branding:  { title: 'Build Your Brand',    sub: 'Create a brand identity that stands out.' },
@@ -111,42 +117,29 @@ export const MegaMenu = ({ onClose, activeMenu, currentMenuId, currentCity }: Me
                         href={getPrefixedHref(item.href, currentMenuId, currentCity)}
                         onClick={onClose}
                         prefetch={true}
-                        className="flex items-center justify-between text-[14px] font-medium px-3 py-2.5 rounded-xl transition-colors duration-75 text-gray-800 hover:text-white hover:bg-[#1a8b4c] group-hover/submenu:bg-[#1a8b4c] group-hover/submenu:text-white"
+                        className={`flex items-center justify-between text-[14px] px-3 py-2 rounded-xl transition-colors duration-75 ${
+                          hasSubLinks 
+                            ? 'font-bold text-[#1a8b4c] hover:bg-[#1a8b4c]/10' 
+                            : 'font-medium text-gray-800 hover:text-white hover:bg-[#1a8b4c]'
+                        }`}
                       >
                         <span>{item.name}</span>
-                        {hasSubLinks && (
-                          <svg
-                            width="13" height="13" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" strokeWidth="3"
-                            strokeLinecap="round" strokeLinejoin="round"
-                            className="transition-transform duration-75 text-gray-400 group-hover/submenu:rotate-90 group-hover/submenu:text-white"
-                          >
-                            <polyline points="9 18 15 12 9 6" />
-                          </svg>
-                        )}
                       </Link>
 
-                      {/* ABSOLUTE FLOATING FLYOUT - 100% Pure CSS */}
+                      {/* Sub-links displayed inline below */}
                       {hasSubLinks && (
-                        <div
-                          className="absolute left-full top-[-8px] pl-2 z-[99999] w-[250px] drop-shadow-xl opacity-0 pointer-events-none group-hover/submenu:opacity-100 group-hover/submenu:pointer-events-auto"
-                        >
-                          <div className="bg-white border border-gray-100 rounded-2xl p-3 flex flex-col gap-1 shadow-lg">
-                            <p className="text-[10px] font-extrabold text-[#1a8b4c] uppercase tracking-widest px-2.5 pb-1.5 border-b border-gray-100 mb-1">
-                              {item.name}
-                            </p>
-                            {item.subLinks.map((sub: any) => (
-                              <Link
-                                key={sub.name}
-                                href={getPrefixedHref(sub.href, currentMenuId, currentCity)}
-                                onClick={onClose}
-                                prefetch={true}
-                                className="text-[13px] text-gray-600 hover:text-white hover:bg-[#1a8b4c] px-2.5 py-1.5 rounded-lg transition-colors duration-75 block font-medium"
-                              >
-                                {sub.name}
-                              </Link>
-                            ))}
-                          </div>
+                        <div className="flex flex-col gap-0.5 mt-1 mb-2 ml-4 pl-3.5 border-l border-gray-150">
+                          {item.subLinks.map((sub: any) => (
+                            <Link
+                              key={sub.name}
+                              href={getPrefixedHref(sub.href, currentMenuId, currentCity)}
+                              onClick={onClose}
+                              prefetch={true}
+                              className="text-[13px] text-gray-650 hover:text-white hover:bg-[#1a8b4c] px-2.5 py-1.5 rounded-lg transition-colors duration-75 block font-medium"
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
                         </div>
                       )}
                     </div>

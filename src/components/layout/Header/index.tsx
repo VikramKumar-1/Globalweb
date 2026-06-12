@@ -9,6 +9,8 @@ import { cn } from '@/lib/utils';
 import { 
   NAV_LINKS, 
   WEBSITE_SERVICES, 
+  CRM_SERVICES,
+  SEO_SERVICES,
   HOSTING_SERVICES, 
   MARKETING_SERVICES, 
   BRANDING_SERVICES, 
@@ -36,7 +38,15 @@ const getPrefixedHref = (href: string, menuId: string, currentCity: string | nul
   return `/${currentCity}${href.startsWith('/') ? href : `/${href}`}`;
 };
 
-export default function Header() {
+interface HeaderProps {
+  initialSettings?: {
+    hostingMenuEnabled: boolean;
+    brandingMenuEnabled: boolean;
+    partnershipPageSlug: string;
+  };
+}
+
+export default function Header({ initialSettings }: HeaderProps) {
   const pathname = usePathname();
   
   const segments = pathname.split('/').filter(Boolean);
@@ -48,7 +58,34 @@ export default function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<string | null>(null);
   const [menuForceHidden, setMenuForceHidden] = useState(false);
+  const [hostingActive, setHostingActive] = useState(initialSettings?.hostingMenuEnabled ?? true);
+  const [brandingActive, setBrandingActive] = useState(initialSettings?.brandingMenuEnabled ?? true);
+  const [partnershipSlug, setPartnershipSlug] = useState(initialSettings?.partnershipPageSlug ?? 'partnership');
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Fetch hosting, branding, and partnership status dynamically
+  useEffect(() => {
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          if (typeof data.hostingMenuEnabled === 'boolean') {
+            setHostingActive(data.hostingMenuEnabled);
+          }
+          if (typeof data.brandingMenuEnabled === 'boolean') {
+            setBrandingActive(data.brandingMenuEnabled);
+          }
+          if (data.partnershipPageSlug) {
+            setPartnershipSlug(data.partnershipPageSlug);
+          }
+        }
+      })
+      .catch(err => console.error("Failed to fetch settings", err));
+  }, []);
+
+  const visibleNavLinks = NAV_LINKS.filter(
+    link => (link.id !== 'hosting' || hostingActive) && (link.id !== 'branding' || brandingActive)
+  );
 
   // Open a specific dropdown immediately
   const handleMouseEnter = (menu: string) => {
@@ -111,6 +148,8 @@ export default function Header() {
   const getSubLinks = (id: string) => {
     switch (id) {
       case 'website': return WEBSITE_SERVICES;
+      case 'crm': return CRM_SERVICES;
+      case 'seo': return SEO_SERVICES;
       case 'hosting': return HOSTING_SERVICES;
       case 'marketing': return MARKETING_SERVICES;
       case 'branding': return BRANDING_SERVICES;
@@ -147,14 +186,20 @@ export default function Header() {
         onMouseLeave={handleMouseLeave}
       >
         <div className="max-w-[1800px] mx-auto px-4 md:px-8 lg:px-12 flex justify-center items-stretch py-0">
-          {NAV_LINKS.map((link, i) => (
+          {visibleNavLinks.map((link, i) => (
             <div
               key={i}
               className="flex items-center px-2 py-3 h-full cursor-pointer"
               onMouseEnter={() => handleNavItemEnter(link)}
             >
               <Link
-                href={link.hasDropdown ? "#" : `/${link.id}`}
+                href={
+                  link.hasDropdown 
+                    ? "#" 
+                    : link.id === 'partnership' 
+                      ? `/${partnershipSlug}` 
+                      : `/${link.id}`
+                }
                 onClick={(e) => {
                   if (link.hasDropdown) {
                     e.preventDefault();
@@ -163,10 +208,12 @@ export default function Header() {
                   }
                 }}
                 className={cn(
-                  "px-3 xl:px-4 py-2 text-[12.8px] font-semibold flex items-center gap-1.5 rounded-full font-sans transition-colors duration-75",
-                  activeMenu === link.id
-                    ? "text-white bg-[#1a8b4c]"
-                    : "text-[#0a0a0a] hover:text-white hover:bg-[#1a8b4c]"
+                  "px-3 xl:px-4 py-2 text-[12.8px] font-semibold flex items-center gap-1.5 rounded-full font-sans transition-all duration-75",
+                  link.id === 'partnership'
+                    ? "text-[#1a8b4c] border-2 border-[#1a8b4c]/80 bg-[#1a8b4c]/5 hover:bg-[#1a8b4c] hover:text-white hover:border-transparent font-bold shadow-sm"
+                    : activeMenu === link.id
+                      ? "text-white bg-[#1a8b4c]"
+                      : "text-[#0a0a0a] hover:text-white hover:bg-[#1a8b4c]"
                 )}
               >
                 {link.name}
@@ -195,7 +242,7 @@ export default function Header() {
             className="lg:hidden fixed inset-0 bg-white z-[10000] flex flex-col pt-[100px]"
           >
              <div className="p-6 flex flex-col gap-1 overflow-y-auto">
-                {NAV_LINKS.map((link) => (
+                {visibleNavLinks.map((link) => (
                   <div key={link.id} className="border-b border-gray-50">
                     {link.hasDropdown ? (
                       <button 
@@ -222,13 +269,19 @@ export default function Header() {
                       </button>
                     ) : (
                       <Link 
-                        href={getPrefixedHref('/' + link.id, link.id, currentCity)}
+                        href={getPrefixedHref('/' + (link.id === 'partnership' ? partnershipSlug : link.id), link.id, currentCity)}
                         onClick={closeMenu}
-                        className="w-full text-left py-4 flex justify-between items-center group"
+                        className={cn(
+                          "w-full text-left py-4 flex justify-between items-center group transition-all",
+                          link.id === 'partnership' ? "bg-green-50/60 my-2 px-4 py-3 rounded-2xl border border-green-100" : ""
+                        )}
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-1.5 h-1.5 rounded-full bg-[#1a8b4c]" />
-                          <span className="text-[14px] font-semibold tracking-normal text-[#1a1a1a] hover:text-[#1a8b4c] transition-colors">
+                          <span className={cn(
+                            "text-[14px] font-semibold tracking-normal hover:text-[#1a8b4c] transition-colors",
+                            link.id === 'partnership' ? "text-[#1a8b4c] font-black" : "text-[#1a1a1a]"
+                          )}>
                             {link.name}
                           </span>
                         </div>

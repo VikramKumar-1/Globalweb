@@ -90,6 +90,8 @@ export default async function AdminDashboardLayout({
 
   const categories = {
     website: { label: 'Website Services', services: [] as any[] },
+    crm: { label: 'CRM Solutions', services: [] as any[] },
+    seo: { label: 'SEO Services', services: [] as any[] },
     marketing: { label: 'Digital Marketing', services: [] as any[] },
     branding: { label: 'Branding & PR', services: [] as any[] },
     hosting: { label: 'Hosting', services: [] as any[] },
@@ -144,6 +146,8 @@ export default async function AdminDashboardLayout({
       activeCategory = parsedUrl.searchParams.get('category') || '';
     } catch (e) {
       if (fullUrl.includes('category=website')) activeCategory = 'website';
+      else if (fullUrl.includes('category=crm')) activeCategory = 'crm';
+      else if (fullUrl.includes('category=seo')) activeCategory = 'seo';
       else if (fullUrl.includes('category=marketing')) activeCategory = 'marketing';
       else if (fullUrl.includes('category=branding')) activeCategory = 'branding';
       else if (fullUrl.includes('category=hosting')) activeCategory = 'hosting';

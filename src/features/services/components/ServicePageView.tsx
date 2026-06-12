@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { ExpandableContent } from '@/components/ui/ExpandableContent';
@@ -29,6 +31,9 @@ interface ServicePageViewProps {
 }
 
 export function ServicePageView({ page, remainingSubMenus, faqs, locationName = "", cityKey }: ServicePageViewProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const mobileButtonRef = useRef<HTMLButtonElement>(null);
+  const desktopButtonRef = useRef<HTMLButtonElement>(null);
   const ICONS = ['Monitor', 'Smartphone', 'ShoppingCart', 'Layout', 'Palette', 'Settings', 'Code', 'Briefcase'];
 
   const getDesc = (m: SubMenu) => {
@@ -36,6 +41,24 @@ export function ServicePageView({ page, remainingSubMenus, faqs, locationName = 
     if (m.seoDescription) return m.seoDescription;
     if (m.content) return stripHtml(m.content);
     return 'Explore our professional services.';
+  };
+
+  const handleToggle = () => {
+    if (isExpanded) {
+      const cardItems = document.querySelectorAll('#services-grid .card-item');
+      const targetIndex = window.innerWidth < 768 ? 5 : 7;
+      const targetCard = cardItems[targetIndex] || cardItems[cardItems.length - 1];
+      
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+      setTimeout(() => {
+        setIsExpanded(false);
+      }, 250);
+    } else {
+      setIsExpanded(true);
+    }
   };
 
   return (
@@ -83,8 +106,7 @@ export function ServicePageView({ page, remainingSubMenus, faqs, locationName = 
               {locationName ? `Explore related services available in ${locationName}` : 'We Bring Life To The "Few Megabytes Of Virtual Space" You Own'}
             </p>
           </div>
-          <input type="checkbox" id="show-more-cards" className="peer hidden" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-[1200px] mx-auto peer-checked:[&_.card-item]:!block">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-[1200px] mx-auto">
             {remainingSubMenus.length > 0 ? (
               remainingSubMenus.map((menu, i) => {
                 const categoryIcons = CATEGORY_CONFIG[page.category]?.icons || ICONS;
@@ -103,8 +125,12 @@ export function ServicePageView({ page, remainingSubMenus, faqs, locationName = 
                 const linkHref = cityKey ? `/${cityKey}/${cleanSlug}` : `/${cleanSlug}`;
                 const displayTitle = menu.title;
                 
+                const visibilityClass = isExpanded 
+                  ? 'block' 
+                  : (i < 6 ? 'block' : (i < 8 ? 'hidden md:block' : 'hidden'));
+                
                 return (
-                  <Link href={linkHref} key={i} className={`card-item relative min-h-[260px] md:min-h-[320px] bg-white rounded-2xl border border-gray-200/80 transition-all duration-300 ease-out overflow-hidden hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)] ${theme.hoverBorder} group ${i >= 6 ? 'hidden md:block' : 'block'} flex flex-col`}>
+                  <Link href={linkHref} key={i} className={`card-item relative min-h-[260px] md:min-h-[320px] bg-white rounded-2xl border border-gray-200/80 transition-all duration-300 ease-out overflow-hidden hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)] ${theme.hoverBorder} group ${visibilityClass} flex flex-col`}>
                     <div className="h-[3px] w-full rounded-t-2xl" style={{ background: `linear-gradient(90deg, ${theme.hex}, ${theme.hex}88)` }} />
                     <div className={`absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700 ${theme.mesh} blur-[50px] rounded-full`} />
                     <div className="relative z-20 flex-1 p-5 sm:p-6 md:p-7 flex flex-col items-start text-left">
@@ -136,12 +162,28 @@ export function ServicePageView({ page, remainingSubMenus, faqs, locationName = 
               <p className="text-gray-500 text-center col-span-full">No additional services found in this category.</p>
             )}
           </div>
+          {/* Mobile toggle button (if more than 6 services) */}
           {remainingSubMenus.length > 6 && (
-            <div className="mt-10 text-center md:hidden peer-checked:[&_label_.see-more]:hidden peer-checked:[&_label_.see-less]:block">
-              <label htmlFor="show-more-cards" className="cursor-pointer inline-flex items-center justify-center bg-[#1a8b4c] hover:bg-green-700 text-white font-bold py-3.5 px-8 rounded-full shadow-md text-[14px] transition-all">
-                <span className="see-more block">See More Services</span>
-                <span className="see-less hidden">See Less Services</span>
-              </label>
+            <div className="mt-10 text-center md:hidden">
+              <button
+                ref={mobileButtonRef}
+                onClick={handleToggle}
+                className="inline-flex items-center justify-center bg-[#1a8b4c] hover:bg-green-700 text-white font-bold py-3.5 px-8 rounded-full shadow-md text-[14px] transition-all"
+              >
+                {isExpanded ? 'See Less Services' : 'See More Services'}
+              </button>
+            </div>
+          )}
+          {/* Desktop/Tablet toggle button (if more than 8 services) */}
+          {remainingSubMenus.length > 8 && (
+            <div className="mt-10 text-center hidden md:block">
+              <button
+                ref={desktopButtonRef}
+                onClick={handleToggle}
+                className="inline-flex items-center justify-center bg-[#1a8b4c] hover:bg-green-700 text-white font-bold py-3.5 px-8 rounded-full shadow-md text-[14px] transition-all"
+              >
+                {isExpanded ? 'See Less Services' : 'See More Services'}
+              </button>
             </div>
           )}
         </div>

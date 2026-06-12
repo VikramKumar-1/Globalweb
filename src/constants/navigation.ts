@@ -60,24 +60,28 @@ export const HOSTING_SERVICES = [
   { name: "SSL Certificates", href: "/ssl-certificates" }
 ];
 
-export const MARKETING_SERVICES = [
-  { name: "Digital Marketing Services", href: "/digital-marketing" },
+export const SEO_SERVICES = [
   { name: "SEO Services", href: "/seo-services", subLinks: [
       { name: "On-Page SEO", href: "/on-page-seo" },
       { name: "Off-Page SEO", href: "/off-page-seo" },
       { name: "Technical SEO", href: "/technical-seo" },
-      { name: "Local SEO", href: "/local-business-seo" }
+      { name: "Local SEO", href: "/local-business-seo" },
+      { name: "GMB SEO", href: "/gmb-seo" }
   ]},
   { name: "AI SEO Services", href: "/ai-seo-services", subLinks: [
       { name: "GEO Services", href: "/generative-engine-optimization-services" },
       { name: "AEO Services", href: "/answer-engine-optimization-services" },
-      { name: "Perplexity AI SEO", href: "/perplexity-ai-seo-services" },
-      { name: "ChatGPT AI SEO", href: "/chatgpt-ai-seo-services" },
-      { name: "Gemini AI SEO", href: "/gemini-ai-seo-services" },
-      { name: "Claude AI SEO", href: "/claude-ai-seo-services" },
-      { name: "Agentic AI SEO", href: "/agentic-ai-seo-services" },
-      { name: "AI-Powered Content", href: "/ai-powered-content-creation-services" }
-  ]},
+      { name: "Perplexity AI SEO Services", href: "/perplexity-ai-seo-services" },
+      { name: "ChatGPT AI SEO Services", href: "/chatgpt-ai-seo-services" },
+      { name: "Gemini AI SEO Services", href: "/gemini-ai-seo-services" },
+      { name: "Claude AI SEO Services", href: "/claude-ai-seo-services" },
+      { name: "Agentic AI SEO Services", href: "/agentic-ai-seo-services" },
+      { name: "AI-Powered Content Services", href: "/ai-powered-content-creation-services" }
+  ]}
+];
+
+export const MARKETING_SERVICES = [
+  { name: "Digital Marketing Services", href: "/digital-marketing" },
   { name: "Social Media Marketing", href: "/social-media-marketing", subLinks: [
       { name: "Facebook Marketing", href: "/facebook-marketing" },
       { name: "Instagram Marketing", href: "/instagram-marketing" },
@@ -92,17 +96,26 @@ export const MARKETING_SERVICES = [
   { name: "WhatsApp Marketing", href: "/whatsapp-marketing" },
   { name: "SMS Marketing", href: "/sms-marketing" },
   { name: "Email Marketing", href: "/email-marketing" },
-  { name: "Voice Marketing", href: "/voice-marketing" }
+  { name: "Voice Marketing", href: "/voice-marketing" },
+  { name: "Online Reputation Management", href: "/online-reputation-management" },
+  { name: "Graphic Designing", href: "/graphic-designing" }
 ];
 
 export const BRANDING_SERVICES = [
-  { name: "Online Reputation Management", href: "/online-reputation-management" },
   { name: "Press Release Distribution", href: "/press-release-distribution" },
   { name: "Digital Branding Agency", href: "/digital-branding-agency" },
   { name: "Corporate Video Production Agency", href: "/corporate-video-production-agency" },
   { name: "Influencer Marketing", href: "/influencer-marketing" },
-  { name: "Graphic Designing", href: "/graphic-designing" },
   { name: "PR Agency", href: "/pr-agency" }
+];
+
+export const CRM_SERVICES = [
+  { name: "CRM Software Development", href: "/crm-software-development" },
+  { name: "Lead Management Software", href: "/lead-management-software" },
+  { name: "Hotel Management Software", href: "/hotel-management-software" },
+  { name: "Hospital Management Software", href: "/hospital-management-software" },
+  { name: "HR Management Software", href: "/hr-management-software" },
+  { name: "School Management System", href: "/school-management-system" }
 ];
 
 export const COMPANY_LINKS = [
@@ -118,9 +131,12 @@ export const COMPANY_LINKS = [
 
 export const NAV_LINKS = [
   { name: 'WEBSITE', id: 'website', hasDropdown: true },
-  { name: 'HOSTING', id: 'hosting', hasDropdown: true },
+  { name: 'CRM SOLUTIONS', id: 'crm', hasDropdown: true },
+  { name: 'SEO SERVICES', id: 'seo', hasDropdown: true },
   { name: 'DIGITAL MARKETING', id: 'marketing', hasDropdown: true },
   { name: 'BRANDING & PR', id: 'branding', hasDropdown: true },
+  { name: 'HOSTING', id: 'hosting', hasDropdown: true },
   { name: 'COMPANY', id: 'company', hasDropdown: true },
-  { name: 'CONTACT', id: 'contact', hasDropdown: false }
+  { name: 'CONTACT', id: 'contact', hasDropdown: false },
+  { name: 'PARTNERSHIP', id: 'partnership', hasDropdown: false }
 ];

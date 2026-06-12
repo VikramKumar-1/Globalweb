@@ -246,6 +246,8 @@ export default function ServiceForm({ service }: { service?: Service }) {
                 className="w-full bg-gray-50/50 border border-gray-200/80 rounded-xl px-4 py-2.5 text-xs md:text-sm font-semibold text-gray-800 focus:outline-none focus:border-[#1a8b4c] focus:bg-white transition-all"
               >
                 <option value="website">Website Services</option>
+                <option value="crm">CRM Solutions</option>
+                <option value="seo">SEO Services</option>
                 <option value="marketing">Digital Marketing</option>
                 <option value="branding">Branding & PR</option>
                 <option value="hosting">Hosting</option>

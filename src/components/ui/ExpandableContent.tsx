@@ -12,6 +12,8 @@ export function ExpandableContent({
   const [isExpanded, setIsExpanded] = useState(false);
   const [needsButton, setNeedsButton] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (contentRef.current) {
@@ -36,11 +38,22 @@ export function ExpandableContent({
     // 4. Merge adjacent OL tags
     .replace(/<\/ol>\s*<ol[^>]*>/gi, '');
 
+  const handleToggle = () => {
+    if (isExpanded) {
+      containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        setIsExpanded(false);
+      }, 250);
+    } else {
+      setIsExpanded(true);
+    }
+  };
+
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div ref={containerRef} className="w-full max-w-4xl mx-auto">
       {/* Outer wrapper applying height restriction */}
       <div
-        className="relative overflow-hidden transition-[max-height] duration-500 ease-in-out"
+        className="relative overflow-hidden transition-[max-height] duration-300 ease-in-out"
         style={{ maxHeight: isExpanded ? '10000px' : `${maxHeight}px` }}
       >
         {/* Inner container with no restriction, used for measurement */}
@@ -61,6 +74,7 @@ export function ExpandableContent({
               line-height: 1.6 !important;
               font-size: 15px !important;
               text-align: left !important;
+              font-weight: 400 !important;
             }
             @media (min-width: 768px) {
               .expandable-content-wrapper p { font-size: 16px !important; }
@@ -141,7 +155,7 @@ export function ExpandableContent({
               color: #1a8b4c !important;
               font-weight: 700 !important;
             }
-
+ 
             .expandable-content-wrapper li {
               margin-bottom: 0.375rem !important;
               padding-left: 0 !important;
@@ -232,13 +246,14 @@ export function ExpandableContent({
       {needsButton && (
         <div className="flex justify-center mt-4">
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            ref={buttonRef}
+            onClick={handleToggle}
             className="inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-blue-700 active:scale-95 text-white font-semibold py-2 px-6 rounded-full transition-all shadow-sm text-xs md:text-sm z-20"
           >
             {isExpanded ? (
-              <>Read Less <span className="text-xs">↑</span></>
+              <>See Less <span className="text-xs">↑</span></>
             ) : (
-              <>Read More <span className="text-xs">↓</span></>
+              <>See More <span className="text-xs">↓</span></>
             )}
           </button>
         </div>

@@ -373,3 +373,89 @@ export async function saveSectionHeaders(headers: any) {
     return { success: false, error: error.message };
   }
 }
+
+export async function getPartnershipSettings() {
+  try {
+    const allSettings = await db.siteSetting.findMany({
+      where: {
+        key: {
+          in: [
+            'partnershipPageSlug',
+            'partnershipPageTitle',
+            'partnershipHeroTitle',
+            'partnershipHeroDesc',
+            'partnershipHeading',
+            'partnershipDesc',
+            'partnershipPageImage',
+            'partnershipExpandHeading',
+            'partnershipExpandParagraph'
+          ]
+        }
+      }
+    });
+
+    const settingsMap = allSettings.reduce((acc, curr) => {
+      acc[curr.key] = curr.value;
+      return acc;
+    }, {} as Record<string, string>);
+
+    return {
+      partnershipPageSlug: settingsMap['partnershipPageSlug'] || 'partnership',
+      partnershipPageTitle: settingsMap['partnershipPageTitle'] || 'Partner Network | GlobalWeblify',
+      partnershipHeroTitle: settingsMap['partnershipHeroTitle'] || 'Partner With GlobalWeblify',
+      partnershipHeroDesc: settingsMap['partnershipHeroDesc'] || 'Expand your service catalog, increase your revenue, and deliver state-of-the-art technological experiences to your clients.',
+      partnershipHeading: settingsMap['partnershipHeading'] || 'Accelerate Growth Together',
+      partnershipDesc: settingsMap['partnershipDesc'] || 'Whether you run an agency looking to outsource development, a consultant recommending leading web platforms, or an integration provider, we construct synergistic structures that deliver results.',
+      partnershipPageImage: settingsMap['partnershipPageImage'] || '/partnership/Partner1.jpg',
+      partnershipExpandHeading: settingsMap['partnershipExpandHeading'] || 'Detailed Partnership Program Overview & Dynamic Synergies',
+      partnershipExpandParagraph: settingsMap['partnershipExpandParagraph'] || 'At GlobalWeblify, we believe that the most robust digital ecosystems are built on collaboration, mutual trust, and a shared vision for excellence. Our comprehensive Partnership Program is engineered to empower agencies, IT consultants, software developers, independent marketers, and enterprises by providing seamless access to our industry-leading technical and creative capabilities. Over the years, we have built a reputational foundation for delivering top-tier website development, custom CRM development, data-driven SEO campaigns, performance-focused digital marketing, and reliable corporate web hosting solutions. By joining our network, you are not just outsourcing development work—you are integrating a highly skilled, dedicated team of developers, designers, system administrators, and digital strategists into your own business framework, allowing you to scale without the overhead costs of in-house recruitment.\n\nOur partnership structures are categorized into three core models to align perfectly with your organizational workflow:\n1. Referral and Affiliate Network: Ideal for consultants, influencers, and boutique business advisors who encounter clients needing premium digital services. Refer projects to GlobalWeblify and earn lucrative, recurring commissions with zero project management overhead. We handle the discovery, proposal, development, deployment, and ongoing support.\n2. Agency Reseller and White-Label Services: Tailored for design agencies, PR firms, and digital marketing consultancies that want to offer high-end development and deep technical SEO to their clients under their own brand. We operate invisibly behind the scenes, respecting strict NDA guidelines and delivering projects that make your brand shine.\n3. Strategic Co-Development: For technology providers and software integrators seeking custom database engines, APIs, and specialized CMS modifications. Together, we tackle complex architectures, ensuring your clients receive state-of-the-art technological solutions.\n\nAdditionally, as a validated partner, you gain direct access to our prioritized ticketing system, co-marketing support, exclusive pricing discounts, pre-sales technical support (including assistance in pitching to high-value prospects), and advanced roadmap previews. We provide comprehensive marketing collateral, training sessions, and customizable proposal templates to ensure your sales team can position our collective services with absolute confidence. Together, we can transform complex client challenges into streamlined, high-performance web products that accelerate business growth and maximize ROI.'
+    };
+  } catch (error) {
+    console.error("Failed to load partnership settings", error);
+    return {
+      partnershipPageSlug: 'partnership',
+      partnershipPageTitle: 'Partner Network | GlobalWeblify',
+      partnershipHeroTitle: 'Partner With GlobalWeblify',
+      partnershipHeroDesc: 'Expand your service catalog, increase your revenue, and deliver state-of-the-art technological experiences to your clients.',
+      partnershipHeading: 'Accelerate Growth Together',
+      partnershipDesc: 'Whether you run an agency looking to outsource development, a consultant recommending leading web platforms, or an integration provider, we construct synergistic structures that deliver results.',
+      partnershipPageImage: '/partnership/Partner1.jpg',
+      partnershipExpandHeading: 'Detailed Partnership Program Overview & Dynamic Synergies',
+      partnershipExpandParagraph: 'At GlobalWeblify, we believe that the most robust digital ecosystems are built on collaboration, mutual trust, and a shared vision for excellence. Our comprehensive Partnership Program is engineered to empower agencies, IT consultants, software developers, independent marketers, and enterprises by providing seamless access to our industry-leading technical and creative capabilities. Over the years, we have built a reputational foundation for delivering top-tier website development, custom CRM development, data-driven SEO campaigns, performance-focused digital marketing, and reliable corporate web hosting solutions. By joining our network, you are not just outsourcing development work—you are integrating a highly skilled, dedicated team of developers, designers, system administrators, and digital strategists into your own business framework, allowing you to scale without the overhead costs of in-house recruitment.\n\nOur partnership structures are categorized into three core models to align perfectly with your organizational workflow:\n1. Referral and Affiliate Network: Ideal for consultants, influencers, and boutique business advisors who encounter clients needing premium digital services. Refer projects to GlobalWeblify and earn lucrative, recurring commissions with zero project management overhead. We handle the discovery, proposal, development, deployment, and ongoing support.\n2. Agency Reseller and White-Label Services: Tailored for design agencies, PR firms, and digital marketing consultancies that want to offer high-end development and deep technical SEO to their clients under their own brand. We operate invisibly behind the scenes, respecting strict NDA guidelines and delivering projects that make your brand shine.\n3. Strategic Co-Development: For technology providers and software integrators seeking custom database engines, APIs, and specialized CMS modifications. Together, we tackle complex architectures, ensuring your clients receive state-of-the-art technological solutions.\n\nAdditionally, as a validated partner, you gain direct access to our prioritized ticketing system, co-marketing support, exclusive pricing discounts, pre-sales technical support (including assistance in pitching to high-value prospects), and advanced roadmap previews. We provide comprehensive marketing collateral, training sessions, and customizable proposal templates to ensure your sales team can position our collective services with absolute confidence. Together, we can transform complex client challenges into streamlined, high-performance web products that accelerate business growth and maximize ROI.'
+    };
+  }
+}
+
+export async function savePartnershipSettings(data: any) {
+  try {
+    await requireAdmin();
+    const updatableKeys = [
+      'partnershipPageSlug',
+      'partnershipPageTitle',
+      'partnershipHeroTitle',
+      'partnershipHeroDesc',
+      'partnershipHeading',
+      'partnershipDesc',
+      'partnershipPageImage',
+      'partnershipExpandHeading',
+      'partnershipExpandParagraph'
+    ];
+
+    for (const key of updatableKeys) {
+      if (data[key] !== undefined) {
+        await db.siteSetting.upsert({
+          where: { key },
+          update: { value: String(data[key]) },
+          create: { key, value: String(data[key]) }
+        });
+      }
+    }
+
+    revalidatePath('/');
+    revalidatePath('/[slug]');
+    return { success: true };
+  } catch (error: any) {
+    console.error("Failed to save partnership settings", error);
+    return { success: false, error: error.message };
+  }
+}

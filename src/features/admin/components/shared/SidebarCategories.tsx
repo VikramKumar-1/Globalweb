@@ -43,6 +43,12 @@ export default function SidebarCategories({ initialActiveServiceCategory, prefix
       <Link href={`${prefix}?category=website`} className={getLinkClass('website')}>
         Website Services
       </Link>
+      <Link href={`${prefix}?category=crm`} className={getLinkClass('crm')}>
+        CRM Solutions
+      </Link>
+      <Link href={`${prefix}?category=seo`} className={getLinkClass('seo')}>
+        SEO Services
+      </Link>
       <Link href={`${prefix}?category=marketing`} className={getLinkClass('marketing')}>
         Digital Marketing
       </Link>

@@ -29,6 +29,27 @@ export default function ServiceListClient({ services }: { services: Service[] })
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [seeding, setSeeding] = useState(false);
   const [toast, setToast] = useState<{message: string, type: 'success' | 'error'} | null>(null);
+  const [hostingActive, setHostingActive] = useState(true);
+  const [brandingActive, setBrandingActive] = useState(true);
+
+  // Load category toggle status
+  useEffect(() => {
+    if (selectedCategory === 'hosting' || selectedCategory === 'branding') {
+      fetch('/api/settings')
+        .then(res => res.json())
+        .then(data => {
+          if (data) {
+            if (typeof data.hostingMenuEnabled === 'boolean') {
+              setHostingActive(data.hostingMenuEnabled);
+            }
+            if (typeof data.brandingMenuEnabled === 'boolean') {
+              setBrandingActive(data.brandingMenuEnabled);
+            }
+          }
+        })
+        .catch(err => console.error(err));
+    }
+  }, [selectedCategory]);
 
   const showToast = (message: string, type: 'success' | 'error' = 'success') => {
     setToast({ message, type });
@@ -43,6 +64,8 @@ export default function ServiceListClient({ services }: { services: Service[] })
 
   const categories = [
     { key: 'website', label: 'Website Services', icon: Globe, color: 'text-purple-600', bg: 'bg-purple-50', border: 'border-purple-100' },
+    { key: 'crm', label: 'CRM Solutions', icon: LayoutGrid, color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-100' },
+    { key: 'seo', label: 'SEO Services', icon: Search, color: 'text-teal-600', bg: 'bg-teal-50', border: 'border-teal-100' },
     { key: 'marketing', label: 'Digital Marketing', icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50', border: 'border-emerald-100' },
     { key: 'branding', label: 'Branding & PR', icon: Palette, color: 'text-indigo-600', bg: 'bg-indigo-50', border: 'border-indigo-100' },
     { key: 'hosting', label: 'Hosting & Server', icon: Server, color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-100' },
@@ -96,6 +119,8 @@ export default function ServiceListClient({ services }: { services: Service[] })
 
   const categoryInfo: Record<string, { label: string; slug: string }> = {
     website: { label: 'Website Services', slug: '/web-development' },
+    crm: { label: 'CRM Solutions', slug: '/crm-software-development' },
+    seo: { label: 'SEO Services', slug: '/seo-services' },
     marketing: { label: 'Digital Marketing', slug: '/digital-marketing' },
     branding: { label: 'Branding & PR', slug: '/branding-and-pr' },
     hosting: { label: 'Hosting & Server', slug: '/hosting' },
@@ -135,6 +160,92 @@ export default function ServiceListClient({ services }: { services: Service[] })
           />
         </div>
       </div>
+
+      {/* Hosting dynamic menu config block */}
+      {selectedCategory === 'hosting' && (
+        <div className="bg-gradient-to-br from-amber-50/60 to-amber-100/30 border-2 border-amber-200/60 rounded-3xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h4 className="text-sm font-black text-gray-900 uppercase tracking-wide">
+              Public Navbar Hosting Menu Status
+            </h4>
+            <p className="text-xs text-gray-500 font-semibold mt-1">
+              Toggle whether the Hosting menu category and submenus are visible to public visitors in the main navbar.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={async () => {
+              const nextVal = !hostingActive;
+              try {
+                const res = await fetch('/api/settings', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ hostingMenuEnabled: nextVal })
+                });
+                const data = await res.json();
+                if (data.success) {
+                  setHostingActive(nextVal);
+                  showToast(`Hosting menu successfully ${nextVal ? 'enabled' : 'disabled'}!`, 'success');
+                } else {
+                  throw new Error(data.error);
+                }
+              } catch (err) {
+                showToast("Failed to update hosting status.", 'error');
+              }
+            }}
+            className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider border transition-all ${
+              hostingActive 
+                ? 'bg-green-50 text-[#1a8b4c] border-green-200 hover:bg-green-100' 
+                : 'bg-red-50 text-red-500 border-red-200 hover:bg-red-100'
+            }`}
+          >
+            {hostingActive ? 'Active (Visible)' : 'Inactive (Hidden)'}
+          </button>
+        </div>
+      )}
+
+      {/* Branding dynamic menu config block */}
+      {selectedCategory === 'branding' && (
+        <div className="bg-gradient-to-br from-indigo-50/60 to-indigo-100/30 border-2 border-indigo-200/60 rounded-3xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h4 className="text-sm font-black text-gray-900 uppercase tracking-wide">
+              Public Navbar Branding & PR Menu Status
+            </h4>
+            <p className="text-xs text-gray-500 font-semibold mt-1">
+              Toggle whether the Branding & PR menu category and submenus are visible to public visitors in the main navbar.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={async () => {
+              const nextVal = !brandingActive;
+              try {
+                const res = await fetch('/api/settings', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ brandingMenuEnabled: nextVal })
+                });
+                const data = await res.json();
+                if (data.success) {
+                  setBrandingActive(nextVal);
+                  showToast(`Branding & PR menu successfully ${nextVal ? 'enabled' : 'disabled'}!`, 'success');
+                } else {
+                  throw new Error(data.error);
+                }
+              } catch (err) {
+                showToast("Failed to update branding status.", 'error');
+              }
+            }}
+            className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider border transition-all ${
+              brandingActive 
+                ? 'bg-green-50 text-[#1a8b4c] border-green-200 hover:bg-green-100' 
+                : 'bg-red-50 text-red-500 border-red-200 hover:bg-red-100'
+            }`}
+          >
+            {brandingActive ? 'Active (Visible)' : 'Inactive (Hidden)'}
+          </button>
+        </div>
+      )}
 
       {/* Main Service List Grid */}
       {services.length === 0 ? (

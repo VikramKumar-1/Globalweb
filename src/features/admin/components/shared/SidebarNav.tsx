@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { 
-  LayoutDashboard, Layers, Newspaper, MessageSquare, Home, Briefcase
+  LayoutDashboard, Layers, Newspaper, MessageSquare, Home, Briefcase, Handshake
 } from 'lucide-react';
 import SidebarCategories from './SidebarCategories';
 
@@ -23,6 +23,7 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
   const isContacts = pathname.startsWith('/admin/contacts');
   const isHomepage = pathname.startsWith('/admin/homepage') && !pathname.startsWith('/admin/subdomains/homepage');
   const isSubdomainHomepage = pathname.startsWith('/admin/subdomains/homepage');
+  const isPartnershipPage = pathname === '/admin/partnership';
 
   const [openHomepage, setOpenHomepage] = React.useState(isHomepage);
   const [openSubdomainHomepage, setOpenSubdomainHomepage] = React.useState(isSubdomainHomepage);
@@ -140,6 +141,12 @@ export default function SidebarNav({ initialActiveServiceCategory }: SidebarNavP
           </Link>
         </div>
       </details>
+
+      {/* Partnership Settings Button */}
+      <Link href="/admin/partnership" className={linkClass(isPartnershipPage)}>
+        <Handshake className={iconClass(isPartnershipPage)} />
+        <span>Partnership Settings</span>
+      </Link>
 
       {/* Collapsible Manage Services Dropdown */}
       <details className="group/details" open={openServices} onToggle={(e: any) => setOpenServices(e.currentTarget.open)}>
